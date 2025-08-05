@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int Health = 50;
     [SerializeField] private float movespeed = 2f;
     
     private Rigidbody2D rb;
@@ -29,6 +30,10 @@ public class Enemy : MonoBehaviour
             }
             
         }
+        if(Health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     void Awake()
     {
@@ -42,5 +47,8 @@ public class Enemy : MonoBehaviour
         rb.linearVelocity = direction * movespeed;
     }
 
-    
+    public void TakeDamage(int Damage)
+    {
+        Health -= Damage;
+    }
 }
