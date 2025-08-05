@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    [Header("Tower Stats")]
     public float Range = 8f;
     public float FireRate = 1f;
     public int Damage = 25;
 
-    public GameObject Target;
+    [Header("Targeting Mode")]
+    public bool First = true;
+    public bool Last = false;
+    public bool Strongest = false;
 
+    [NonSerialized]
+    public GameObject Target;
     private float CoolDown = 0f;
 
     void Update()

@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour
 
     private Transform CheckPoint;
 
-    private int index = 0;
+    [NonSerialized] public int index = 0;
+    [NonSerialized] public int Distance = 0;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         CheckPoint = EnemyManager.main.CheckPoints[index];
+        Distance = Vector2.Distance(transform.position, EnemyManager.main.CheckPoints[index].position);
 
         if (Vector2.Distance(CheckPoint.position, transform.position) < 0.1f)
         {
