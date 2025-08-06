@@ -9,6 +9,8 @@ public class Tower : MonoBehaviour
     public float Range = 8f;
     public float FireRate = 1f;
     public int Damage = 25;
+    public int Cost = 50;
+    public string TowerName = "Tower";
 
     [Header("Targeting Mode")]
     public bool First = true;

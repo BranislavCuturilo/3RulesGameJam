@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public int Health = 50;
     [SerializeField] private float movespeed = 2f;
+    [SerializeField] private int EnemyMoneyValue = 10;
     
     private Rigidbody2D rb;
 
@@ -29,14 +30,12 @@ public class Enemy : MonoBehaviour
             index++;
             if (index >= EnemyManager.main.CheckPoints.Length)
             {
+                Player.main.ReceiveDamage(Health);
                 Destroy(gameObject);
             }
             
         }
-        if(Health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        
     }
     void Awake()
     {
@@ -53,5 +52,10 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int Damage)
     {
         Health -= Damage;
+        if(Health <= 0)
+        {
+            Player.main.Money += EnemyMoneyValue;
+            Destroy(gameObject);
+        }
     }
 }

@@ -23,6 +23,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float FastEnemyRate = 0.4f;
     [SerializeField] private float TankEnemyRate = 0.2f;
 
+    [SerializeField] private GameObject WavePanel;
+    
+    private bool WaveOver = false;
     private List<GameObject> WaveSet = new List<GameObject>();
     private int EnemyLeft;
     private bool WaveDone = false;
@@ -102,19 +105,27 @@ public class EnemyManager : MonoBehaviour
    void Update()
    {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if(Input.GetKeyDown(KeyCode.Return) && WaveDone && enemies.Length == 0)
+
+        if(!WaveOver && WaveDone && enemies.Length == 0)
+        {
+            Player.main.Money += 50 + (Wave * 10);
+            WaveOver = true;
+            WavePanel.SetActive(true);
+        }
+   }
+   public void NextWave()
+   {
+        
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if(WaveDone && enemies.Length == 0)
         {
             Wave++;
             WaveDone = false;
+            WaveOver = false;
             CountEnemy += Mathf.RoundToInt(CountEnemy * CountEnemyRate);
             SetWave();
-        }
-        if(Input.GetKeyDown(KeyCode.R) && WaveDone)
-        {
-            for(int i = 0; i<enemies.Length; i++)
-            {
-                Destroy(enemies[i]);
-            }
+            WavePanel.SetActive(false);
         }
    }
 }

@@ -12,8 +12,11 @@ public class TowerPlacement : MonoBehaviour
     [NonSerialized] public bool IsPlacing = true;
     private bool IsRestricted = false;
 
+    private Tower Tower;
+
     void Awake()
     {
+        Tower = GetComponent<Tower>();
         RangeCollider.enabled = false;
     }
 
@@ -24,11 +27,12 @@ public class TowerPlacement : MonoBehaviour
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = mousePosition;
         }
-        if(Input.GetMouseButtonDown(1) && !IsRestricted)
+        if(Input.GetMouseButtonDown(1) && !IsRestricted && Tower.Cost < Player.main.Money)
         {
             RangeCollider.enabled = true;
             IsPlacing = false;
             RangeCircle.enabled = false;
+            Player.main.Money -= Tower.Cost;
             GetComponent<TowerPlacement>().enabled = false;
         }
         if(IsRestricted)
