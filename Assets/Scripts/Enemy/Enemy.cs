@@ -6,7 +6,7 @@ using System;
 public class Enemy : MonoBehaviour
 {
     public int Health = 50;
-    [SerializeField] private float movespeed = 2f;
+    [NonSerialized] public float movespeed = 2f;
     [SerializeField] private int EnemyMoneyValue = 10;
     
     private Rigidbody2D rb;
@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
         Health -= Damage;
         if(Health <= 0)
         {
-            Player.main.Money += EnemyMoneyValue;
+            Player.main.Money += Mathf.RoundToInt(EnemyMoneyValue * RuleManager.main.economyMoneyMod);
             Destroy(gameObject);
         }
     }

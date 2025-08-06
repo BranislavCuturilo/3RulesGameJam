@@ -10,6 +10,12 @@ public class Tower : MonoBehaviour
     public float FireRate = 1f;
     public int Damage = 25;
     public int Cost = 50;
+
+    [Header("Tower Stats")]
+    public float originalRange;
+    public float originalFireRate;
+    public int originalDamage;
+
     public string TowerName = "Tower";
 
     [Header("Targeting Mode")]
@@ -24,6 +30,12 @@ public class Tower : MonoBehaviour
     public GameObject Target;
     private float CoolDown = 0f;
 
+    void Awake()
+    {
+        originalRange = Range;
+        originalFireRate = FireRate;
+        originalDamage = Damage;
+    }
     void Update()
     {
         if(Target)

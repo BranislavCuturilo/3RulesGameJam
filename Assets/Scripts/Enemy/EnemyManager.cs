@@ -89,13 +89,16 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator Spawn()
     {
+        
         for(int i = 0; i<WaveSet.Count; i++)
         {
-            Instantiate(WaveSet[i], spawnPoint.position, Quaternion.identity);
+            GameObject EnemyObj = Instantiate(WaveSet[i], spawnPoint.position, Quaternion.identity);
+            Enemy Enemy = EnemyObj.GetComponent<Enemy>();
+            Enemy.movespeed *= RuleManager.main.enemySpeedMod; // Primijeni speed mod
+            Enemy.Health = Mathf.RoundToInt(Enemy.Health * RuleManager.main.enemyHPMod); // HP mod
             yield return new WaitForSeconds(Random.Range(SpawnDelayMin, SpawnDelayMax));
         }
         WaveDone = true;
-
     }
    
    void Start()
@@ -108,9 +111,11 @@ public class EnemyManager : MonoBehaviour
 
         if(!WaveOver && WaveDone && enemies.Length == 0)
         {
-            Player.main.Money += 50 + (Wave * 10);
+            Player.main.Money += Mathf.RoundToInt((50 + (Wave * 10)) * RuleManager.main.economyBonusMod);
             WaveOver = true;
-            WavePanel.SetActive(true);
+            RuleManager.main.ResetModifiers();
+            RuleManager.main.ShowRuleOptions();
+            // WavePanel.SetActive(true); // Removed, as we're using RulePanel
         }
    }
    public void NextWave()
@@ -125,7 +130,6 @@ public class EnemyManager : MonoBehaviour
             WaveOver = false;
             CountEnemy += Mathf.RoundToInt(CountEnemy * CountEnemyRate);
             SetWave();
-            WavePanel.SetActive(false);
         }
    }
 }
