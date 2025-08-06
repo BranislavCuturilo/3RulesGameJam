@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Enemy : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Enemy : MonoBehaviour
     private Transform CheckPoint;
 
     [NonSerialized] public int index = 0;
-    [NonSerialized] public int Distance = 0;
+    [NonSerialized] public float Distance = 0;
 
     void Start()
     {

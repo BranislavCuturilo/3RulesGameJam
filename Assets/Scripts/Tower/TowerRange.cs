@@ -23,8 +23,8 @@ public class TowerRange : MonoBehaviour
                 GameObject FirstTarget = null;
                 foreach(GameObject Target in Targets)
                 {
-                    int index = target.GetComponent<Enemy>().index;
-                    float Distance = Target.GetComponent<Enemy>().Distance
+                    int index = Target.GetComponent<Enemy>().index;
+                    float Distance = Target.GetComponent<Enemy>().Distance;
                     if(index>MaxIndex || (index==MaxIndex && Distance<MinDistance))
                     {
                         MaxIndex = index;
@@ -41,8 +41,8 @@ public class TowerRange : MonoBehaviour
                 GameObject LastTarget = null;
                 foreach(GameObject Target in Targets)
                 {
-                    int index = target.GetComponent<Enemy>().index;
-                    float Distance = Target.GetComponent<Enemy>().Distance
+                    int index = Target.GetComponent<Enemy>().index;
+                    float Distance = Target.GetComponent<Enemy>().Distance;
                     if(index<MinIndex || (index==MinIndex && Distance>MaxDistance))
                     {
                         MinIndex = index;
@@ -72,7 +72,10 @@ public class TowerRange : MonoBehaviour
                 Tower.Target = Targets[0];
             }
         }
-        
+        else
+        {
+            Tower.Target = null;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
