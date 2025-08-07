@@ -27,12 +27,13 @@ public class TowerPlacement : MonoBehaviour
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = mousePosition;
         }
-        if(Input.GetMouseButtonDown(1) && !IsRestricted && Tower.Cost < Player.main.Money)
+        int adjustedCost = Mathf.RoundToInt(Tower.Cost * RuleManager.main.GetTowerPlacementCostMod());
+        if(Input.GetMouseButtonDown(1) && !IsRestricted && adjustedCost <= Player.main.Money)
         {
             RangeCollider.enabled = true;
             IsPlacing = false;
             RangeCircle.enabled = false;
-            Player.main.Money -= Tower.Cost;
+            Player.main.Money -= adjustedCost;
             GetComponent<TowerPlacement>().enabled = false;
         }
         if(IsRestricted)

@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
         Health -= Damage;
         if(Health <= 0)
         {
-            Player.main.Money += Mathf.RoundToInt(EnemyMoneyValue * RuleManager.main.economyMoneyMod);
+            Player.main.Money += Mathf.RoundToInt(EnemyMoneyValue * RuleManager.main.GetEconomyMoneyMod());
             Destroy(gameObject);
         }
     }

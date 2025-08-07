@@ -24,31 +24,38 @@ public class TowerUpgrade : MonoBehaviour
     void Awake()
     {
         Tower = GetComponent<Tower>();
-        CurrentCost = Levels[0].Cost.ToString();
+        UpdateCostDisplay();
     }
 
     public void Upgrade()
     {
-        if(CurrentLevel < Levels.Length && Levels[CurrentLevel].Cost < Player.main.Money)
+        int adjustedCost = Mathf.RoundToInt(Levels[CurrentLevel].Cost * RuleManager.main.GetUpgradeDiscountMod());
+        if(CurrentLevel < Levels.Length && adjustedCost <= Player.main.Money)
         {
             Tower.Range = Levels[CurrentLevel].Range;
             Tower.FireRate = Levels[CurrentLevel].FireRate;
             Tower.Damage = Levels[CurrentLevel].Damage;
 
-            Player.main.Money -= Levels[CurrentLevel].Cost;
+            Player.main.Money -= adjustedCost;
             
             TowerRange.UpdateRange();
 
             CurrentLevel++;
 
-            if(CurrentLevel >= Levels.Length)
-            {
-                CurrentCost = "MAX";
-            }
-            else
-            {
-                CurrentCost = Levels[CurrentLevel].Cost.ToString();
-            }
+            UpdateCostDisplay();
+        }
+    }
+    
+    public void UpdateCostDisplay()
+    {
+        if(CurrentLevel >= Levels.Length)
+        {
+            CurrentCost = "MAX";
+        }
+        else
+        {
+            int adjustedCost = Mathf.RoundToInt(Levels[CurrentLevel].Cost * RuleManager.main.GetUpgradeDiscountMod());
+            CurrentCost = adjustedCost.ToString();
         }
     }
 }

@@ -94,8 +94,8 @@ public class EnemyManager : MonoBehaviour
         {
             GameObject EnemyObj = Instantiate(WaveSet[i], spawnPoint.position, Quaternion.identity);
             Enemy Enemy = EnemyObj.GetComponent<Enemy>();
-            Enemy.movespeed *= RuleManager.main.enemySpeedMod; // Primijeni speed mod
-            Enemy.Health = Mathf.RoundToInt(Enemy.Health * RuleManager.main.enemyHPMod); // HP mod
+            Enemy.movespeed *= RuleManager.main.GetEnemySpeedMod(); // Primijeni speed mod
+            Enemy.Health = Mathf.RoundToInt(Enemy.Health * RuleManager.main.GetEnemyHPMod()); // HP mod
             yield return new WaitForSeconds(Random.Range(SpawnDelayMin, SpawnDelayMax));
         }
         WaveDone = true;
@@ -111,7 +111,7 @@ public class EnemyManager : MonoBehaviour
 
         if(!WaveOver && WaveDone && enemies.Length == 0)
         {
-            Player.main.Money += Mathf.RoundToInt((50 + (Wave * 10)) * RuleManager.main.economyBonusMod);
+            Player.main.Money += Mathf.RoundToInt((50 + (Wave * 10)) * RuleManager.main.GetEconomyBonusMod());
             WaveOver = true;
             RuleManager.main.ResetModifiers();
             RuleManager.main.ShowRuleOptions();
