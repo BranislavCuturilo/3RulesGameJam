@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fab8ce65a2e11488e8db7987db052e, type: 3}
+  m_Name: Tanky
+  m_EditorClassIdentifier: 
+  baseRuleSetName: Tanky
+  ruleSetImage: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  progressionLevels:
+  - levelDescription: "Te\u017Eka progresija sa 20% pove\u0107anjem"
+    enemySpeedMultiplier: 1.2
+    enemyHealthMultiplier: 1.2
+    enemyDamageMultiplier: 1.2
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    towerFireRateMultiplier: 0.79999995
+    towerDamageMultiplier: 0.79999995
+    towerRangeMultiplier: 0.79999995
+    towerPlacementCostMultiplier: 1.2
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    waveCompleteMoneyMultiplier: 0.79999995
+    enemyKillMoneyMultiplier: 0.79999995
+    upgradeDiscountMultiplier: 1
+  - levelDescription: "Te\u017Eka progresija sa 50% pove\u0107anjem"
+    enemySpeedMultiplier: 1.5
+    enemyHealthMultiplier: 1.5
+    enemyDamageMultiplier: 1.5
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    towerFireRateMultiplier: 0.5
+    towerDamageMultiplier: 0.5
+    towerRangeMultiplier: 0.5
+    towerPlacementCostMultiplier: 1.5
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    waveCompleteMoneyMultiplier: 0.5
+    enemyKillMoneyMultiplier: 0.5
+    upgradeDiscountMultiplier: 1
+  - levelDescription: "Te\u017Eka progresija sa 80% pove\u0107anjem"
+    enemySpeedMultiplier: 1.8
+    enemyHealthMultiplier: 1.8
+    enemyDamageMultiplier: 1.8
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    towerFireRateMultiplier: 0.20000005
+    towerDamageMultiplier: 0.20000005
+    towerRangeMultiplier: 0.20000005
+    towerPlacementCostMultiplier: 1.8
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    waveCompleteMoneyMultiplier: 0.20000005
+    enemyKillMoneyMultiplier: 0.20000005
+    upgradeDiscountMultiplier: 1
+  - levelDescription: "Te\u017Eka progresija sa 120% pove\u0107anjem"
+    enemySpeedMultiplier: 2.2
+    enemyHealthMultiplier: 2.2
+    enemyDamageMultiplier: 2.2
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    towerFireRateMultiplier: -0.20000005
+    towerDamageMultiplier: -0.20000005
+    towerRangeMultiplier: -0.20000005
+    towerPlacementCostMultiplier: 2.2
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    waveCompleteMoneyMultiplier: -0.20000005
+    enemyKillMoneyMultiplier: -0.20000005
+    upgradeDiscountMultiplier: 1
+  - levelDescription: "Te\u017Eka progresija sa 150% pove\u0107anjem"
+    enemySpeedMultiplier: 2.5
+    enemyHealthMultiplier: 2.5
+    enemyDamageMultiplier: 2.5
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    towerFireRateMultiplier: -0.5
+    towerDamageMultiplier: -0.5
+    towerRangeMultiplier: -0.5
+    towerPlacementCostMultiplier: 2.5
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    waveCompleteMoneyMultiplier: -0.5
+    enemyKillMoneyMultiplier: -0.5
+    upgradeDiscountMultiplier: 1

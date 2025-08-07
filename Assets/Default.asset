@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fab8ce65a2e11488e8db7987db052e, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  baseRuleSetName: Default
+  ruleSetImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  progressionLevels:
+  - levelDescription: Opisuje kako se mijenjaju pravila na ovom nivou
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 1
+    enemyDamageMultiplier: 1
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1
+  - levelDescription: Opisuje kako se mijenjaju pravila na ovom nivou
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 1
+    enemyDamageMultiplier: 1
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1
+  - levelDescription: Opisuje kako se mijenjaju pravila na ovom nivou
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 1
+    enemyDamageMultiplier: 1
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1
+  - levelDescription: Opisuje kako se mijenjaju pravila na ovom nivou
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 1
+    enemyDamageMultiplier: 1
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1
+  - levelDescription: Opisuje kako se mijenjaju pravila na ovom nivou
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 1
+    enemyDamageMultiplier: 1
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1

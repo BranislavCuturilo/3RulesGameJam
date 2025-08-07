@@ -9,15 +9,15 @@ public class RuleManager : MonoBehaviour
     public static RuleManager main;
 
     // UI elementi (dodaj ih u Inspectoru)
-    [SerializeField] private GameObject RulePanel; // Novi panel u sredini ekrana
-    [SerializeField] private Button[] OptionButtons; // 3 dugmeta za opcije
-    [SerializeField] private TextMeshProUGUI[] OptionTexts; // Tekstovi za svaku opciju
-    [SerializeField] private TextMeshProUGUI[] RuleNameTexts; // Nazivi rule setova
-    [SerializeField] private UnityEngine.UI.Image[] RuleImages; // Slike za rule setove
+    [Header("UI Setup")]
+    [SerializeField] public GameObject rulePanel; // Novi panel u sredini ekrana
+    [SerializeField] public Button[] optionButtons; // 3 dugmeta za opcije
+    [SerializeField] public TextMeshProUGUI[] optionTexts; // Tekstovi za svaku opciju
+    [SerializeField] public UnityEngine.UI.Image[] ruleImages; // 3 UI slike koje će biti zamijenjene slikama iz rule setova
 
     // Rule Sets (dodaj ih u Inspectoru)
     [Header("Available Rule Sets")]
-    [SerializeField] private Rule[] availableRuleSets; // Niz svih dostupnih rule setova
+    [SerializeField] public Rule[] availableRuleSets; // Niz svih dostupnih rule setova
     
     // Trenutno odabrani rule setovi za prikaz
     private Rule[] currentOptions = new Rule[3];
@@ -25,6 +25,11 @@ public class RuleManager : MonoBehaviour
     // Trenutno aktivna pravila
     [Header("Currently Applied Rule Set")]
     [SerializeField] private Rule currentlyAppliedRuleSet;
+    [SerializeField] private int currentProgressionLevel = 0;
+    
+    // Progression tracking - koliko puta je svaki rule set odabran
+    [Header("Rule Progression Tracking")]
+    [SerializeField] private System.Collections.Generic.Dictionary<string, int> ruleProgressionCount = new System.Collections.Generic.Dictionary<string, int>();
 
     void Awake() { main = this; }
 
@@ -37,44 +42,54 @@ public class RuleManager : MonoBehaviour
             return;
         }
         
-        RulePanel.SetActive(true);
+        rulePanel.SetActive(true);
         
         // Odaberi 3 random rule set-a
         GenerateRandomRuleOptions();
         
         for (int i = 0; i < 3; i++)
         {
-            if (currentOptions[i] != null)
+            if (currentOptions[i] != null && optionButtons != null && i < optionButtons.Length)
             {
-                // Postavi naziv rule seta
-                if (RuleNameTexts != null && i < RuleNameTexts.Length && RuleNameTexts[i] != null)
-                {
-                    RuleNameTexts[i].text = currentOptions[i].ruleSetName;
-                }
+                Rule currentRule = currentOptions[i];
+                int progressionLevel = GetRuleProgressionLevel(currentRule);
                 
-                // Postavi opis pravila
-                if (OptionTexts != null && i < OptionTexts.Length && OptionTexts[i] != null)
+                // Postavi kompletan sadržaj button-a iz ScriptableObject-a
+                if (optionTexts != null && i < optionTexts.Length && optionTexts[i] != null)
                 {
-                    OptionTexts[i].text = currentOptions[i].GetDisplayText();
-                }
-                
-                // Postavi sliku
-                if (RuleImages != null && i < RuleImages.Length && RuleImages[i] != null)
-                {
-                    if (currentOptions[i].ruleSetImage != null)
+                    // Generiši kompletan text: naziv + opis
+                    string ruleName = currentRule.GetRuleSetName(progressionLevel);
+                    string displayText = currentRule.GetDisplayText(progressionLevel);
+                    
+                    // Ako je displayText prazan ili invalid, koristi fallback
+                    if (string.IsNullOrEmpty(displayText) || displayText == "Nivo nije definisan")
                     {
-                        RuleImages[i].sprite = currentOptions[i].ruleSetImage;
-                        RuleImages[i].enabled = true;
+                        displayText = $"Level {progressionLevel + 1}\nKonfigurišite progression level u Inspector-u";
+                    }
+                    
+                    // Kombinuj naziv i opis
+                    string fullText = $"{ruleName}\n\n{displayText}";
+                    optionTexts[i].text = fullText;
+                }
+                
+                // Postavi sliku iz ScriptableObject-a na zasebnu Image komponentu
+                if (ruleImages != null && i < ruleImages.Length && ruleImages[i] != null)
+                {
+                    if (currentRule.ruleSetImage != null)
+                    {
+                        ruleImages[i].sprite = currentRule.ruleSetImage;
+                        ruleImages[i].enabled = true;
                     }
                     else
                     {
-                        RuleImages[i].enabled = false;
+                        ruleImages[i].enabled = false; // Sakrij ako nema slike
                     }
                 }
                 
-                int index = i; // Za lambda
-                OptionButtons[i].onClick.RemoveAllListeners();
-                OptionButtons[i].onClick.AddListener(() => SelectOption(index));
+                // Setup button click
+            int index = i; // Za lambda
+                optionButtons[i].onClick.RemoveAllListeners();
+                optionButtons[i].onClick.AddListener(() => SelectOption(index));
             }
         }
     }
@@ -98,32 +113,62 @@ public class RuleManager : MonoBehaviour
 
     private void SelectOption(int index)
     {
-        if (currentOptions[index] != null)
+        if (currentOptions != null && index >= 0 && index < currentOptions.Length && currentOptions[index] != null)
         {
-            // Spremi trenutno odabrani rule set
-            currentlyAppliedRuleSet = currentOptions[index];
+            Rule selectedRule = currentOptions[index];
             
-            // Primijeni rule set
-            ApplyRuleSet(currentlyAppliedRuleSet);
+            // Ažuriraj progression count
+            IncrementRuleProgressionCount(selectedRule);
             
-            Debug.Log($"Applied Rule Set: {currentlyAppliedRuleSet.ruleSetName}");
+            // Spremi trenutno odabrani rule set i nivo
+            currentlyAppliedRuleSet = selectedRule;
+            currentProgressionLevel = GetRuleProgressionLevel(selectedRule);
+            
+            // Primijeni rule set sa progression levelom
+            ApplyRuleSet(currentlyAppliedRuleSet, currentProgressionLevel);
+            
+            Debug.Log($"Applied Rule Set: {currentlyAppliedRuleSet.GetRuleSetName(currentProgressionLevel)}");
+            
+                        // Sakrij panel i pokreni sljedeći val
+            rulePanel.SetActive(false);
+            
+            // Provjeri da li EnemyManager postoji prije poziva NextWave
+            if (EnemyManager.main != null)
+            {
+                EnemyManager.main.NextWave();
+            }
+            else
+            {
+                Debug.LogError("EnemyManager.main is null - cannot start next wave!");
+            }
         }
-
-        RulePanel.SetActive(false);
-        EnemyManager.main.NextWave(); // Pokreni sljedeći val
+        else
+        {
+            Debug.LogError($"SelectOption called with invalid index {index} or null rule at that index");
+        }
     }
 
-    public void ApplyRuleSet(Rule ruleSet)
+    public void ApplyRuleSet(Rule ruleSet, int progressionLevel = 0)
     {
         if (ruleSet == null) return;
         
-        // Resetuj prethodne modifikatore
-        ResetModifiers();
+        // NE pozivamo ResetModifiers() ovdje jer se već poziva u EnemyManager.Update()
+        // ResetModifiers(); // REMOVED - causing double reset
         
-        // Primijeni tower modifikatore
-        ApplyTowerModifiers(ruleSet.towerRule);
+        // Dobij progresirane rule verzije
+        EnemyRule progressedEnemyRule = ruleSet.GetProgressedEnemyRule(progressionLevel);
+        TowerRule progressedTowerRule = ruleSet.GetProgressedTowerRule(progressionLevel);
+        EconomyRule progressedEconomyRule = ruleSet.GetProgressedEconomyRule(progressionLevel);
         
-        Debug.Log($"Applied rule set: {ruleSet.ruleSetName}");
+        // Primijeni modifikatore
+        ApplyTowerModifiers(progressedTowerRule);
+        
+        // Spremi progresirane rule-ove za korišćenje u getter metodama
+        currentlyAppliedEnemyRule = progressedEnemyRule;
+        currentlyAppliedTowerRule = progressedTowerRule;
+        currentlyAppliedEconomyRule = progressedEconomyRule;
+        
+        Debug.Log($"Applied rule set: {ruleSet.GetRuleSetName(progressionLevel)} with manual progression level");
     }
     
     private void ApplyTowerModifiers(TowerRule towerRule)
@@ -259,43 +304,97 @@ public class RuleManager : MonoBehaviour
             }
         }
         
-        currentlyAppliedRuleSet = null;
+        // Resetuj trenutno primijenjene rule-ove na default (1f multipliers)
+        currentlyAppliedEnemyRule = new EnemyRule();
+        currentlyAppliedTowerRule = new TowerRule();
+        currentlyAppliedEconomyRule = new EconomyRule();
+        
+        // NE postavljamo currentlyAppliedRuleSet na null jer se koristi u SelectOption
+        // currentlyAppliedRuleSet = null; // REMOVED - causing NullReferenceException
+        
         Debug.Log("Modifiers reset to default values");
     }
     
-    // Getter metode za pristup trenutnim modifikatorima (za kompatibilnost sa postojećim kodom)
+    // Trenutno primijenjeni progresirani rule-ovi
+    private EnemyRule currentlyAppliedEnemyRule;
+    private TowerRule currentlyAppliedTowerRule;
+    private EconomyRule currentlyAppliedEconomyRule;
+    
+    // Getter metode za pristup trenutnim modifikatorima (sa progression)
     public float GetEnemySpeedMod()
     {
-        return currentlyAppliedRuleSet?.enemyRule.speedMultiplier ?? 1f;
+        return currentlyAppliedEnemyRule?.speedMultiplier ?? 1f;
     }
     
     public float GetEnemyHPMod()
     {
-        return currentlyAppliedRuleSet?.enemyRule.healthMultiplier ?? 1f;
+        return currentlyAppliedEnemyRule?.healthMultiplier ?? 1f;
     }
     
     public float GetEnemyMoneyMod()
     {
-        return currentlyAppliedRuleSet?.enemyRule.moneyValueMultiplier ?? 1f;
+        return currentlyAppliedEnemyRule?.moneyValueMultiplier ?? 1f;
     }
     
     public float GetEconomyBonusMod()
     {
-        return currentlyAppliedRuleSet?.economyRule.waveCompleteMoneyMultiplier ?? 1f;
+        return currentlyAppliedEconomyRule?.waveCompleteMoneyMultiplier ?? 1f;
     }
     
     public float GetEconomyMoneyMod()
     {
-        return currentlyAppliedRuleSet?.economyRule.enemyKillMoneyMultiplier ?? 1f;
+        return currentlyAppliedEconomyRule?.enemyKillMoneyMultiplier ?? 1f;
     }
     
     public float GetTowerPlacementCostMod()
     {
-        return currentlyAppliedRuleSet?.economyRule.towerPlacementCostMultiplier ?? 1f;
+        return currentlyAppliedEconomyRule?.towerPlacementCostMultiplier ?? 1f;
     }
     
     public float GetUpgradeDiscountMod()
     {
-        return currentlyAppliedRuleSet?.economyRule.upgradeDiscountMultiplier ?? 1f;
+        return currentlyAppliedEconomyRule?.upgradeDiscountMultiplier ?? 1f;
+    }
+    
+    // Progression tracking metode
+    private int GetRuleProgressionLevel(Rule ruleSet)
+    {
+        if (ruleSet == null) return 0;
+        
+        if (ruleProgressionCount.TryGetValue(ruleSet.baseRuleSetName, out int count))
+        {
+            return Mathf.Min(count, ruleSet.GetMaxProgressionLevel());
+        }
+        return 0;
+    }
+    
+    private void IncrementRuleProgressionCount(Rule ruleSet)
+    {
+        if (ruleSet == null) return;
+        
+        if (ruleProgressionCount.ContainsKey(ruleSet.baseRuleSetName))
+        {
+            ruleProgressionCount[ruleSet.baseRuleSetName]++;
+        }
+        else
+        {
+            ruleProgressionCount[ruleSet.baseRuleSetName] = 1;
+        }
+        
+        // Ograniči na maksimalni nivo
+        ruleProgressionCount[ruleSet.baseRuleSetName] = Mathf.Min(
+            ruleProgressionCount[ruleSet.baseRuleSetName], 
+            ruleSet.GetMaxProgressionLevel()
+        );
+    }
+    
+    // Debug metoda za provjeru progression stanja
+    public void LogProgressionStatus()
+    {
+        Debug.Log("=== Rule Progression Status ===");
+        foreach (var kvp in ruleProgressionCount)
+        {
+            Debug.Log($"{kvp.Key}: Level {kvp.Value + 1}");
+        }
     }
 }
