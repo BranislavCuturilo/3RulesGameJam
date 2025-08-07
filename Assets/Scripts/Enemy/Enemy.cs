@@ -6,7 +6,7 @@ using System;
 public class Enemy : MonoBehaviour
 {
     public int Health = 50;
-    [NonSerialized] public float movespeed = 2f;
+    [SerializeField] public float movespeed = 2f;
     [SerializeField] private int EnemyMoneyValue = 10;
     
     private Rigidbody2D rb;

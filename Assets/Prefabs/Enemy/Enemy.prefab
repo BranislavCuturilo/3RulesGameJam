@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 8671700379645871862}
   - component: {fileID: -7072952938092299023}
   - component: {fileID: 714635027522691011}
+  - component: {fileID: -1607560295277565688}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -264,4 +265,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 10
-  movespeed: 1
+  EnemyMoneyValue: 10
+--- !u!114 &-1607560295277565688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6452110077933349805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121df571b3bd5f24b90dd45fb0f16c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSlowed: 0
+  isStunned: 0
+  hasDOT: 0
+  slowFactor: 1
+  originalSpeed: 0
+  dotDamagePerSecond: 0
+  slowEffect: {fileID: 0}
+  stunEffect: {fileID: 0}
+  dotEffect: {fileID: 0}

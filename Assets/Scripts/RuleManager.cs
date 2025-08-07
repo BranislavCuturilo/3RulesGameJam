@@ -157,6 +157,13 @@ public class RuleManager : MonoBehaviour
                 {
                     ApplyTargetingMode(tower, towerRule.forceTargetingMode);
                 }
+                
+                // Primijeni advanced efekte na TowerEffects komponentu
+                TowerEffects towerEffects = towerObj.GetComponent<TowerEffects>();
+                if (towerEffects != null)
+                {
+                    ApplyAdvancedEffects(towerEffects, towerRule);
+                }
             }
         }
     }
@@ -188,6 +195,44 @@ public class RuleManager : MonoBehaviour
             case TargetingMode.First: tower.First = true; break;
             case TargetingMode.Last: tower.Last = true; break;
             case TargetingMode.Strongest: tower.Strongest = true; break;
+        }
+    }
+    
+    private void ApplyAdvancedEffects(TowerEffects towerEffects, TowerRule towerRule)
+    {
+        // Primijeni modifikatore na tower effects
+        if (towerEffects.effects != null)
+        {
+            foreach (var effect in towerEffects.effects)
+            {
+                // Modifikuj effect strength na osnovu rule-a
+                if (effect.effectType == EffectType.DOT || effect.effectType == EffectType.DOT_AOE)
+                {
+                    effect.dotDamage = Mathf.RoundToInt(effect.dotDamage * towerRule.dotDamageMultiplier);
+                }
+                
+                if (effect.effectType == EffectType.Slow || effect.effectType == EffectType.AOE_Slow)
+                {
+                    effect.effectStrength *= towerRule.slowEffectMultiplier;
+                }
+                
+                if (effect.effectType == EffectType.Stun || effect.effectType == EffectType.AOE_Stun)
+                {
+                    effect.effectDuration *= towerRule.stunDurationMultiplier;
+                }
+                
+                // Modifikuj AOE radius
+                if (effect.effectType.ToString().Contains("AOE"))
+                {
+                    effect.effectRadius *= towerRule.aoeRadiusMultiplier;
+                }
+            }
+        }
+        
+        // Modifikuj projectile speed
+        if (towerEffects.useProjectile)
+        {
+            towerEffects.projectileSpeed *= towerRule.projectileSpeedMultiplier;
         }
     }
 

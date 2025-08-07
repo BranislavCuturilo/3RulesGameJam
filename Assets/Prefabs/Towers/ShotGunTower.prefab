@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 3163035828352533829}
   - component: {fileID: 7512505156244118277}
   - component: {fileID: 7051844493604317011}
+  - component: {fileID: -2866245142023332858}
   m_Layer: 6
   m_Name: ShotGunTower
   m_TagString: Tower
@@ -363,6 +364,11 @@ MonoBehaviour:
   Range: 3
   FireRate: 0.5
   Damage: 10
+  Cost: 50
+  originalRange: 0
+  originalFireRate: 0
+  originalDamage: 0
+  TowerName: Tower
   First: 0
   Last: 0
   Strongest: 1
@@ -383,13 +389,47 @@ MonoBehaviour:
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
   TowerRange: {fileID: 5936357297783574762}
+--- !u!114 &-2866245142023332858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124115365291048844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1ffa5ea22762b4dbcaabe1f89010dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - effectType: 2
+    effectRadius: 2
+    effectDuration: 3
+    effectStrength: 0.5
+    dotDamage: 5
+    effectPrefab: {fileID: 0}
+    effectColor: {r: 0.05231038, g: 0.8618517, b: 0.89433956, a: 0}
+  - effectType: 4
+    effectRadius: 2
+    effectDuration: 3
+    effectStrength: 0.5
+    dotDamage: 0
+    effectPrefab: {fileID: 0}
+    effectColor: {r: 0.05231038, g: 0.8618517, b: 0.89433956, a: 0}
+  useProjectile: 0
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 10
+  projectileExplodesOnImpact: 0
 --- !u!1 &4691293697342859437
 GameObject:
   m_ObjectHideFlags: 0

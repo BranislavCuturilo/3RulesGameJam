@@ -62,11 +62,12 @@ public class TowerRule
     public float placementCostMultiplier = 1f;
     public TargetingMode forceTargetingMode = TargetingMode.NoChange;
     
-    [Header("Future Effects (not implemented yet)")]
+    [Header("Advanced Effects")]
     public float dotDamageMultiplier = 1f; // Damage over time
-    public float slowEffectMultiplier = 1f; // Slow effect
+    public float slowEffectMultiplier = 1f; // Slow effect strength
     public float stunDurationMultiplier = 1f; // Stun duration
     public float aoeRadiusMultiplier = 1f; // AOE radius
+    public float projectileSpeedMultiplier = 1f; // Projectile speed
 }
 
 [System.Serializable]

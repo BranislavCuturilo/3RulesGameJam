@@ -29,12 +29,14 @@ public class Tower : MonoBehaviour
     [NonSerialized]
     public GameObject Target;
     private float CoolDown = 0f;
+    private TowerEffects towerEffects;
 
     void Awake()
     {
         originalRange = Range;
         originalFireRate = FireRate;
         originalDamage = Damage;
+        towerEffects = GetComponent<TowerEffects>();
     }
     void Update()
     {
@@ -43,7 +45,18 @@ public class Tower : MonoBehaviour
             if(CoolDown >= FireRate)
             {
                 transform.right = Target.transform.position - transform.position;
-                Target.GetComponent<Enemy>().TakeDamage(Damage);
+                
+                // Provjeri da li toranj koristi efekte ili projektile
+                if (towerEffects != null)
+                {
+                    towerEffects.OnFire(Target);
+                }
+                else
+                {
+                    // Standardni direct damage
+                    Target.GetComponent<Enemy>().TakeDamage(Damage);
+                }
+                
                 CoolDown = 0f;
                 StartCoroutine(FireEffectFunction());
             }
