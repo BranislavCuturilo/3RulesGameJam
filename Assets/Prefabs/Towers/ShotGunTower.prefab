@@ -347,8 +347,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RangeCircle: {fileID: 6051021898961577353}
   RangeCollider: {fileID: 2287879969074248481}
-  GrayColor: {r: 0.554717, g: 0.554717, b: 0.554717, a: 1}
-  RedColor: {r: 1, g: 0, b: 0, a: 1}
+  GrayColor: {r: 0.554717, g: 0.554717, b: 0.554717, a: 0.50980395}
+  RedColor: {r: 1, g: 0, b: 0, a: 0.50980395}
 --- !u!114 &7512505156244118277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +373,7 @@ MonoBehaviour:
   Last: 0
   Strongest: 1
   FireEffect: {fileID: 331912459128302814}
+  firePoint: {fileID: 3570030350780741789}
 --- !u!114 &7051844493604317011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,14 +391,29 @@ MonoBehaviour:
     FireRate: 8
     Range: 1
     Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   - Damage: 25
     FireRate: 8
     Range: 1
     Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   - Damage: 25
     FireRate: 8
     Range: 1
     Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   TowerRange: {fileID: 5936357297783574762}
 --- !u!114 &-2866245142023332858
 MonoBehaviour:
@@ -417,7 +433,7 @@ MonoBehaviour:
     effectDuration: 3
     effectStrength: 0.5
     dotDamage: 5
-    effectPrefab: {fileID: 0}
+    effectPrefab: {fileID: 1976031794739834016, guid: 421e1a535764bb7499a9073a9d339b8c, type: 3}
     effectColor: {r: 0.05231038, g: 0.8618517, b: 0.89433956, a: 0}
   - effectType: 4
     effectRadius: 2
@@ -426,9 +442,9 @@ MonoBehaviour:
     dotDamage: 0
     effectPrefab: {fileID: 0}
     effectColor: {r: 0.05231038, g: 0.8618517, b: 0.89433956, a: 0}
-  useProjectile: 0
-  projectilePrefab: {fileID: 0}
-  projectileSpeed: 10
+  useProjectile: 1
+  projectilePrefab: {fileID: 4687702012025285156, guid: 5c4b552f85563be4b8f8057dbee85769, type: 3}
+  projectileSpeed: 100
   projectileExplodesOnImpact: 0
 --- !u!1 &4691293697342859437
 GameObject:

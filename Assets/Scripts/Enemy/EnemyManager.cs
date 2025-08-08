@@ -111,7 +111,7 @@ public class EnemyManager : MonoBehaviour
 
         if(!WaveOver && WaveDone && enemies.Length == 0)
         {
-            Player.main.Money += Mathf.RoundToInt((50 + (Wave * 10)) * RuleManager.main.GetEconomyBonusMod());
+            Player.main.Money += Mathf.CeilToInt((50 + (Wave * 10)) * RuleManager.main.GetEconomyBonusMod());
             WaveOver = true;
             RuleManager.main.ResetModifiers();
             RuleManager.main.ShowRuleOptions();

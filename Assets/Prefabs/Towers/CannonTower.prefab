@@ -247,8 +247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RangeCircle: {fileID: 877975151236263330}
   RangeCollider: {fileID: 1472377246911984979}
-  GrayColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
-  RedColor: {r: 1, g: 0, b: 0, a: 1}
+  GrayColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 0.50980395}
+  RedColor: {r: 1, g: 0, b: 0, a: 0.50980395}
 --- !u!114 &5857155551809899120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,12 +265,30 @@ MonoBehaviour:
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   TowerRange: {fileID: 7807303403089743488}
 --- !u!114 &8505438460551761744
 MonoBehaviour:
@@ -287,10 +305,16 @@ MonoBehaviour:
   Range: 8
   FireRate: 1
   Damage: 10
+  Cost: 50
+  originalRange: 0
+  originalFireRate: 0
+  originalDamage: 0
+  TowerName: Tower
   First: 1
   Last: 0
   Strongest: 0
   FireEffect: {fileID: 7578243199964385425}
+  firePoint: {fileID: 0}
 --- !u!50 &1880022468109138316
 Rigidbody2D:
   serializedVersion: 5

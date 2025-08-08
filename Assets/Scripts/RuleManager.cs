@@ -202,13 +202,8 @@ public class RuleManager : MonoBehaviour
                 {
                     ApplyTargetingMode(tower, towerRule.forceTargetingMode);
                 }
-                
-                // Primijeni advanced efekte na TowerEffects komponentu
-                TowerEffects towerEffects = towerObj.GetComponent<TowerEffects>();
-                if (towerEffects != null)
-                {
-                    ApplyAdvancedEffects(towerEffects, towerRule);
-                }
+                // Napomena: Više ne mutiramo trajno TowerEffects vrijednosti ovdje.
+                // Efekti i projectile parametri će se skalirati dinamički pri pucu (TowerShotBuilder/Projectile).
             }
         }
     }
@@ -243,43 +238,7 @@ public class RuleManager : MonoBehaviour
         }
     }
     
-    private void ApplyAdvancedEffects(TowerEffects towerEffects, TowerRule towerRule)
-    {
-        // Primijeni modifikatore na tower effects
-        if (towerEffects.effects != null)
-        {
-            foreach (var effect in towerEffects.effects)
-            {
-                // Modifikuj effect strength na osnovu rule-a
-                if (effect.effectType == EffectType.DOT || effect.effectType == EffectType.DOT_AOE)
-                {
-                    effect.dotDamage = Mathf.RoundToInt(effect.dotDamage * towerRule.dotDamageMultiplier);
-                }
-                
-                if (effect.effectType == EffectType.Slow || effect.effectType == EffectType.AOE_Slow)
-                {
-                    effect.effectStrength *= towerRule.slowEffectMultiplier;
-                }
-                
-                if (effect.effectType == EffectType.Stun || effect.effectType == EffectType.AOE_Stun)
-                {
-                    effect.effectDuration *= towerRule.stunDurationMultiplier;
-                }
-                
-                // Modifikuj AOE radius
-                if (effect.effectType.ToString().Contains("AOE"))
-                {
-                    effect.effectRadius *= towerRule.aoeRadiusMultiplier;
-                }
-            }
-        }
-        
-        // Modifikuj projectile speed
-        if (towerEffects.useProjectile)
-        {
-            towerEffects.projectileSpeed *= towerRule.projectileSpeedMultiplier;
-        }
-    }
+    // Uklonjeno trajno mijenjanje TowerEffects; efekti se skaliraju pri izgradnji metka
 
     // Pozovi ovo nakon sljedećeg vala da resetuješ
     public void ResetModifiers()
@@ -354,6 +313,12 @@ public class RuleManager : MonoBehaviour
     public float GetUpgradeDiscountMod()
     {
         return currentlyAppliedEconomyRule?.upgradeDiscountMultiplier ?? 1f;
+    }
+
+    // Getter za aktivni TowerRule (za TowerShotBuilder)
+    public TowerRule GetCurrentlyAppliedTowerRule()
+    {
+        return currentlyAppliedTowerRule;
     }
     
     // Progression tracking metode

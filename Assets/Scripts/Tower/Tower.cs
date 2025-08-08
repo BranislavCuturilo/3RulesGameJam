@@ -23,8 +23,9 @@ public class Tower : MonoBehaviour
     public bool Last = false;
     public bool Strongest = false;
 
-    [Header("Effects")]
+    [Header("Effects & Firing")]
     [SerializeField] GameObject FireEffect;
+    [SerializeField] public Transform firePoint; // mjesto spawna projektila
 
     [NonSerialized]
     public GameObject Target;
@@ -46,16 +47,9 @@ public class Tower : MonoBehaviour
             {
                 transform.right = Target.transform.position - transform.position;
                 
-                // Provjeri da li toranj koristi efekte ili projektile
-                if (towerEffects != null)
-                {
-                    towerEffects.OnFire(Target);
-                }
-                else
-                {
-                    // Standardni direct damage
-                    Target.GetComponent<Enemy>().TakeDamage(Damage);
-                }
+                // Izgradi ShotData i ispali projektil (ili direktni pogodak ako nema projektila)
+                ShotData shot = TowerShotBuilder.BuildShotData(this, towerEffects);
+                SpawnProjectileOrHit(shot, Target);
                 
                 CoolDown = 0f;
                 StartCoroutine(FireEffectFunction());
@@ -72,6 +66,30 @@ public class Tower : MonoBehaviour
         FireEffect.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         FireEffect.SetActive(false);
+    }
+    
+    private void SpawnProjectileOrHit(ShotData shot, GameObject target)
+    {
+        if (shot.projectilePrefab != null)
+        {
+            Vector3 spawnPos = firePoint != null ? firePoint.position : transform.position;
+            GameObject projectile = Instantiate(shot.projectilePrefab, spawnPos, Quaternion.identity);
+            Projectile projScript = projectile.GetComponent<Projectile>();
+            if (projScript == null)
+            {
+                projScript = projectile.AddComponent<Projectile>();
+            }
+            projScript.Initialize(shot, target);
+        }
+        else
+        {
+            // Fallback: direktan pogodak bez projektila
+            Enemy enemy = target != null ? target.GetComponent<Enemy>() : null;
+            if (enemy != null)
+            {
+                enemy.TakeDamage(shot.damage);
+            }
+        }
     }
     
 }

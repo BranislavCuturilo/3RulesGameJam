@@ -311,10 +311,16 @@ MonoBehaviour:
   Range: 5
   FireRate: 0.2
   Damage: 5
+  Cost: 50
+  originalRange: 0
+  originalFireRate: 0
+  originalDamage: 0
+  TowerName: Tower
   First: 1
   Last: 1
   Strongest: 0
   FireEffect: {fileID: 5679905804773432560}
+  firePoint: {fileID: 0}
 --- !u!114 &1692901677914217301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,8 +335,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RangeCircle: {fileID: 6377311384599890030}
   RangeCollider: {fileID: 4192151054217073874}
-  GrayColor: {r: 0.3735848, g: 0.3735848, b: 0.3735848, a: 1}
-  RedColor: {r: 1, g: 0, b: 0, a: 1}
+  GrayColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 0.50980395}
+  RedColor: {r: 1, g: 0, b: 0, a: 0.50980395}
 --- !u!114 &2528310366485995717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,12 +353,30 @@ MonoBehaviour:
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   TowerRange: {fileID: 7037532226781823205}
 --- !u!1 &5679905804773432560
 GameObject:

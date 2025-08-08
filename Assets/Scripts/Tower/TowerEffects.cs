@@ -48,55 +48,11 @@ public class TowerEffects : MonoBehaviour
         tower = GetComponent<Tower>();
     }
     
-    public void ApplyEffects(GameObject target, Vector3 impactPosition)
-    {
-        if (effects == null || effects.Length == 0) return;
-        
-        foreach (var effect in effects)
-        {
-            ApplyEffect(effect, target, impactPosition);
-        }
-    }
+    // Više ne primjenjuje efekte direktno iz tornja; efekte primjenjuje Projectile korištenjem ShotData kopija
     
-    private void ApplyEffect(TowerEffect effect, GameObject target, Vector3 impactPosition)
-    {
-        switch (effect.effectType)
-        {
-            case EffectType.AOE_Front:
-                ApplyAOEFront(effect);
-                break;
-                
-            case EffectType.AOE_Impact:
-                ApplyAOEImpact(effect, impactPosition);
-                break;
-                
-            case EffectType.Slow:
-                ApplySlow(effect, target);
-                break;
-                
-            case EffectType.AOE_Slow:
-                ApplyAOESlow(effect, impactPosition);
-                break;
-                
-            case EffectType.DOT:
-                ApplyDOT(effect, target);
-                break;
-                
-            case EffectType.DOT_AOE:
-                ApplyDOTAOE(effect, impactPosition);
-                break;
-                
-            case EffectType.Stun:
-                ApplyStun(effect, target);
-                break;
-                
-            case EffectType.AOE_Stun:
-                ApplyAOEStun(effect, impactPosition);
-                break;
-        }
-    }
+    // Pomoćne metode ostaju za referencu i korištenje iz Projectile-a ukoliko želiš re-use
     
-    private void ApplyAOEFront(TowerEffect effect)
+    public void ApplyAOEFront(TowerEffect effect)
     {
         // AOE ispred tornja u pravcu gledanja
         Vector3 frontPosition = transform.position + transform.right * effect.effectRadius;
@@ -122,7 +78,7 @@ public class TowerEffects : MonoBehaviour
         }
     }
     
-    private void ApplyAOEImpact(TowerEffect effect, Vector3 impactPosition)
+    public void ApplyAOEImpact(TowerEffect effect, Vector3 impactPosition)
     {
         // AOE oko pogođenog protivnika
         Collider2D[] enemies = Physics2D.OverlapCircleAll(impactPosition, effect.effectRadius);
@@ -148,7 +104,7 @@ public class TowerEffects : MonoBehaviour
         }
     }
     
-    private void ApplySlow(TowerEffect effect, GameObject target)
+    public void ApplySlow(TowerEffect effect, GameObject target)
     {
         EnemyStatusEffects statusEffects = target.GetComponent<EnemyStatusEffects>();
         if (statusEffects == null)
@@ -159,7 +115,7 @@ public class TowerEffects : MonoBehaviour
         statusEffects.ApplySlow(effect.effectStrength, effect.effectDuration);
     }
     
-    private void ApplyAOESlow(TowerEffect effect, Vector3 impactPosition)
+    public void ApplyAOESlow(TowerEffect effect, Vector3 impactPosition)
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(impactPosition, effect.effectRadius);
         foreach (var collider in enemies)
@@ -178,7 +134,7 @@ public class TowerEffects : MonoBehaviour
         }
     }
     
-    private void ApplyDOT(TowerEffect effect, GameObject target)
+    public void ApplyDOT(TowerEffect effect, GameObject target)
     {
         EnemyStatusEffects statusEffects = target.GetComponent<EnemyStatusEffects>();
         if (statusEffects == null)
@@ -189,7 +145,7 @@ public class TowerEffects : MonoBehaviour
         statusEffects.ApplyDOT(effect.dotDamage, effect.effectDuration);
     }
     
-    private void ApplyDOTAOE(TowerEffect effect, Vector3 impactPosition)
+    public void ApplyDOTAOE(TowerEffect effect, Vector3 impactPosition)
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(impactPosition, effect.effectRadius);
         foreach (var collider in enemies)
@@ -208,7 +164,7 @@ public class TowerEffects : MonoBehaviour
         }
     }
     
-    private void ApplyStun(TowerEffect effect, GameObject target)
+    public void ApplyStun(TowerEffect effect, GameObject target)
     {
         EnemyStatusEffects statusEffects = target.GetComponent<EnemyStatusEffects>();
         if (statusEffects == null)
@@ -219,7 +175,7 @@ public class TowerEffects : MonoBehaviour
         statusEffects.ApplyStun(effect.effectDuration);
     }
     
-    private void ApplyAOEStun(TowerEffect effect, Vector3 impactPosition)
+    public void ApplyAOEStun(TowerEffect effect, Vector3 impactPosition)
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(impactPosition, effect.effectRadius);
         foreach (var collider in enemies)
@@ -238,25 +194,13 @@ public class TowerEffects : MonoBehaviour
         }
     }
     
-    // Pozovi ovo kada toranj puca (iz Tower.cs)
-    public void OnFire(GameObject target)
-    {
-        if (useProjectile && projectilePrefab != null)
-        {
-            // Ispali projektil
-            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            Projectile projScript = projectile.GetComponent<Projectile>();
-            if (projScript == null)
-            {
-                projScript = projectile.AddComponent<Projectile>();
-            }
-            
-            projScript.Initialize(target, projectileSpeed, tower.Damage, this);
-        }
-        else
-        {
-            // Trenutni hit bez projektila
-            ApplyEffects(target, target.transform.position);
-        }
-    }
+    // OnFire uklonjen – logika pucanja premještena u Tower i Projectile
+}
+
+public struct ShotData
+{
+    public GameObject projectilePrefab;
+    public float projectileSpeed;
+    public int damage;
+    public List<TowerEffect> effects;
 }

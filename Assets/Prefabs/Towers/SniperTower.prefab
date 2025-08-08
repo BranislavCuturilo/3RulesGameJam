@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 392817313664422587}
   - component: {fileID: 1199190876020635471}
   - component: {fileID: 3001045613260203739}
+  - component: {fileID: 8207874863006993494}
   m_Layer: 6
   m_Name: SniperTower
   m_TagString: Tower
@@ -172,8 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RangeCircle: {fileID: 8016901402750860756}
   RangeCollider: {fileID: 585889573648536538}
-  GrayColor: {r: 0.3283019, g: 0.3283019, b: 0.3283019, a: 1}
-  RedColor: {r: 1, g: 0, b: 0, a: 1}
+  GrayColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 0.50980395}
+  RedColor: {r: 1, g: 0, b: 0, a: 0.50980395}
 --- !u!114 &1199190876020635471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,10 +190,16 @@ MonoBehaviour:
   Range: 15
   FireRate: 3
   Damage: 50
+  Cost: 50
+  originalRange: 0
+  originalFireRate: 0
+  originalDamage: 0
+  TowerName: Tower
   First: 1
   Last: 0
   Strongest: 0
   FireEffect: {fileID: 274984346455199917}
+  firePoint: {fileID: 0}
 --- !u!114 &3001045613260203739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,13 +216,48 @@ MonoBehaviour:
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   - Damage: 25
     FireRate: 8
     Range: 1
+    Cost: 100
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
   TowerRange: {fileID: 7730218579715028342}
+--- !u!114 &8207874863006993494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256558049295005412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1ffa5ea22762b4dbcaabe1f89010dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects: []
+  useProjectile: 1
+  projectilePrefab: {fileID: 4687702012025285156, guid: 5c4b552f85563be4b8f8057dbee85769, type: 3}
+  projectileSpeed: 10
+  projectileExplodesOnImpact: 0
 --- !u!1 &274984346455199917
 GameObject:
   m_ObjectHideFlags: 0
