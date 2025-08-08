@@ -109,7 +109,7 @@ public class EnemyManager : MonoBehaviour
    {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if(!WaveOver && WaveDone && enemies.Length == 0)
+        if(!WaveOver && WaveDone && enemies.Length == 0 && !Player.main.IsGameOver)
         {
             Player.main.Money += Mathf.CeilToInt((50 + (Wave * 10)) * RuleManager.main.GetEconomyBonusMod());
             WaveOver = true;

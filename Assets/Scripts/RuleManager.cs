@@ -42,6 +42,11 @@ public class RuleManager : MonoBehaviour
             return;
         }
         
+        // Ne prikazuj panel ako je igra gotova
+        if (Player.main != null && Player.main.IsGameOver)
+        {
+            return;
+        }
         rulePanel.SetActive(true);
         
         // Odaberi 3 random rule set-a

@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     public int Money = 1000;
     [SerializeField] private int Health = 500;
+    [NonSerialized] public bool IsGameOver = false;
 
     [SerializeField] private TextMeshProUGUI MoneyText;
     [SerializeField] private TextMeshProUGUI HealthText;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
         Health -= damage;
         if(Health <= 0)
         {
+            IsGameOver = true;
             GameOverGUI.SetActive(true);
         }
     }
