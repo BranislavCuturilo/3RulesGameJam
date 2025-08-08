@@ -337,6 +337,10 @@ MonoBehaviour:
   RangeCollider: {fileID: 4192151054217073874}
   GrayColor: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 0.50980395}
   RedColor: {r: 1, g: 0, b: 0, a: 0.50980395}
+  placementRadius: 0.4
+  placementBlockMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &2528310366485995717
 MonoBehaviour:
   m_ObjectHideFlags: 0

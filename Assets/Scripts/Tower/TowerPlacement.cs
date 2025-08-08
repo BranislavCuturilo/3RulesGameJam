@@ -11,6 +11,7 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private Color RedColor;
     [NonSerialized] public bool IsPlacing = true;
     private bool IsRestricted = false;
+    private readonly System.Collections.Generic.HashSet<Collider2D> blockingColliders = new System.Collections.Generic.HashSet<Collider2D>();
 
     private Tower Tower;
 
@@ -27,6 +28,8 @@ public class TowerPlacement : MonoBehaviour
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = mousePosition;
         }
+        // Konsoliduj stanje zabrane prema svim trenutno preklopljenim collider-ima
+        IsRestricted = blockingColliders.Count > 0;
         int adjustedCost = Mathf.RoundToInt(Tower.Cost * RuleManager.main.GetTowerPlacementCostMod());
         if(Input.GetMouseButtonDown(1) && !IsRestricted && adjustedCost <= Player.main.Money)
         {
@@ -48,17 +51,27 @@ public class TowerPlacement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Restricted" || collision.gameObject.tag == "Tower" && IsPlacing)
+        if(!IsPlacing) return;
+        string tag = collision.gameObject.tag;
+        if (tag == "Restricted" || tag == "Tower")
         {
-            IsRestricted = true;
+            blockingColliders.Add(collision);
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Restricted" || collision.gameObject.tag == "Tower" && IsPlacing)
+        if(!IsPlacing) return;
+        string tag = collision.gameObject.tag;
+        if (tag == "Restricted" || tag == "Tower")
         {
-            IsRestricted = false;
+            blockingColliders.Remove(collision);
         }
+    }
+
+    void OnDisable()
+    {
+        blockingColliders.Clear();
+        IsRestricted = false;
     }
 }
