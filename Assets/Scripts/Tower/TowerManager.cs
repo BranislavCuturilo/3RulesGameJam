@@ -39,6 +39,11 @@ public class TowerManager : MonoBehaviour
         }
         if(Input.GetMouseButtonDown(0))
         {
+            // Ako je u toku postavljanje tornja, lijevi klik postavlja toranj i ne otvara panel
+            if (PlacingTower && PlacingTower.GetComponent<TowerPlacement>()?.IsPlacing == true)
+            {
+                return;
+            }
             RaycastHit2D Hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero,100f, TowerLayer);
             if(Hit.collider != null)
             {

@@ -31,7 +31,7 @@ public class TowerPlacement : MonoBehaviour
         // Konsoliduj stanje zabrane prema svim trenutno preklopljenim collider-ima
         IsRestricted = blockingColliders.Count > 0;
         int adjustedCost = Mathf.RoundToInt(Tower.Cost * RuleManager.main.GetTowerPlacementCostMod());
-        if(Input.GetMouseButtonDown(1) && !IsRestricted && adjustedCost <= Player.main.Money)
+        if(Input.GetMouseButtonDown(0) && !IsRestricted && adjustedCost <= Player.main.Money)
         {
             RangeCollider.enabled = true;
             IsPlacing = false;
