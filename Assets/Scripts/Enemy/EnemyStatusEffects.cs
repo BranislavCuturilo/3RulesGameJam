@@ -43,8 +43,13 @@ public class EnemyStatusEffects : MonoBehaviour
     void Awake()
     {
         enemy = GetComponent<Enemy>();
+    }
+
+    void Start()
+    {
         if (enemy != null)
         {
+            // Capture baseline after EnemyManager may have modified speed on spawn
             originalSpeed = enemy.movespeed;
         }
     }
@@ -174,21 +179,21 @@ public class EnemyStatusEffects : MonoBehaviour
     {
         if (enemy == null) return;
         
+        float newSpeed = originalSpeed;
+        
         // Primijeni slow efekat
         if (isSlowed)
         {
-            enemy.movespeed = originalSpeed * slowFactor;
-        }
-        else
-        {
-            enemy.movespeed = originalSpeed;
+            newSpeed = originalSpeed * slowFactor;
         }
         
         // Primijeni stun efekat (zaustavi protivnika)
         if (isStunned)
         {
-            enemy.movespeed = 0f;
+            newSpeed = 0f;
         }
+        
+        enemy.movespeed = newSpeed;
     }
     
     private void RemoveEffect(StatusEffect effect)
@@ -244,5 +249,13 @@ public class EnemyStatusEffects : MonoBehaviour
         {
             StopCoroutine(dotCoroutine);
         }
+    }
+
+    // Allow external systems to update the baseline speed safely
+    public void SetBaseSpeed(float speed)
+    {
+        originalSpeed = speed;
+        // When baseline changes, immediately re-apply current effects to keep consistency
+        ApplyCurrentEffects();
     }
 }

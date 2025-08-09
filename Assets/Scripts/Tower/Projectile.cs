@@ -17,6 +17,14 @@ public class Projectile : MonoBehaviour
     [Tooltip("Additional Z rotation offset in degrees to fine-tune alignment (e.g., 90 if needed).")]
     [SerializeField] private float rotationOffsetDegrees = 0f;
 
+    [Header("Beam / Hitscan")]
+    [Tooltip("If enabled, projectile will render as an instant beam from spawn to target, apply hit immediately, and not move.")]
+    [SerializeField] private bool isInstantBeam = false;
+    [Tooltip("Beam lifetime in seconds (how long the beam sprite stays visible).")]
+    [SerializeField] private float beamLifetime = 0.06f;
+    [Tooltip("Visual thickness scale on Y for the beam sprite.")]
+    [SerializeField] private float beamThickness = 0.12f;
+
     private const float maxLifeSeconds = 5f;
 
     public void Initialize(ShotData shotData, GameObject targetEnemy)
@@ -32,11 +40,20 @@ public class Projectile : MonoBehaviour
             ApplyRotation(dir);
         }
 
-        Destroy(gameObject, maxLifeSeconds);
+        if (isInstantBeam)
+        {
+            RenderBeamAndHit();
+        }
+        else
+        {
+            Destroy(gameObject, maxLifeSeconds);
+        }
     }
 
     void Update()
     {
+        if (isInstantBeam) return; // no movement for beams
+
         if (target != null)
         {
             lastKnownTargetPos = target.transform.position;
@@ -45,6 +62,60 @@ public class Projectile : MonoBehaviour
         Vector3 direction = (lastKnownTargetPos - transform.position).normalized;
         transform.position += direction * shot.projectileSpeed * Time.deltaTime;
         ApplyRotation(direction);
+    }
+
+    private void RenderBeamAndHit()
+    {
+        // Compute from current spawn position to target
+        Vector3 startPos = transform.position;
+        Vector3 endPos = lastKnownTargetPos;
+        Vector3 delta = endPos - startPos;
+        float distance = delta.magnitude;
+
+        if (distance > 0.0001f)
+        {
+            // Place beam at midpoint
+            Vector3 mid = startPos + delta * 0.5f;
+            transform.position = mid;
+
+            // Rotate to face target
+            Vector3 dir = delta.normalized;
+            ApplyRotation(dir);
+
+            // Scale along X to cover distance, Y for thickness
+            Vector3 scale = transform.localScale;
+            scale.x = distance;
+            scale.y = beamThickness;
+            transform.localScale = scale;
+        }
+
+        // Apply hit immediately to the target (if still valid)
+        if (target != null)
+        {
+            var enemy = target.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(shot.damage);
+                ApplyShotEffects(shot.effects, enemy.gameObject, target.transform.position);
+            }
+        }
+
+        // Optional explosion VFX at target (match beam lifetime so it doesn't linger)
+        if (explosionEffect != null)
+        {
+            var fx = Instantiate(explosionEffect, endPos, Quaternion.identity);
+            Destroy(fx, Mathf.Max(0.05f, beamLifetime));
+        }
+
+        // Disable trail immediately for beams (prevent afterimage)
+        if (trail != null)
+        {
+            trail.emitting = false;
+            trail.time = Mathf.Min(trail.time, beamLifetime);
+        }
+
+        // Auto-destroy beam quickly
+        Destroy(gameObject, Mathf.Max(0.01f, beamLifetime));
     }
 
     private void ApplyRotation(Vector3 dir)
@@ -61,6 +132,7 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (isInstantBeam) return; // beams don't use triggers
         if (!other.CompareTag("Enemy")) return;
 
         var enemy = other.GetComponent<Enemy>();

@@ -95,6 +95,8 @@ public class EnemyManager : MonoBehaviour
             GameObject EnemyObj = Instantiate(WaveSet[i], spawnPoint.position, Quaternion.identity);
             Enemy Enemy = EnemyObj.GetComponent<Enemy>();
             Enemy.movespeed *= RuleManager.main.GetEnemySpeedMod(); // Primijeni speed mod
+            EnemyStatusEffects status = EnemyObj.GetComponent<EnemyStatusEffects>();
+            if (status != null) { status.SetBaseSpeed(Enemy.movespeed); }
             Enemy.Health = Mathf.RoundToInt(Enemy.Health * RuleManager.main.GetEnemyHPMod()); // HP mod
             yield return new WaitForSeconds(Random.Range(SpawnDelayMin, SpawnDelayMax));
         }

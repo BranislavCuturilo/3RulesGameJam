@@ -201,7 +201,10 @@ MonoBehaviour:
   First: 1
   Last: 0
   Strongest: 0
-  FireEffect: {fileID: 274984346455199917}
+  defaultFireEffect: {fileID: 0}
+  fireEffectsByLevel: []
+  fireEffectBaseDuration: 0.5
+  fireEffectDurationFactor: 0.4
   firePoint: {fileID: 0}
 --- !u!114 &3001045613260203739
 MonoBehaviour:
@@ -288,7 +291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3481816509523428499
 Transform:
   m_ObjectHideFlags: 0

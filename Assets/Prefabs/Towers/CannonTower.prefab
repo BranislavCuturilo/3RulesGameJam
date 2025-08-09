@@ -384,7 +384,10 @@ MonoBehaviour:
   First: 1
   Last: 0
   Strongest: 0
-  FireEffect: {fileID: 7578243199964385425}
+  defaultFireEffect: {fileID: 0}
+  fireEffectsByLevel: []
+  fireEffectBaseDuration: 0.5
+  fireEffectDurationFactor: 0.4
   firePoint: {fileID: 2841943252879601396}
 --- !u!114 &7270725775732303958
 MonoBehaviour:

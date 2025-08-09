@@ -24,7 +24,11 @@ public class Tower : MonoBehaviour
     public bool Strongest = false;
 
     [Header("Effects & Firing")]
-    [SerializeField] GameObject FireEffect;
+    [SerializeField] private GameObject defaultFireEffect;
+    [SerializeField] private GameObject[] fireEffectsByLevel;
+    [SerializeField] private float fireEffectBaseDuration = 0.5f;
+    [Tooltip("Scale applied to base duration. 0.4 = 60% shorter than base")]
+    [SerializeField] private float fireEffectDurationFactor = 0.4f;
     [SerializeField] public Transform firePoint; // mjesto spawna projektila
 
     [NonSerialized]
@@ -52,7 +56,10 @@ public class Tower : MonoBehaviour
                 SpawnProjectileOrHit(shot, Target);
                 
                 CoolDown = 0f;
-                StartCoroutine(FireEffectFunction());
+                if (defaultFireEffect != null || (fireEffectsByLevel != null && fireEffectsByLevel.Length > 0))
+                {
+                    StartCoroutine(FireEffectFunction());
+                }
             }
             else
             {
@@ -63,9 +70,25 @@ public class Tower : MonoBehaviour
 
     IEnumerator FireEffectFunction()
     {
-        FireEffect.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        FireEffect.SetActive(false);
+        GameObject effectToUse = defaultFireEffect;
+        var upgrade = GetComponent<TowerUpgrade>();
+        int levelIndex = upgrade != null ? Mathf.Clamp(upgrade.CurrentLevel, 0, int.MaxValue) : 0;
+        if (fireEffectsByLevel != null && fireEffectsByLevel.Length > 0)
+        {
+            int idx = Mathf.Clamp(levelIndex, 0, fireEffectsByLevel.Length - 1);
+            if (fireEffectsByLevel[idx] != null)
+            {
+                effectToUse = fireEffectsByLevel[idx];
+            }
+        }
+
+        if (effectToUse != null)
+        {
+            effectToUse.SetActive(true);
+            float duration = Mathf.Max(0f, fireEffectBaseDuration * fireEffectDurationFactor); // 60% shorter if factor=0.4
+            yield return new WaitForSeconds(duration);
+            effectToUse.SetActive(false);
+        }
     }
     
     private void SpawnProjectileOrHit(ShotData shot, GameObject target)
