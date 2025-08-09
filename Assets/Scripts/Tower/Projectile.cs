@@ -11,6 +11,12 @@ public class Projectile : MonoBehaviour
     public GameObject explosionEffect;
     public TrailRenderer trail;
 
+    [Header("Rotation")]
+    [Tooltip("If your sprite/collider is oriented UP in the prefab, enable this to rotate using UP axis instead of RIGHT.")]
+    [SerializeField] private bool useUpAxisForRotation = false;
+    [Tooltip("Additional Z rotation offset in degrees to fine-tune alignment (e.g., 90 if needed).")]
+    [SerializeField] private float rotationOffsetDegrees = 0f;
+
     private const float maxLifeSeconds = 5f;
 
     public void Initialize(ShotData shotData, GameObject targetEnemy)
@@ -23,7 +29,7 @@ public class Projectile : MonoBehaviour
             lastKnownTargetPos = target.transform.position;
 
             Vector3 dir = (lastKnownTargetPos - transform.position).normalized;
-            transform.right = dir;
+            ApplyRotation(dir);
         }
 
         Destroy(gameObject, maxLifeSeconds);
@@ -38,7 +44,19 @@ public class Projectile : MonoBehaviour
 
         Vector3 direction = (lastKnownTargetPos - transform.position).normalized;
         transform.position += direction * shot.projectileSpeed * Time.deltaTime;
-        transform.right = direction;
+        ApplyRotation(direction);
+    }
+
+    private void ApplyRotation(Vector3 dir)
+    {
+        if (dir.sqrMagnitude <= 0f) return;
+        float angleDeg = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg; // angle for RIGHT axis
+        if (useUpAxisForRotation)
+        {
+            angleDeg -= 90f; // rotate so UP points along velocity
+        }
+        angleDeg += rotationOffsetDegrees;
+        transform.rotation = Quaternion.AngleAxis(angleDeg, Vector3.forward);
     }
 
     void OnTriggerEnter2D(Collider2D other)

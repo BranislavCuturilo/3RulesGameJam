@@ -59,8 +59,9 @@ public class TowerManager : MonoBehaviour
 
                 Panel.SetActive(true);
                 TowerName.text = SelectedTower.GetComponent<Tower>().TowerName.Replace("(Clone)", "").Trim();
-                TowerLevel.text = "Tower LVL: " + SelectedTower.GetComponent<TowerUpgrade>().CurrentLevel.ToString();
-                UpgradeCost.text = SelectedTower.GetComponent<TowerUpgrade>().CurrentCost;
+                TowerUpgrade tu = SelectedTower.GetComponent<TowerUpgrade>();
+                TowerLevel.text = "Tower LVL: " + (tu.CurrentLevel + 1).ToString();
+                UpgradeCost.text = tu.CurrentCost;
                 
                 Tower Tower = SelectedTower.GetComponent<Tower>();
                 if(Tower.First)
@@ -108,7 +109,7 @@ public class TowerManager : MonoBehaviour
             upgrade.Upgrade();
 
             // Refresh UI immediately after upgrading
-            TowerLevel.text = "Tower LVL: " + upgrade.CurrentLevel.ToString();
+            TowerLevel.text = "Tower LVL: " + (upgrade.CurrentLevel + 1).ToString();
             UpgradeCost.text = upgrade.CurrentCost;
         }
     }

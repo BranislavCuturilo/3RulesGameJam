@@ -28,68 +28,103 @@ public class TowerUpgrade : MonoBehaviour
     private Tower Tower;
     [SerializeField] private TowerRange TowerRange;
 
+    [Header("Visuals by Level")]
+    [Tooltip("Assign one GameObject per level visual (e.g., Sprite1, Sprite2, Sprite3). Index 0 is base (level 1), 1 is after first upgrade (level 2), etc.")]
+    [SerializeField] private GameObject[] levelSprites;
+
     void Awake()
     {
         Tower = GetComponent<Tower>();
         UpdateCostDisplay();
+        UpdateVisuals();
     }
 
     public void Upgrade()
     {
-        int adjustedCost = Mathf.CeilToInt(Levels[CurrentLevel].Cost * RuleManager.main.GetUpgradeDiscountMod());
-        if(CurrentLevel < Levels.Length && adjustedCost <= Player.main.Money)
+        int nextIndex = CurrentLevel + 1;
+        if (Levels == null) return;
+        if(nextIndex < Levels.Length)
         {
-            // 1) Update tower base stats
-            Tower.Range = Levels[CurrentLevel].Range;
-            Tower.FireRate = Levels[CurrentLevel].FireRate;
-            Tower.Damage = Levels[CurrentLevel].Damage;
-
-            // Ensure future resets keep upgraded stats as base
-            Tower.originalRange = Tower.Range;
-            Tower.originalFireRate = Tower.FireRate;
-            Tower.originalDamage = Tower.Damage;
-
-            // 2) Update TowerEffects base stats using multipliers
-            var towerEffects = GetComponent<TowerEffects>();
-            if (towerEffects != null)
+            int adjustedCost = Mathf.CeilToInt(Levels[nextIndex].Cost * RuleManager.main.GetUpgradeDiscountMod());
+            if (adjustedCost <= Player.main.Money)
             {
-                // Projectile speed base
-                towerEffects.projectileSpeed *= Levels[CurrentLevel].projectileSpeedMultiplier;
+                // 1) Update tower base stats to next level
+                Tower.Range = Levels[nextIndex].Range;
+                Tower.FireRate = Levels[nextIndex].FireRate;
+                Tower.Damage = Levels[nextIndex].Damage;
 
-                // Per-effect base mods
-                if (towerEffects.effects != null)
+                // Ensure future resets keep upgraded stats as base
+                Tower.originalRange = Tower.Range;
+                Tower.originalFireRate = Tower.FireRate;
+                Tower.originalDamage = Tower.Damage;
+
+                // 2) Update TowerEffects base stats using multipliers for next level
+                var towerEffects = GetComponent<TowerEffects>();
+                if (towerEffects != null)
                 {
-                    foreach (var e in towerEffects.effects)
+                    // Projectile speed base
+                    towerEffects.projectileSpeed *= Levels[nextIndex].projectileSpeedMultiplier;
+
+                    // Per-effect base mods
+                    if (towerEffects.effects != null)
                     {
-                        if (e == null) continue;
-                        e.effectRadius *= Levels[CurrentLevel].effectRadiusMultiplier;
-                        e.effectDuration *= Levels[CurrentLevel].effectDurationMultiplier;
-                        e.effectStrength *= Levels[CurrentLevel].effectStrengthMultiplier;
-                        e.dotDamage = Mathf.CeilToInt(e.dotDamage * Levels[CurrentLevel].dotDamageMultiplier);
+                        foreach (var e in towerEffects.effects)
+                        {
+                            if (e == null) continue;
+                            e.effectRadius *= Levels[nextIndex].effectRadiusMultiplier;
+                            e.effectDuration *= Levels[nextIndex].effectDurationMultiplier;
+                            e.effectStrength *= Levels[nextIndex].effectStrengthMultiplier;
+                            e.dotDamage = Mathf.CeilToInt(e.dotDamage * Levels[nextIndex].dotDamageMultiplier);
+                        }
                     }
                 }
+
+                Player.main.Money -= adjustedCost;
+                
+                TowerRange.UpdateRange();
+
+                CurrentLevel = nextIndex;
+
+                UpdateCostDisplay();
+                UpdateVisuals();
             }
-
-            Player.main.Money -= adjustedCost;
-            
-            TowerRange.UpdateRange();
-
-            CurrentLevel++;
-
-            UpdateCostDisplay();
         }
     }
     
     public void UpdateCostDisplay()
     {
-        if(CurrentLevel >= Levels.Length)
+        if (Levels == null || Levels.Length == 0)
+        {
+            CurrentCost = string.Empty;
+            return;
+        }
+
+        int nextIndex = CurrentLevel + 1;
+        if(nextIndex >= Levels.Length)
         {
             CurrentCost = "MAX";
         }
         else
         {
-            int adjustedCost = Mathf.CeilToInt(Levels[CurrentLevel].Cost * RuleManager.main.GetUpgradeDiscountMod());
+            int adjustedCost = Mathf.CeilToInt(Levels[nextIndex].Cost * RuleManager.main.GetUpgradeDiscountMod());
             CurrentCost = adjustedCost.ToString();
+        }
+    }
+
+    private void UpdateVisuals()
+    {
+        if (levelSprites == null || levelSprites.Length == 0) return;
+
+        int activeIndex = Mathf.Clamp(CurrentLevel, 0, levelSprites.Length - 1);
+        for (int i = 0; i < levelSprites.Length; i++)
+        {
+            GameObject spriteObj = levelSprites[i];
+            if (spriteObj == null) continue;
+            bool shouldBeActive = i == activeIndex;
+            if (spriteObj.activeSelf != shouldBeActive)
+            {
+                spriteObj.SetActive(shouldBeActive);
+            }
         }
     }
 }
