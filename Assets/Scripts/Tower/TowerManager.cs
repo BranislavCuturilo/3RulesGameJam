@@ -103,7 +103,13 @@ public class TowerManager : MonoBehaviour
     {
         if(SelectedTower)
         {
-            SelectedTower.GetComponent<TowerUpgrade>().Upgrade();
+            TowerUpgrade upgrade = SelectedTower.GetComponent<TowerUpgrade>();
+            if (upgrade == null) return;
+            upgrade.Upgrade();
+
+            // Refresh UI immediately after upgrading
+            TowerLevel.text = "Tower LVL: " + upgrade.CurrentLevel.ToString();
+            UpgradeCost.text = upgrade.CurrentCost;
         }
     }
     public void ChangeTargeting()
