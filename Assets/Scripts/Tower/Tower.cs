@@ -111,6 +111,47 @@ public class Tower : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(shot.damage);
+
+                // Apply effects directly when no projectile is used
+                if (shot.effects != null && towerEffects != null)
+                {
+                    foreach (var e in shot.effects)
+                    {
+                        switch (e.effectType)
+                        {
+                            case EffectType.Slow:
+                                towerEffects.ApplySlow(e, enemy.gameObject);
+                                break;
+                            case EffectType.DOT:
+                                towerEffects.ApplyDOT(e, enemy.gameObject);
+                                break;
+                            case EffectType.Stun:
+                                towerEffects.ApplyStun(e, enemy.gameObject);
+                                break;
+                            case EffectType.AOE_Slow:
+                                towerEffects.ApplyAOESlow(e, enemy.transform.position);
+                                break;
+                            case EffectType.DOT_AOE:
+                                towerEffects.ApplyDOTAOE(e, enemy.transform.position);
+                                break;
+                            case EffectType.AOE_Stun:
+                                towerEffects.ApplyAOEStun(e, enemy.transform.position);
+                                break;
+                            case EffectType.AOE_Impact:
+                                towerEffects.ApplyAOEImpact(e, enemy.transform.position);
+                                break;
+                            case EffectType.AOE_Front:
+                                towerEffects.ApplyAOEFront(e);
+                                break;
+                        }
+
+                        if (e.effectPrefab != null)
+                        {
+                            GameObject vfx = Instantiate(e.effectPrefab, enemy.transform.position, Quaternion.identity);
+                            Destroy(vfx, 2f);
+                        }
+                    }
+                }
             }
         }
     }

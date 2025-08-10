@@ -264,7 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b84bcc685b6f142a5944112f71a482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
+  Health: 500
+  movespeed: 2
   EnemyMoneyValue: 10
 --- !u!114 &-1607560295277565688
 MonoBehaviour:
