@@ -10,24 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3fab8ce65a2e11488e8db7987db052e, type: 3}
-  m_Name: Default
+  m_Name: FUN
   m_EditorClassIdentifier: 
-  baseRuleSetName: Default
-  ruleSetImage: {fileID: 5632476279523386503, guid: 603b58460e90aa44c89ecaa74fb4c14e, type: 3}
+  baseRuleSetName: FUN
+  ruleSetImage: {fileID: 0}
   progressionLevels:
-  - levelDescription: ALL SAME
-    enemySpeedMultiplier: 1
+  - levelDescription: 'Enemy : 10 SLOW ENEMYS WITH 200 HP
+
+      Tower : Fire Rate
+      400% Faster
+
+      Economy : 400% BONUS '
+    enemySpeedMultiplier: 0.5
     enemyHealthMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
     enemyLeakDamageMultiplier: 1
-    useFixedEnemyCount: 0
-    fixedEnemyCount: 0
-    useFixedEnemyHealth: 0
-    fixedEnemyHealth: 0
+    useFixedEnemyCount: 1
+    fixedEnemyCount: 10
+    useFixedEnemyHealth: 1
+    fixedEnemyHealth: 200
     useFixedLeakDamage: 0
     fixedLeakDamage: 1
-    towerFireRateMultiplier: 1
+    towerFireRateMultiplier: 5
     towerDamageMultiplier: 1
     towerRangeMultiplier: 1
     towerPlacementCostMultiplier: 1
@@ -36,10 +41,10 @@ MonoBehaviour:
     slowEffectMultiplier: 1
     stunDurationMultiplier: 1
     aoeRadiusMultiplier: 1
-    projectileSpeedMultiplier: 1
+    projectileSpeedMultiplier: 5
     effectDurationMultiplier: 1
-    waveCompleteMoneyMultiplier: 1
-    enemyKillMoneyMultiplier: 1
+    waveCompleteMoneyMultiplier: 5
+    enemyKillMoneyMultiplier: 5
     upgradeDiscountMultiplier: 1
     useFixedWaveCompleteMoney: 0
     fixedWaveCompleteMoney: 0

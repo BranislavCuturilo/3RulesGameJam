@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fab8ce65a2e11488e8db7987db052e, type: 3}
+  m_Name: NonStop
+  m_EditorClassIdentifier: 
+  baseRuleSetName: Non STOP
+  ruleSetImage: {fileID: 0}
+  progressionLevels:
+  - levelDescription: 'Enemy : HP 50% lower Leak Dmg Bonus 100%
+
+      Tower : Movement
+      Effect 80% weaker
+
+      Economy : 40% Upgrade Discount'
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 0.65
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 2
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 0.2
+    stunDurationMultiplier: 0.2
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 0.6
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
+  - levelDescription: 'Enemy : HP 35% lower Leak Dmg Bonus 100%
+
+      Tower : Movement
+      Effect 80% weaker
+
+      Economy : 25% Upgrade Discount'
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 0.65
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 2
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 0.2
+    stunDurationMultiplier: 0.2
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 0.75
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
+  - levelDescription: 'Enemy : HP 30% lower Leak Dmg Bonus 100%
+
+      Tower : Movement
+      Effect 80% weaker
+
+      Economy : 20% Upgrade Discount'
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 0.7
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 2
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 0.2
+    stunDurationMultiplier: 0.2
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 0.8
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0

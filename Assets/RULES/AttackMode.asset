@@ -15,113 +15,178 @@ MonoBehaviour:
   baseRuleSetName: AttackMode
   ruleSetImage: {fileID: 6369861449297053149, guid: 05134292f5aecb340bbdc7a552891672, type: 3}
   progressionLevels:
-  - levelDescription: "EKSTREMNA progresija sa 50% pove\u0107anjem"
-    enemySpeedMultiplier: 1.5
-    enemyHealthMultiplier: 1.5
-    enemyDamageMultiplier: 1.5
-    enemyQuantityMultiplier: 1.25
+  - levelDescription: 'Enemy : 20% More Enemys All Leak DMG is 5
+
+      Tower : DoT
+      DMG Bonus 100%
+
+      Economy : Discount on new towers 30%'
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 1
+    enemyQuantityMultiplier: 1.2
     enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
     useFixedEnemyCount: 0
     fixedEnemyCount: 0
-    useFixedLeakDamage: 0
-    fixedLeakDamage: 1
-    towerFireRateMultiplier: 0.5
-    towerDamageMultiplier: 0.5
-    towerRangeMultiplier: 0.5
-    towerPlacementCostMultiplier: 1.5
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 1
+    fixedLeakDamage: 5
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 0.7
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 2
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
+  - levelDescription: 'Enemy : 30% More Enemys All Leak DMG is 5
+
+      Tower : DoT
+      DMG Bonus 90%
+
+      Economy : Discount on new towers 25%'
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 1
+    enemyQuantityMultiplier: 1.3
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 1
+    fixedLeakDamage: 5
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 0.75
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 1.9
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
+  - levelDescription: 'Enemy : 40% More Enemys All Leak DMG is 5
+
+      Tower : DoT
+      DMG Bonus 75%
+
+      Economy : Discount on new towers 20%'
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 1
+    enemyQuantityMultiplier: 1.4
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 1
+    fixedLeakDamage: 5
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 0.8
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 1.75
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
+  - levelDescription: 'Enemy : 60% More Enemys All Leak DMG is 5
+
+      Tower : DoT
+      DMG Bonus 75%
+
+      Economy : Discount on new towers 20%'
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 1
+    enemyQuantityMultiplier: 1.6
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 1
+    fixedLeakDamage: 5
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 0.8
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 1.75
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
+  - levelDescription: 'Enemy : 100% More Enemys All Leak DMG is 10
+
+      Tower :
+      DoT DMG Bonus 75%
+
+      Economy : Discount on new towers 20%'
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 1
+    enemyQuantityMultiplier: 5
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 1
+    fixedLeakDamage: 10
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 0.8
+    forcedTargetingMode: 0
     dotDamageMultiplier: 1
     slowEffectMultiplier: 1
     stunDurationMultiplier: 1
     aoeRadiusMultiplier: 1
     projectileSpeedMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.5
-    enemyKillMoneyMultiplier: 0.5
-    upgradeDiscountMultiplier: 0.5
-  - levelDescription: "EKSTREMNA progresija sa 100% pove\u0107anjem"
-    enemySpeedMultiplier: 2
-    enemyHealthMultiplier: 2
-    enemyDamageMultiplier: 2
-    enemyQuantityMultiplier: 1.5
-    enemyMoneyValueMultiplier: 1
-    useFixedEnemyCount: 0
-    fixedEnemyCount: 0
-    useFixedLeakDamage: 0
-    fixedLeakDamage: 1
-    towerFireRateMultiplier: 0.1
-    towerDamageMultiplier: 0.1
-    towerRangeMultiplier: 0.1
-    towerPlacementCostMultiplier: 2
-    dotDamageMultiplier: 1
-    slowEffectMultiplier: 1
-    stunDurationMultiplier: 1
-    aoeRadiusMultiplier: 1
-    projectileSpeedMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.1
-    enemyKillMoneyMultiplier: 0.1
-    upgradeDiscountMultiplier: 0.1
-  - levelDescription: "EKSTREMNA progresija sa 200% pove\u0107anjem"
-    enemySpeedMultiplier: 3
-    enemyHealthMultiplier: 3
-    enemyDamageMultiplier: 3
-    enemyQuantityMultiplier: 2
-    enemyMoneyValueMultiplier: 1
-    useFixedEnemyCount: 0
-    fixedEnemyCount: 0
-    useFixedLeakDamage: 0
-    fixedLeakDamage: 1
-    towerFireRateMultiplier: 0.1
-    towerDamageMultiplier: 0.1
-    towerRangeMultiplier: 0.1
-    towerPlacementCostMultiplier: 3
-    dotDamageMultiplier: 1
-    slowEffectMultiplier: 1
-    stunDurationMultiplier: 1
-    aoeRadiusMultiplier: 1
-    projectileSpeedMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.1
-    enemyKillMoneyMultiplier: 0.1
-    upgradeDiscountMultiplier: 0.1
-  - levelDescription: "EKSTREMNA progresija sa 300% pove\u0107anjem"
-    enemySpeedMultiplier: 4
-    enemyHealthMultiplier: 4
-    enemyDamageMultiplier: 4
-    enemyQuantityMultiplier: 2.5
-    enemyMoneyValueMultiplier: 1
-    useFixedEnemyCount: 0
-    fixedEnemyCount: 0
-    useFixedLeakDamage: 0
-    fixedLeakDamage: 1
-    towerFireRateMultiplier: 0.1
-    towerDamageMultiplier: 0.1
-    towerRangeMultiplier: 0.1
-    towerPlacementCostMultiplier: 4
-    dotDamageMultiplier: 1
-    slowEffectMultiplier: 1
-    stunDurationMultiplier: 1
-    aoeRadiusMultiplier: 1
-    projectileSpeedMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.1
-    enemyKillMoneyMultiplier: 0.1
-    upgradeDiscountMultiplier: 0.1
-  - levelDescription: "EKSTREMNA progresija sa 400% pove\u0107anjem"
-    enemySpeedMultiplier: 5
-    enemyHealthMultiplier: 5
-    enemyDamageMultiplier: 5
-    enemyQuantityMultiplier: 3
-    enemyMoneyValueMultiplier: 1
-    useFixedEnemyCount: 0
-    fixedEnemyCount: 0
-    useFixedLeakDamage: 0
-    fixedLeakDamage: 1
-    towerFireRateMultiplier: 0.1
-    towerDamageMultiplier: 0.1
-    towerRangeMultiplier: 0.1
-    towerPlacementCostMultiplier: 5
-    dotDamageMultiplier: 1
-    slowEffectMultiplier: 1
-    stunDurationMultiplier: 1
-    aoeRadiusMultiplier: 1
-    projectileSpeedMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.1
-    enemyKillMoneyMultiplier: 0.1
-    upgradeDiscountMultiplier: 0.1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0

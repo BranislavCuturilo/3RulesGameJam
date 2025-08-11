@@ -10,26 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3fab8ce65a2e11488e8db7987db052e, type: 3}
-  m_Name: Default
+  m_Name: FAST&Furious
   m_EditorClassIdentifier: 
-  baseRuleSetName: Default
-  ruleSetImage: {fileID: 5632476279523386503, guid: 603b58460e90aa44c89ecaa74fb4c14e, type: 3}
+  baseRuleSetName: Fast & Furious
+  ruleSetImage: {fileID: 0}
   progressionLevels:
-  - levelDescription: ALL SAME
-    enemySpeedMultiplier: 1
+  - levelDescription: "Enemy : 200 onehit slimes with 300% speed bonus \nTower :
+      Range 50% smaller\nEconomy : 5 coins per kill"
+    enemySpeedMultiplier: 3
     enemyHealthMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
     enemyLeakDamageMultiplier: 1
-    useFixedEnemyCount: 0
-    fixedEnemyCount: 0
-    useFixedEnemyHealth: 0
-    fixedEnemyHealth: 0
-    useFixedLeakDamage: 0
+    useFixedEnemyCount: 1
+    fixedEnemyCount: 200
+    useFixedEnemyHealth: 1
+    fixedEnemyHealth: 1
+    useFixedLeakDamage: 1
     fixedLeakDamage: 1
     towerFireRateMultiplier: 1
     towerDamageMultiplier: 1
-    towerRangeMultiplier: 1
+    towerRangeMultiplier: 0.5
     towerPlacementCostMultiplier: 1
     forcedTargetingMode: 0
     dotDamageMultiplier: 1
@@ -43,5 +44,5 @@ MonoBehaviour:
     upgradeDiscountMultiplier: 1
     useFixedWaveCompleteMoney: 0
     fixedWaveCompleteMoney: 0
-    useFixedEnemyKillMoney: 0
-    fixedEnemyKillMoney: 0
+    useFixedEnemyKillMoney: 1
+    fixedEnemyKillMoney: 5

@@ -274,7 +274,6 @@ public class Rule : ScriptableObject
         // Direktno koristi multiplikatore iz levela
         progressed.speedMultiplier = level.enemySpeedMultiplier;
         progressed.healthMultiplier = level.enemyHealthMultiplier;
-        // removed damage multiplier for enemies (not used)
         progressed.quantityMultiplier = level.enemyQuantityMultiplier;
         progressed.moneyValueMultiplier = level.enemyMoneyValueMultiplier;
         progressed.leakDamageMultiplier = level.enemyLeakDamageMultiplier;
