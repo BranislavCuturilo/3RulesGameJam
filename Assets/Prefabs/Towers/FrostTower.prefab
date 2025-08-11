@@ -362,9 +362,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Range: 4
-  FireRate: 1
-  Damage: 15
-  Cost: 75
+  FireRate: 1.25
+  Damage: 25
+  Cost: 250
   originalRange: 0
   originalFireRate: 0
   originalDamage: 0
@@ -391,30 +391,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Levels:
   - Damage: 25
-    FireRate: 8
-    Range: 1
-    Cost: 100
-    effectRadiusMultiplier: 1
+    FireRate: 1.25
+    Range: 4
+    Cost: 250
+    effectRadiusMultiplier: 3
     effectDurationMultiplier: 1
-    effectStrengthMultiplier: 1
-    dotDamageMultiplier: 1
-    projectileSpeedMultiplier: 1
-  - Damage: 30
-    FireRate: 0.85
+    effectStrengthMultiplier: 0.8
+    dotDamageMultiplier: 0
+    projectileSpeedMultiplier: 0
+  - Damage: 40
+    FireRate: 1.25
     Range: 4.25
-    Cost: 125
+    Cost: 250
     effectRadiusMultiplier: 1
-    effectDurationMultiplier: 1.2
-    effectStrengthMultiplier: 1.1
+    effectDurationMultiplier: 2
+    effectStrengthMultiplier: 0.75
     dotDamageMultiplier: 1
     projectileSpeedMultiplier: 1
-  - Damage: 90
-    FireRate: 0.65
+  - Damage: 60
+    FireRate: 1.25
     Range: 4.5
-    Cost: 190
+    Cost: 350
     effectRadiusMultiplier: 1
-    effectDurationMultiplier: 1.4
-    effectStrengthMultiplier: 1.2
+    effectDurationMultiplier: 1.5
+    effectStrengthMultiplier: 0.65
     dotDamageMultiplier: 1
     projectileSpeedMultiplier: 1
   TowerRange: {fileID: 5936357297783574762}
@@ -432,13 +432,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effects:
-  - effectType: 3
-    effectRadius: 0
-    effectDuration: 3
-    effectStrength: 0.5
+  - effectType: 4
+    effectRadius: 3
+    effectDuration: 1
+    effectStrength: 0.8
     dotDamage: 0
     effectPrefab: {fileID: 0}
     effectColor: {r: 0, g: 1, b: 0.81257534, a: 0}
+    useDamageFalloff: 0
+    minDamageFactor: 0
+    falloffExponent: 1
   useProjectile: 0
   projectilePrefab: {fileID: 2466908342501964803, guid: 8a760ebb19654874398a39fb2ad43f6d, type: 3}
   projectileSpeed: 15

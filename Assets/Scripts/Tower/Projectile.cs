@@ -189,7 +189,20 @@ public class Projectile : MonoBehaviour
         {
             if (!c.CompareTag("Enemy")) continue;
             var enemy = c.GetComponent<Enemy>();
-            if (enemy != null) enemy.TakeDamage(aoeDamage);
+            if (enemy != null)
+            {
+                float damage = aoeDamage;
+                if (e.useDamageFalloff)
+                {
+                    float dist = Vector2.Distance(c.transform.position, pos);
+                    float r = Mathf.Max(0.0001f, e.effectRadius);
+                    float t = Mathf.Clamp01(1f - (dist / r)); // 1 in center, 0 at edge
+                    float factor = Mathf.Pow(t, Mathf.Max(0.0001f, e.falloffExponent));
+                    factor = Mathf.Clamp(factor, e.minDamageFactor, 1f);
+                    damage *= factor;
+                }
+                enemy.TakeDamage(Mathf.CeilToInt(damage));
+            }
         }
     }
 

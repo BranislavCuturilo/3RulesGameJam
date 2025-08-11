@@ -361,18 +361,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1243ae4a33ed2494e89997ea8c994deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 3
-  FireRate: 0.5
-  Damage: 10
+  Range: 7
+  FireRate: 1
+  Damage: 25
   Cost: 50
   originalRange: 0
   originalFireRate: 0
   originalDamage: 0
-  TowerName: Tower
-  First: 0
+  TowerName: Shotgun Tower
+  First: 1
   Last: 0
-  Strongest: 1
-  FireEffect: {fileID: 331912459128302814}
+  Strongest: 0
+  defaultFireEffect: {fileID: 331912459128302814}
+  fireEffectsByLevel: []
+  fireEffectBaseDuration: 0.5
+  fireEffectDurationFactor: 0.4
   firePoint: {fileID: 3570030350780741789}
 --- !u!114 &7051844493604317011
 MonoBehaviour:
@@ -396,25 +399,26 @@ MonoBehaviour:
     effectStrengthMultiplier: 1
     dotDamageMultiplier: 1
     projectileSpeedMultiplier: 1
-  - Damage: 25
-    FireRate: 8
-    Range: 1
-    Cost: 100
+  - Damage: 50
+    FireRate: 0.9
+    Range: 7
+    Cost: 125
     effectRadiusMultiplier: 1
     effectDurationMultiplier: 1
     effectStrengthMultiplier: 1
     dotDamageMultiplier: 1
     projectileSpeedMultiplier: 1
-  - Damage: 25
-    FireRate: 8
-    Range: 1
-    Cost: 100
+  - Damage: 100
+    FireRate: 0.85
+    Range: 7
+    Cost: 200
     effectRadiusMultiplier: 1
     effectDurationMultiplier: 1
     effectStrengthMultiplier: 1
     dotDamageMultiplier: 1
     projectileSpeedMultiplier: 1
   TowerRange: {fileID: 5936357297783574762}
+  levelSprites: []
 --- !u!114 &-2866245142023332858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,24 +431,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1ffa5ea22762b4dbcaabe1f89010dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects:
-  - effectType: 1
-    effectRadius: 5
-    effectDuration: 1
-    effectStrength: 1
-    dotDamage: 0
-    effectPrefab: {fileID: 4687702012025285156, guid: 5c4b552f85563be4b8f8057dbee85769, type: 3}
-    effectColor: {r: 0.05231038, g: 0.8618517, b: 0.89433956, a: 0}
-  - effectType: 4
-    effectRadius: 2
-    effectDuration: 3
-    effectStrength: 0.5
-    dotDamage: 0
-    effectPrefab: {fileID: 0}
-    effectColor: {r: 0.05231038, g: 0.8618517, b: 0.89433956, a: 0}
+  effects: []
   useProjectile: 1
   projectilePrefab: {fileID: 4687702012025285156, guid: 5c4b552f85563be4b8f8057dbee85769, type: 3}
-  projectileSpeed: 1
+  projectileSpeed: 12.5
   projectileExplodesOnImpact: 0
 --- !u!1 &4691293697342859437
 GameObject:

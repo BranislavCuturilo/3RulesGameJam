@@ -576,10 +576,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1243ae4a33ed2494e89997ea8c994deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 5
-  FireRate: 1
-  Damage: 5
-  Cost: 50
+  Range: 4.5
+  FireRate: 0.5
+  Damage: 20
+  Cost: 125
   originalRange: 0
   originalFireRate: 0
   originalDamage: 0
@@ -624,28 +624,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Levels:
-  - Damage: 5
-    FireRate: 1
-    Range: 5
-    Cost: 50
-    effectRadiusMultiplier: 1
-    effectDurationMultiplier: 1
-    effectStrengthMultiplier: 1
-    dotDamageMultiplier: 1
-    projectileSpeedMultiplier: 1
-  - Damage: 10
-    FireRate: 0.75
-    Range: 6
-    Cost: 250
-    effectRadiusMultiplier: 1
-    effectDurationMultiplier: 1
-    effectStrengthMultiplier: 1
-    dotDamageMultiplier: 1
-    projectileSpeedMultiplier: 1
-  - Damage: 25
+  - Damage: 20
     FireRate: 0.5
-    Range: 7
-    Cost: 500
+    Range: 4.5
+    Cost: 125
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
+  - Damage: 35
+    FireRate: 0.4
+    Range: 4.5
+    Cost: 200
+    effectRadiusMultiplier: 1
+    effectDurationMultiplier: 1
+    effectStrengthMultiplier: 1
+    dotDamageMultiplier: 1
+    projectileSpeedMultiplier: 1
+  - Damage: 80
+    FireRate: 0.25
+    Range: 4.5
+    Cost: 600
     effectRadiusMultiplier: 1
     effectDurationMultiplier: 1
     effectStrengthMultiplier: 1
@@ -671,7 +671,7 @@ MonoBehaviour:
   effects: []
   useProjectile: 1
   projectilePrefab: {fileID: 4687702012025285156, guid: 5c4b552f85563be4b8f8057dbee85769, type: 3}
-  projectileSpeed: 5
+  projectileSpeed: 17
   projectileExplodesOnImpact: 0
 --- !u!1 &4753319837632011169
 GameObject:

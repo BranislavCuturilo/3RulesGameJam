@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 1012754070418205365}
   - component: {fileID: 5088569848580745708}
   - component: {fileID: 9027243653581669107}
+  - component: {fileID: 5655569278786769776}
   m_Layer: 0
   m_Name: TankEnemy
   m_TagString: Enemy
@@ -267,3 +268,24 @@ MonoBehaviour:
   movespeed: 0.5
   EnemyMoneyValue: 50
   LeakDamage: 5
+--- !u!114 &5655569278786769776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985057009350487855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121df571b3bd5f24b90dd45fb0f16c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSlowed: 0
+  isStunned: 0
+  hasDOT: 0
+  slowFactor: 1
+  originalSpeed: 0
+  dotDamagePerSecond: 0
+  slowEffect: {fileID: 0}
+  stunEffect: {fileID: 0}
+  dotEffect: {fileID: 0}

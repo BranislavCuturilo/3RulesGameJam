@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 0.9960785, b: 0.9490197, a: 1}
+  m_Color: {r: 0.1715131, g: 0.3584906, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -361,17 +361,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1243ae4a33ed2494e89997ea8c994deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 8
-  FireRate: 0.6
-  Damage: 5
-  Cost: 200
+  Range: 5
+  FireRate: 0.75
+  Damage: 10
+  Cost: 175
   originalRange: 0
   originalFireRate: 0
   originalDamage: 0
   TowerName: PoisonTower
-  First: 0
+  First: 1
   Last: 0
-  Strongest: 1
+  Strongest: 0
   defaultFireEffect: {fileID: 331912459128302814}
   fireEffectsByLevel: []
   fireEffectBaseDuration: 0.5
@@ -399,23 +399,23 @@ MonoBehaviour:
     effectStrengthMultiplier: 1
     dotDamageMultiplier: 1
     projectileSpeedMultiplier: 1
-  - Damage: 6
+  - Damage: 10
+    FireRate: 0.7
+    Range: 5
+    Cost: 150
+    effectRadiusMultiplier: 0
+    effectDurationMultiplier: 1.2
+    effectStrengthMultiplier: 0
+    dotDamageMultiplier: 1.2
+    projectileSpeedMultiplier: 0
+  - Damage: 25
     FireRate: 0.6
-    Range: 8
-    Cost: 250
+    Range: 5
+    Cost: 325
     effectRadiusMultiplier: 1
-    effectDurationMultiplier: 1.12
+    effectDurationMultiplier: 1.5
     effectStrengthMultiplier: 1
-    dotDamageMultiplier: 1.3
-    projectileSpeedMultiplier: 1
-  - Damage: 7
-    FireRate: 0.6
-    Range: 8
-    Cost: 400
-    effectRadiusMultiplier: 1
-    effectDurationMultiplier: 1.4
-    effectStrengthMultiplier: 1
-    dotDamageMultiplier: 1.6
+    dotDamageMultiplier: 1.5
     projectileSpeedMultiplier: 1
   TowerRange: {fileID: 5936357297783574762}
   levelSprites: []
@@ -434,11 +434,14 @@ MonoBehaviour:
   effects:
   - effectType: 5
     effectRadius: 0
-    effectDuration: 4
+    effectDuration: 5
     effectStrength: 0
-    dotDamage: 6
+    dotDamage: 5
     effectPrefab: {fileID: 0}
     effectColor: {r: 1, g: 1, b: 1, a: 0.23921569}
+    useDamageFalloff: 0
+    minDamageFactor: 0
+    falloffExponent: 1
   useProjectile: 0
   projectilePrefab: {fileID: 2466908342501964803, guid: 8a760ebb19654874398a39fb2ad43f6d, type: 3}
   projectileSpeed: 15

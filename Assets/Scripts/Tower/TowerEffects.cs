@@ -28,6 +28,14 @@ public class TowerEffect
     [Header("Visual Effects")]
     public GameObject effectPrefab;      // Prefab za vizuelni efekat
     public Color effectColor = Color.red;
+
+    [Header("Damage Falloff (AOE_Impact)")]
+    [Tooltip("Enable to reduce AOE_Impact damage with distance from impact center.")]
+    public bool useDamageFalloff = false;
+    [Tooltip("Minimum damage factor at the edge of the radius (0..1). 0 = no damage at edge.")]
+    [Range(0f, 1f)] public float minDamageFactor = 0f;
+    [Tooltip("Curve exponent for falloff. 1 = linear, 2 = quadratic (stronger falloff), 0.5 = softer.")]
+    public float falloffExponent = 1f;
 }
 
 public class TowerEffects : MonoBehaviour
@@ -89,9 +97,19 @@ public class TowerEffects : MonoBehaviour
                 Enemy enemy = collider.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    // Smanji damage za AOE (50% od osnovnog)
-                    int aoeDamage = Mathf.RoundToInt(tower.Damage * 0.5f);
-                    enemy.TakeDamage(aoeDamage);
+                    // Bazni AOE damage 50% od osnovnog, sa opcionalnim falloff-om po udaljenosti
+                    float baseAoe = Mathf.Max(0, tower.Damage * 0.5f);
+                    float damage = baseAoe;
+                    if (effect.useDamageFalloff)
+                    {
+                        float dist = Vector2.Distance(collider.transform.position, impactPosition);
+                        float r = Mathf.Max(0.0001f, effect.effectRadius);
+                        float t = Mathf.Clamp01(1f - (dist / r)); // 1 u centru, 0 na ivici
+                        float factor = Mathf.Pow(t, Mathf.Max(0.0001f, effect.falloffExponent));
+                        factor = Mathf.Clamp(factor, effect.minDamageFactor, 1f);
+                        damage *= factor;
+                    }
+                    enemy.TakeDamage(Mathf.CeilToInt(damage));
                 }
             }
         }

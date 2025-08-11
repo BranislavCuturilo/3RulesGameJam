@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 5663837950017659771}
   - component: {fileID: 1888724686873654679}
   - component: {fileID: 4681038009183615253}
+  - component: {fileID: 5999414046499314142}
   m_Layer: 0
   m_Name: FastEnemy
   m_TagString: Enemy
@@ -267,3 +268,24 @@ MonoBehaviour:
   movespeed: 2.75
   EnemyMoneyValue: 15
   LeakDamage: 1
+--- !u!114 &5999414046499314142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8729269522881986411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121df571b3bd5f24b90dd45fb0f16c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSlowed: 0
+  isStunned: 0
+  hasDOT: 0
+  slowFactor: 1
+  originalSpeed: 0
+  dotDamagePerSecond: 0
+  slowEffect: {fileID: 0}
+  stunEffect: {fileID: 0}
+  dotEffect: {fileID: 0}

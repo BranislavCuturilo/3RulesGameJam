@@ -688,10 +688,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2942d0615735e0e4898d9dff1d2f9bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CannonTower: {fileID: 1897602005022354694, guid: 227f26a966f2f594292d2f356ab30481, type: 3}
-  SniperTower: {fileID: 256558049295005412, guid: 9b9f14cbe224cad4aafe66d40d051c1d, type: 3}
-  MachineGunTower: {fileID: 4435878563641685568, guid: 5d8795bd3c7339e49a083ea4e1935e6a, type: 3}
-  ShotgunTower: {fileID: 1124115365291048844, guid: 2d6be7045d41df5479e7902506ab58c4, type: 3}
+  TowerPrefabs:
+  - {fileID: 1897602005022354694, guid: 227f26a966f2f594292d2f356ab30481, type: 3}
+  - {fileID: 4435878563641685568, guid: 5d8795bd3c7339e49a083ea4e1935e6a, type: 3}
+  - {fileID: 1124115365291048844, guid: 4cb9764b38c2f644c9d14e285c895cbd, type: 3}
+  - {fileID: 1124115365291048844, guid: 9f5d8471c1d216b43a00f53a0360bd64, type: 3}
+  - {fileID: 1124115365291048844, guid: 2d6be7045d41df5479e7902506ab58c4, type: 3}
+  - {fileID: 256558049295005412, guid: 9b9f14cbe224cad4aafe66d40d051c1d, type: 3}
+  - {fileID: 1124115365291048844, guid: 0c79e319440b83849a2d9ece01c010fa, type: 3}
   TowerLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -362,16 +362,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Range: 6.5
-  FireRate: 0.45
-  Damage: 12
-  Cost: 50
+  FireRate: 0.6
+  Damage: 15
+  Cost: 200
   originalRange: 0
   originalFireRate: 0
   originalDamage: 0
   TowerName: Tower
   First: 0
-  Last: 0
-  Strongest: 1
+  Last: 1
+  Strongest: 0
   defaultFireEffect: {fileID: 331912459128302814}
   fireEffectsByLevel: []
   fireEffectBaseDuration: 0.5
@@ -390,30 +390,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Levels:
-  - Damage: 25
-    FireRate: 8
-    Range: 1
-    Cost: 100
+  - Damage: 15
+    FireRate: 0.6
+    Range: 6.5
+    Cost: 200
     effectRadiusMultiplier: 1
     effectDurationMultiplier: 1
     effectStrengthMultiplier: 1
     dotDamageMultiplier: 1
     projectileSpeedMultiplier: 1
-  - Damage: 1
-    FireRate: 0.35
-    Range: 10
-    Cost: 100
+  - Damage: 25
+    FireRate: 0.45
+    Range: 6.5
+    Cost: 175
     effectRadiusMultiplier: 1
-    effectDurationMultiplier: 2
+    effectDurationMultiplier: 1
     effectStrengthMultiplier: 1
     dotDamageMultiplier: 1
     projectileSpeedMultiplier: 1
-  - Damage: 1
-    FireRate: 8
-    Range: 10
-    Cost: 100
+  - Damage: 40
+    FireRate: 0.25
+    Range: 6.5
+    Cost: 400
     effectRadiusMultiplier: 1
-    effectDurationMultiplier: 2
+    effectDurationMultiplier: 1.5
     effectStrengthMultiplier: 1
     dotDamageMultiplier: 1
     projectileSpeedMultiplier: 1
@@ -433,15 +433,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effects:
   - effectType: 7
-    effectRadius: 2
+    effectRadius: 0
     effectDuration: 0.15
-    effectStrength: 0.5
+    effectStrength: 0
     dotDamage: 0
     effectPrefab: {fileID: 0}
     effectColor: {r: 0, g: 1, b: 0.81257534, a: 0}
+    useDamageFalloff: 0
+    minDamageFactor: 0
+    falloffExponent: 1
   useProjectile: 1
   projectilePrefab: {fileID: 2466908342501964803, guid: d863837f079d0514f85c4b744d796ade, type: 3}
-  projectileSpeed: 15
+  projectileSpeed: 20
   projectileExplodesOnImpact: 0
 --- !u!1 &4691293697342859437
 GameObject:

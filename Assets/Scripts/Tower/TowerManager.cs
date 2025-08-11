@@ -7,11 +7,8 @@ using UnityEngine.EventSystems;
 
 public class TowerManager : MonoBehaviour
 {
-    [Header("Tower Prefabs")]
-    [SerializeField] private GameObject CannonTower;
-    [SerializeField] private GameObject SniperTower;
-    [SerializeField] private GameObject MachineGunTower;
-    [SerializeField] private GameObject ShotgunTower;
+    [Header("Tower Prefabs (drag & drop tower prefabs here)")]
+    [SerializeField] private List<GameObject> TowerPrefabs = new List<GameObject>();
 
     [SerializeField] private LayerMask TowerLayer;
 
@@ -99,6 +96,15 @@ public class TowerManager : MonoBehaviour
     {
         ClearSelectedTower();
         PlacingTower = Instantiate(Tower);
+    }
+
+    // Convenience: select tower by list index from UI
+    public void SetTowerByIndex(int index)
+    {
+        if (TowerPrefabs == null || index < 0 || index >= TowerPrefabs.Count) return;
+        var prefab = TowerPrefabs[index];
+        if (prefab == null) return;
+        SetTower(prefab);
     }
     public void UpgradeSelectedTower()
     {

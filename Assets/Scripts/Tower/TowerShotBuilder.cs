@@ -47,6 +47,9 @@ public static class TowerShotBuilder
                     effectType = e.effectType,
                     effectPrefab = e.effectPrefab,
                     effectColor = e.effectColor,
+                    useDamageFalloff = e.useDamageFalloff,
+                    minDamageFactor = e.minDamageFactor,
+                    falloffExponent = e.falloffExponent,
                     // Base effect values već uključuju upgrade progresije (TowerUpgrade ih je mutirao)
                     effectRadius = e.effectRadius * aoeMul,
                     effectDuration = e.effectDuration * ((e.effectType == EffectType.Stun || e.effectType == EffectType.AOE_Stun) ? stunDurMul : 1f),
