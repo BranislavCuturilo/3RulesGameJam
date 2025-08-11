@@ -9,7 +9,7 @@ A fast-to-build, modular tower defense designed for high replayability via escal
 - **Game Jam Duration**: 4 Aug 2025 – 11 Aug 2025
 - **Run Length**: Endless; the game ends only when the player loses
 
-### Core Loop
+### Core
 1. The player builds towers.
 2. A wave of enemies arrives.
 3. After the wave, the player chooses one of 3 randomly offered rule cards.
