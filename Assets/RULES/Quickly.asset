@@ -15,8 +15,13 @@ MonoBehaviour:
   baseRuleSetName: 'Quickly '
   ruleSetImage: {fileID: 6881570985215996754, guid: 8d1fff0cf0086934083e97d313b5d6bf, type: 3}
   progressionLevels:
-  - levelDescription: 
-    enemySpeedMultiplier: 2
+  - levelDescription: 'Enemy : Faster 25%
+
+      Tower : FireRate Faster 100%
+
+      Economy
+      : 10% Smaller kill bonus '
+    enemySpeedMultiplier: 1.25
     enemyHealthMultiplier: 1
     enemyDamageMultiplier: 1
     enemyQuantityMultiplier: 1
@@ -26,7 +31,7 @@ MonoBehaviour:
     fixedEnemyCount: 0
     useFixedEnemyHealth: 0
     fixedEnemyHealth: 0
-    useFixedLeakDamage: 1
+    useFixedLeakDamage: 0
     fixedLeakDamage: 50
     towerFireRateMultiplier: 2
     towerDamageMultiplier: 1
@@ -40,108 +45,16 @@ MonoBehaviour:
     projectileSpeedMultiplier: 1
     effectDurationMultiplier: 1
     waveCompleteMoneyMultiplier: 1
-    enemyKillMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 0.9
     upgradeDiscountMultiplier: 1
-    useFixedWaveCompleteMoney: 1
+    useFixedWaveCompleteMoney: 0
     fixedWaveCompleteMoney: 500
-    useFixedEnemyKillMoney: 1
+    useFixedEnemyKillMoney: 0
     fixedEnemyKillMoney: 200
-  - levelDescription: "Lagano pove\u0107anje te\u017Eine za 20%"
-    enemySpeedMultiplier: 1.2
-    enemyHealthMultiplier: 1.2
-    enemyDamageMultiplier: 1
-    enemyQuantityMultiplier: 1
-    enemyMoneyValueMultiplier: 1
-    enemyLeakDamageMultiplier: 1
-    useFixedEnemyCount: 0
-    fixedEnemyCount: 0
-    useFixedEnemyHealth: 0
-    fixedEnemyHealth: 0
-    useFixedLeakDamage: 0
-    fixedLeakDamage: 1
-    towerFireRateMultiplier: 0.79999995
-    towerDamageMultiplier: 0.79999995
-    towerRangeMultiplier: 1
-    towerPlacementCostMultiplier: 1
-    forcedTargetingMode: 0
-    dotDamageMultiplier: 1
-    slowEffectMultiplier: 1
-    stunDurationMultiplier: 1
-    aoeRadiusMultiplier: 1
-    projectileSpeedMultiplier: 1
-    effectDurationMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.79999995
-    enemyKillMoneyMultiplier: 0.79999995
-    upgradeDiscountMultiplier: 1
-    useFixedWaveCompleteMoney: 0
-    fixedWaveCompleteMoney: 0
-    useFixedEnemyKillMoney: 0
-    fixedEnemyKillMoney: 0
-  - levelDescription: "Lagano pove\u0107anje te\u017Eine za 30%"
-    enemySpeedMultiplier: 1.3
-    enemyHealthMultiplier: 1.3
-    enemyDamageMultiplier: 1
-    enemyQuantityMultiplier: 1
-    enemyMoneyValueMultiplier: 1
-    enemyLeakDamageMultiplier: 1
-    useFixedEnemyCount: 0
-    fixedEnemyCount: 0
-    useFixedEnemyHealth: 0
-    fixedEnemyHealth: 0
-    useFixedLeakDamage: 0
-    fixedLeakDamage: 1
-    towerFireRateMultiplier: 0.70000005
-    towerDamageMultiplier: 0.70000005
-    towerRangeMultiplier: 1
-    towerPlacementCostMultiplier: 1
-    forcedTargetingMode: 0
-    dotDamageMultiplier: 1
-    slowEffectMultiplier: 1
-    stunDurationMultiplier: 1
-    aoeRadiusMultiplier: 1
-    projectileSpeedMultiplier: 1
-    effectDurationMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.70000005
-    enemyKillMoneyMultiplier: 0.70000005
-    upgradeDiscountMultiplier: 1
-    useFixedWaveCompleteMoney: 0
-    fixedWaveCompleteMoney: 0
-    useFixedEnemyKillMoney: 0
-    fixedEnemyKillMoney: 0
-  - levelDescription: "Lagano pove\u0107anje te\u017Eine za 40%"
-    enemySpeedMultiplier: 1.4
-    enemyHealthMultiplier: 1.4
-    enemyDamageMultiplier: 1
-    enemyQuantityMultiplier: 1
-    enemyMoneyValueMultiplier: 1
-    enemyLeakDamageMultiplier: 1
-    useFixedEnemyCount: 0
-    fixedEnemyCount: 0
-    useFixedEnemyHealth: 0
-    fixedEnemyHealth: 0
-    useFixedLeakDamage: 0
-    fixedLeakDamage: 1
-    towerFireRateMultiplier: 0.6
-    towerDamageMultiplier: 0.6
-    towerRangeMultiplier: 1
-    towerPlacementCostMultiplier: 1
-    forcedTargetingMode: 0
-    dotDamageMultiplier: 1
-    slowEffectMultiplier: 1
-    stunDurationMultiplier: 1
-    aoeRadiusMultiplier: 1
-    projectileSpeedMultiplier: 1
-    effectDurationMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.6
-    enemyKillMoneyMultiplier: 0.6
-    upgradeDiscountMultiplier: 1
-    useFixedWaveCompleteMoney: 0
-    fixedWaveCompleteMoney: 0
-    useFixedEnemyKillMoney: 0
-    fixedEnemyKillMoney: 0
-  - levelDescription: "Lagano pove\u0107anje te\u017Eine za 50%"
+  - levelDescription: "Enemy : Faster 50%\nTower : FireRate Faster 80% \nEconomy
+      : 15% Smaller kill bonus "
     enemySpeedMultiplier: 1.5
-    enemyHealthMultiplier: 1.5
+    enemyHealthMultiplier: 1
     enemyDamageMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
@@ -152,8 +65,8 @@ MonoBehaviour:
     fixedEnemyHealth: 0
     useFixedLeakDamage: 0
     fixedLeakDamage: 1
-    towerFireRateMultiplier: 0.5
-    towerDamageMultiplier: 0.5
+    towerFireRateMultiplier: 1.8
+    towerDamageMultiplier: 1
     towerRangeMultiplier: 1
     towerPlacementCostMultiplier: 1
     forcedTargetingMode: 0
@@ -163,7 +76,103 @@ MonoBehaviour:
     aoeRadiusMultiplier: 1
     projectileSpeedMultiplier: 1
     effectDurationMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.5
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 0.85
+    upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
+  - levelDescription: "Enemy : Faster 75%\nTower : FireRate Faster 60% \nEconomy
+      : 20% Smaller kill bonus "
+    enemySpeedMultiplier: 1.75
+    enemyHealthMultiplier: 1
+    enemyDamageMultiplier: 1
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1.6
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 0.8
+    upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
+  - levelDescription: "Enemy : Faster 100%\nTower : FireRate Faster 40% \nEconomy
+      : 25% Smaller kill bonus "
+    enemySpeedMultiplier: 2
+    enemyHealthMultiplier: 1
+    enemyDamageMultiplier: 1
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1.4
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 0.75
+    upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
+  - levelDescription: "Enemy : Faster 150%\nTower : FireRate Faster 20% \nEconomy
+      : 50% Smaller kill bonus "
+    enemySpeedMultiplier: 2.5
+    enemyHealthMultiplier: 1
+    enemyDamageMultiplier: 1
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1.2
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
     enemyKillMoneyMultiplier: 0.5
     upgradeDiscountMultiplier: 1
     useFixedWaveCompleteMoney: 0
