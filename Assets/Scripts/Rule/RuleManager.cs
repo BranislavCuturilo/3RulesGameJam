@@ -59,14 +59,17 @@ public class RuleManager : MonoBehaviour
             if (currentOptions[i] != null && optionButtons != null && i < optionButtons.Length)
             {
                 Rule currentRule = currentOptions[i];
-                int progressionLevel = GetRuleProgressionLevel(currentRule);
+                int currentLevel = GetRuleProgressionLevel(currentRule); // 0-based current usage count
+                int maxLevel = Mathf.Max(1, currentRule.GetMaxProgressionLevel());
+                int displayLevel = Mathf.Clamp(currentLevel + 1, 1, maxLevel); // preview next level that will be applied if selected
                 
                 // Pripremi naziv i opis
-                string ruleName = currentRule.GetRuleSetName(progressionLevel);
-                string displayText = currentRule.GetDisplayText(progressionLevel);
+                // Show name for the same level index: GetRuleSetName expects 0-based input internally adds +1
+                string ruleName = currentRule.GetRuleSetName(displayLevel - 1);
+                string displayText = currentRule.GetDisplayText(displayLevel);
                 if (string.IsNullOrEmpty(displayText) || displayText == "Nivo nije definisan")
                 {
-                    displayText = $"Level {progressionLevel + 1}\nKonfigurišite progression level u Inspector-u";
+                    displayText = $"Level {displayLevel}\nKonfigurišite progression level u Inspector-u";
                 }
 
                 bool usedSplit = false;
