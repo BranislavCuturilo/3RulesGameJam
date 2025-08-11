@@ -19,6 +19,18 @@ public class ProgressionLevel
     [Range(0.1f, 5f)]
     public float enemyMoneyValueMultiplier = 1f;
     
+    [Header("Enemy Count Override (optional)")]
+    [Tooltip("If enabled, this level will force a fixed total number of enemies in the wave.")]
+    public bool useFixedEnemyCount = false;
+    [Tooltip("Total number of enemies to spawn this wave if override is enabled.")]
+    public int fixedEnemyCount = 0;
+
+    [Header("Enemy Leak Damage Override (optional)")]
+    [Tooltip("If enabled, all enemies this level deal a fixed amount of damage to the player when they leak, ignoring multipliers.")]
+    public bool useFixedLeakDamage = false;
+    [Tooltip("Fixed damage each enemy does to player on leak for this level if override is enabled.")]
+    public int fixedLeakDamage = 1;
+    
     [Header("Tower Progression Multipliers")]
     [Range(0.1f, 5f)]
     public float towerFireRateMultiplier = 1f;
@@ -92,6 +104,14 @@ public class EnemyRule
     public float damageMultiplier = 1f;
     public float quantityMultiplier = 1f; // Za broj protivnika u valu
     public float moneyValueMultiplier = 1f; // Koliko novca daju kad umru
+
+    [Header("Leak Damage Override")]
+    public bool useFixedLeakDamage = false; // Ako je true, koristi fixedLeakDamage umjesto multiplikatora
+    public int fixedLeakDamage = 0;         // Fiksni damage koji neprijatelj nanosi igraču kada prođe
+
+    [Header("Enemy Count Override")]
+    public bool useFixedEnemyCount = false; // Ako je true, koristi fixedEnemyCount za ukupan broj neprijatelja u valu
+    public int fixedEnemyCount = 0;         // Fiksan broj neprijatelja u valu
 }
 
 [System.Serializable]
@@ -226,6 +246,14 @@ public class Rule : ScriptableObject
         progressed.damageMultiplier = level.enemyDamageMultiplier;
         progressed.quantityMultiplier = level.enemyQuantityMultiplier;
         progressed.moneyValueMultiplier = level.enemyMoneyValueMultiplier;
+        
+        // Leak damage override
+        progressed.useFixedLeakDamage = level.useFixedLeakDamage;
+        progressed.fixedLeakDamage = level.fixedLeakDamage;
+
+        // Enemy count override
+        progressed.useFixedEnemyCount = level.useFixedEnemyCount;
+        progressed.fixedEnemyCount = level.fixedEnemyCount;
         
         return progressed;
     }

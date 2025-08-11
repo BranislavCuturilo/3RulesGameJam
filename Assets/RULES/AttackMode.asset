@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackMode
   m_EditorClassIdentifier: 
   baseRuleSetName: AttackMode
-  ruleSetImage: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  ruleSetImage: {fileID: 6369861449297053149, guid: 05134292f5aecb340bbdc7a552891672, type: 3}
   progressionLevels:
   - levelDescription: "EKSTREMNA progresija sa 50% pove\u0107anjem"
     enemySpeedMultiplier: 1.5

@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3954442119596624460}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5.5, y: 5.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6702228028578767520}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6440387760168226753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 205673188779846993, guid: 82ed4b5d8299d544eb9fd42026557bca, type: 3}
   m_Color: {r: 0, g: 0.45490196, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -263,4 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b84bcc685b6f142a5944112f71a482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 500
   movespeed: 0.5
+  EnemyMoneyValue: 50
+  LeakDamage: 5

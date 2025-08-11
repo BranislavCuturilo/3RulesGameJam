@@ -295,9 +295,31 @@ public class RuleManager : MonoBehaviour
         return currentlyAppliedEnemyRule?.healthMultiplier ?? 1f;
     }
     
+    // Koliko damage-a neprijatelj nanosi kada "procura" (stigne do kraja)
+    // Ako je definisan fiksni damage u pravilima za ovaj krug, vrati ga (>=0),
+    // inače vrati -1 kao signal da se koristi vrijednost sa samog neprijatelja.
+    public int GetEnemyLeakDamageOverride()
+    {
+        if (currentlyAppliedEnemyRule != null && currentlyAppliedEnemyRule.useFixedLeakDamage)
+        {
+            return Mathf.Max(0, currentlyAppliedEnemyRule.fixedLeakDamage);
+        }
+        return -1; // no override
+    }
+    
     public float GetEnemyMoneyMod()
     {
         return currentlyAppliedEnemyRule?.moneyValueMultiplier ?? 1f;
+    }
+
+    // Fixed enemy count override for a wave
+    public int GetFixedEnemyCountOverride()
+    {
+        if (currentlyAppliedEnemyRule != null && currentlyAppliedEnemyRule.useFixedEnemyCount)
+        {
+            return Mathf.Max(0, currentlyAppliedEnemyRule.fixedEnemyCount);
+        }
+        return -1; // no override
     }
     
     public float GetEconomyBonusMod()

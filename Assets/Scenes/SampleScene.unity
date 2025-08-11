@@ -667,7 +667,7 @@ MonoBehaviour:
   FastEnemy: {fileID: 8729269522881986411, guid: ec831e46e1e9cf3459ea5ece38682f5a, type: 3}
   TankEnemy: {fileID: 3985057009350487855, guid: 581ce3fbb0ebb92479da3f73564389d2, type: 3}
   Wave: 1
-  CountEnemy: 6
+  CountEnemy: 8
   CountEnemyRate: 0.2
   SpawnDelayMax: 1
   SpawnDelayMin: 0.75
@@ -675,6 +675,7 @@ MonoBehaviour:
   FastEnemyRate: 0.4
   TankEnemyRate: 0.2
   WavePanel: {fileID: 0}
+  preWaveDelaySeconds: 5
 --- !u!114 &96265991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4055,7 +4056,7 @@ RectTransform:
   m_GameObject: {fileID: 526422294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2044791214}

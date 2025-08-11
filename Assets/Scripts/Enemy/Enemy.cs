@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     public int Health = 50;
     [SerializeField] public float movespeed = 2f;
     [SerializeField] private int EnemyMoneyValue = 10;
+    [SerializeField] public int LeakDamage = 1; // Koliko damage-a nanosi igraču kada dođe do kraja
+    [NonSerialized] public int EffectiveMoneyValue = -1; // Postavlja se na spawnu progresijom
     
     private Rigidbody2D rb;
 
@@ -30,7 +32,10 @@ public class Enemy : MonoBehaviour
             index++;
             if (index >= EnemyManager.main.CheckPoints.Length)
             {
-                Player.main.ReceiveDamage(Health);
+                // Odredi koji leak damage koristiti: override iz RuleManager-a ili lokalni LeakDamage
+                int ruleOverride = RuleManager.main != null ? RuleManager.main.GetEnemyLeakDamageOverride() : -1;
+                int leakDmg = ruleOverride >= 0 ? ruleOverride : LeakDamage;
+                Player.main.ReceiveDamage(leakDmg);
                 Destroy(gameObject);
             }
             
@@ -54,8 +59,13 @@ public class Enemy : MonoBehaviour
         Health -= Damage;
         if(Health <= 0)
         {
-            Player.main.Money += Mathf.CeilToInt(EnemyMoneyValue * RuleManager.main.GetEconomyMoneyMod());
+            int moneyBase = EffectiveMoneyValue >= 0 ? EffectiveMoneyValue : EnemyMoneyValue;
+            Player.main.Money += Mathf.CeilToInt(moneyBase * RuleManager.main.GetEconomyMoneyMod());
             Destroy(gameObject);
         }
     }
+
+    // Accessors za EnemyManager
+    public int GetBaseMoneyValue() { return EnemyMoneyValue; }
+    public void SetEffectiveMoneyValue(int value) { EffectiveMoneyValue = value; }
 }

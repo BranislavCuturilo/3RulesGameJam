@@ -13,14 +13,18 @@ MonoBehaviour:
   m_Name: Quickly
   m_EditorClassIdentifier: 
   baseRuleSetName: 'Quickly '
-  ruleSetImage: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  ruleSetImage: {fileID: 6881570985215996754, guid: 8d1fff0cf0086934083e97d313b5d6bf, type: 3}
   progressionLevels:
   - levelDescription: "Lagano pove\u0107anje te\u017Eine za 10%"
-    enemySpeedMultiplier: 1.1
+    enemySpeedMultiplier: 3
     enemyHealthMultiplier: 1.1
     enemyDamageMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
+    useFixedEnemyCount: 1
+    fixedEnemyCount: 1
+    useFixedLeakDamage: 1
+    fixedLeakDamage: 50
     towerFireRateMultiplier: 0.9
     towerDamageMultiplier: 0.9
     towerRangeMultiplier: 1
@@ -39,6 +43,10 @@ MonoBehaviour:
     enemyDamageMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 0.79999995
     towerDamageMultiplier: 0.79999995
     towerRangeMultiplier: 1
@@ -57,6 +65,10 @@ MonoBehaviour:
     enemyDamageMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 0.70000005
     towerDamageMultiplier: 0.70000005
     towerRangeMultiplier: 1
@@ -75,6 +87,10 @@ MonoBehaviour:
     enemyDamageMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 0.6
     towerDamageMultiplier: 0.6
     towerRangeMultiplier: 1
@@ -93,6 +109,10 @@ MonoBehaviour:
     enemyDamageMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 0.5
     towerDamageMultiplier: 0.5
     towerRangeMultiplier: 1
