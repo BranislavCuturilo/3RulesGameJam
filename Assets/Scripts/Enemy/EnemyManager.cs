@@ -56,18 +56,24 @@ public class EnemyManager : MonoBehaviour
         EnemyLeft = EnemyCount + FastEnemyCount + TankEnemyCount;
         EnemyCount = EnemyLeft;
 
-        WaveSet = new List<GameObject>();
-
-        // Apply quantity multiplier at wave composition level
+        // Build wave composition proportionally across Enemy/Fast/Tank and apply quantity multiplier globally
         float qtyMul = RuleManager.main != null ? RuleManager.main.GetEnemyQuantityMod() : 1f;
-        int targetCount = Mathf.Max(0, Mathf.RoundToInt(EnemyCount * qtyMul));
-        // Rebuild WaveSet for base Enemy type to reflect global quantity scaling
-        WaveSet = new List<GameObject>();
-        for(int i = 0; i<targetCount; i++)
-        {
-            WaveSet.Add(Enemy);
-        }
-        // Note: Fast/Tank currently not used in composition scaling; retain base simple wave as requested
+        int baseTotal = Mathf.Max(0, EnemyCount); // includes fast/tank computed above via EnemyLeft
+        int targetTotal = Mathf.Max(0, Mathf.RoundToInt(baseTotal * qtyMul));
+
+        int baseEnemy = Mathf.Max(0, EnemyCount - FastEnemyCount - TankEnemyCount);
+        int baseFast = Mathf.Max(0, FastEnemyCount);
+        int baseTank = Mathf.Max(0, TankEnemyCount);
+        int baseSum = Mathf.Max(1, baseEnemy + baseFast + baseTank);
+
+        int scaledEnemy = Mathf.RoundToInt((float)baseEnemy / baseSum * targetTotal);
+        int scaledFast = Mathf.RoundToInt((float)baseFast / baseSum * targetTotal);
+        int scaledTank = Mathf.Max(0, targetTotal - scaledEnemy - scaledFast);
+
+        WaveSet = new List<GameObject>(targetTotal);
+        for (int i = 0; i < scaledEnemy; i++) WaveSet.Add(Enemy);
+        for (int i = 0; i < scaledFast; i++) WaveSet.Add(FastEnemy);
+        for (int i = 0; i < scaledTank; i++) WaveSet.Add(TankEnemy);
         WaveSet = Shuffle(WaveSet);
         
         // Apply fixed enemy count override from current rule, if any
