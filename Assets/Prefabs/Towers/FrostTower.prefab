@@ -368,7 +368,7 @@ MonoBehaviour:
   originalRange: 0
   originalFireRate: 0
   originalDamage: 0
-  TowerName: Tower
+  TowerName: Frost Tower
   First: 0
   Last: 0
   Strongest: 1
