@@ -351,6 +351,19 @@ public class RuleManager : MonoBehaviour
         }
         return -1; // no override
     }
+
+    // Spawn delay override for current wave
+    public bool TryGetSpawnDelayOverride(out float minDelay, out float maxDelay)
+    {
+        minDelay = 0f; maxDelay = 0f;
+        if (currentlyAppliedEnemyRule != null && currentlyAppliedEnemyRule.useFixedSpawnDelay)
+        {
+            minDelay = Mathf.Max(0.01f, Mathf.Min(currentlyAppliedEnemyRule.fixedSpawnDelayMin, currentlyAppliedEnemyRule.fixedSpawnDelayMax));
+            maxDelay = Mathf.Max(minDelay, Mathf.Max(currentlyAppliedEnemyRule.fixedSpawnDelayMin, currentlyAppliedEnemyRule.fixedSpawnDelayMax));
+            return true;
+        }
+        return false;
+    }
     
     public float GetEconomyBonusMod()
     {

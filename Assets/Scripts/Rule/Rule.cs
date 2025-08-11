@@ -37,6 +37,12 @@ public class ProgressionLevel
     public bool useFixedLeakDamage = false;
     [Tooltip("Fixed damage each enemy does to player on leak for this level if override is enabled.")]
     public int fixedLeakDamage = 1;
+
+    [Header("Enemy Spawn Timing (optional)")]
+    [Tooltip("If enabled, overrides enemy spawn wait time with a fixed random interval per enemy in this wave.")]
+    public bool useFixedSpawnDelay = false;
+    [Range(0.01f, 5f)] public float fixedSpawnDelayMin = 0.75f;
+    [Range(0.01f, 5f)] public float fixedSpawnDelayMax = 1.0f;
     
     [Header("Tower segment (globalno na sve towere)")]
     [Range(0.2f, 5f)]
@@ -128,6 +134,11 @@ public class EnemyRule
     [Header("Leak Damage Override")]
     public bool useFixedLeakDamage = false; // Ako je true, koristi fixedLeakDamage umjesto multiplikatora
     public int fixedLeakDamage = 0;         // Fiksni damage koji neprijatelj nanosi igraču kada prođe
+
+    [Header("Spawn Delay Override")]
+    public bool useFixedSpawnDelay = false;
+    public float fixedSpawnDelayMin = 0.75f;
+    public float fixedSpawnDelayMax = 1.0f;
 
     [Header("Enemy Count Override")]
     public bool useFixedEnemyCount = false; // Ako je true, koristi fixedEnemyCount za ukupan broj neprijatelja u valu
@@ -289,6 +300,11 @@ public class Rule : ScriptableObject
         // HP override
         progressed.useFixedEnemyHealth = level.useFixedEnemyHealth;
         progressed.fixedEnemyHealth = level.fixedEnemyHealth;
+
+        // Spawn delay override
+        progressed.useFixedSpawnDelay = level.useFixedSpawnDelay;
+        progressed.fixedSpawnDelayMin = level.fixedSpawnDelayMin;
+        progressed.fixedSpawnDelayMax = level.fixedSpawnDelayMax;
         
         return progressed;
     }

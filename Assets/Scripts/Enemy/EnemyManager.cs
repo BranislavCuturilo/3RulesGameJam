@@ -145,7 +145,17 @@ public class EnemyManager : MonoBehaviour
 
             // Per-kill money stays constant per enemy; economy rule applies on kill time
             Enemy.SetEffectiveMoneyValue(-1);
-            yield return new WaitForSeconds(Random.Range(SpawnDelayMin, SpawnDelayMax));
+
+            // Use per-wave spawn delay override if defined by current rule
+            float dMin, dMax;
+            if (RuleManager.main != null && RuleManager.main.TryGetSpawnDelayOverride(out dMin, out dMax))
+            {
+                yield return new WaitForSeconds(Random.Range(dMin, dMax));
+            }
+            else
+            {
+                yield return new WaitForSeconds(Random.Range(SpawnDelayMin, SpawnDelayMax));
+            }
         }
         WaveDone = true;
     }
