@@ -32,9 +32,18 @@ public class Enemy : MonoBehaviour
             index++;
             if (index >= EnemyManager.main.CheckPoints.Length)
             {
-                // Odredi koji leak damage koristiti: override iz RuleManager-a ili lokalni LeakDamage
+                // Odredi koji leak damage koristiti: fixed override ili skalirani lokalni LeakDamage (×0.2..×5, zaokruži i min 1)
                 int ruleOverride = RuleManager.main != null ? RuleManager.main.GetEnemyLeakDamageOverride() : -1;
-                int leakDmg = ruleOverride >= 0 ? ruleOverride : LeakDamage;
+                int leakDmg;
+                if (ruleOverride >= 0)
+                {
+                    leakDmg = Mathf.Max(1, ruleOverride);
+                }
+                else
+                {
+                    float mul = RuleManager.main != null ? RuleManager.main.GetEnemyLeakDamageMultiplier() : 1f;
+                    leakDmg = Mathf.Max(1, Mathf.RoundToInt(LeakDamage * mul));
+                }
                 Player.main.ReceiveDamage(leakDmg);
                 Destroy(gameObject);
             }
@@ -45,6 +54,13 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        // Primeni mogući fiksni HP override pri instanci (ako postoji), inače ostavi kao što je i pusti EnemyManager da doda wave scaling
+        // Napomena: Rule sistem može uvesti fiksan HP na nivou wave-a
+        var rm = RuleManager.main;
+        if (rm != null)
+        {
+            // Nemamo direktan getter, pa fiksni HP se već obrađuje kroz EnemyManager-ov množioc; zadržavamo bazni Health ovde.
+        }
     }
 
     void FixedUpdate()
@@ -59,8 +75,17 @@ public class Enemy : MonoBehaviour
         Health -= Damage;
         if(Health <= 0)
         {
-            int moneyBase = EffectiveMoneyValue >= 0 ? EffectiveMoneyValue : EnemyMoneyValue;
-            Player.main.Money += Mathf.CeilToInt(moneyBase * RuleManager.main.GetEconomyMoneyMod());
+            // Fixed per-kill money override has priority
+            int fixedKill = RuleManager.main != null ? RuleManager.main.GetFixedEnemyKillMoney() : -1;
+            if (fixedKill >= 0)
+            {
+                Player.main.Money += fixedKill;
+            }
+            else
+            {
+                int moneyBase = EffectiveMoneyValue >= 0 ? EffectiveMoneyValue : EnemyMoneyValue;
+                Player.main.Money += Mathf.CeilToInt(moneyBase * RuleManager.main.GetEconomyMoneyMod());
+            }
             Destroy(gameObject);
         }
     }

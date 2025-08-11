@@ -7,17 +7,20 @@ public class ProgressionLevel
     [TextArea(2, 4)]
     public string levelDescription = "Opisuje kako se mijenjaju pravila na ovom nivou";
     
-    [Header("Enemy Progression Multipliers")]
-    [Range(0.1f, 5f)]
+    [Header("Enemy segment (globalno na sve protivnike)")]
+    [Range(0.2f, 5f)]
     public float enemySpeedMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float enemyHealthMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float enemyDamageMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float enemyQuantityMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float enemyMoneyValueMultiplier = 1f;
+    [Header("Promena leak dmg (×0.2 do ×5) – rezultat se zaokružuje na ≥ 1")]
+    [Range(0.2f, 5f)]
+    public float enemyLeakDamageMultiplier = 1f;
     
     [Header("Enemy Count Override (optional)")]
     [Tooltip("If enabled, this level will force a fixed total number of enemies in the wave.")]
@@ -25,41 +28,60 @@ public class ProgressionLevel
     [Tooltip("Total number of enemies to spawn this wave if override is enabled.")]
     public int fixedEnemyCount = 0;
 
+    [Header("Enemy HP Override (optional)")]
+    [Tooltip("If enabled, every enemy this wave will use a fixed HP value (overrides multipliers).")]
+    public bool useFixedEnemyHealth = false;
+    [Tooltip("Fixed HP for all enemies in the wave when override is enabled.")]
+    public int fixedEnemyHealth = 0;
+
     [Header("Enemy Leak Damage Override (optional)")]
     [Tooltip("If enabled, all enemies this level deal a fixed amount of damage to the player when they leak, ignoring multipliers.")]
     public bool useFixedLeakDamage = false;
     [Tooltip("Fixed damage each enemy does to player on leak for this level if override is enabled.")]
     public int fixedLeakDamage = 1;
     
-    [Header("Tower Progression Multipliers")]
-    [Range(0.1f, 5f)]
+    [Header("Tower segment (globalno na sve towere)")]
+    [Range(0.2f, 5f)]
     public float towerFireRateMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float towerDamageMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float towerRangeMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float towerPlacementCostMultiplier = 1f;
+    [Tooltip("Global force targeting for all towers this level (NoChange = ne menja)")]
+    public TargetingMode forcedTargetingMode = TargetingMode.NoChange;
     
-    [Header("Advanced Tower Effects")]
-    [Range(0.1f, 5f)]
+    [Header("Promena efekata (za sve towere sa efektima)")]
+    [Range(0.2f, 5f)]
     public float dotDamageMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float slowEffectMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float stunDurationMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float aoeRadiusMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float projectileSpeedMultiplier = 1f;
+    [Tooltip("Global effect duration multiplier for all effects (Slow, DOT, Stun, AOE variants).")]
+    [Range(0.2f, 5f)]
+    public float effectDurationMultiplier = 1f;
     
-    [Header("Economy Progression Multipliers")]
-    [Range(0.1f, 5f)]
+    [Header("Economy segment (globalne izmene)")]
+    [Range(0.2f, 5f)]
     public float waveCompleteMoneyMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float enemyKillMoneyMultiplier = 1f;
-    [Range(0.1f, 5f)]
+    [Range(0.2f, 5f)]
     public float upgradeDiscountMultiplier = 1f;
+
+    [Header("Economy Fixed Values (optional)")]
+    [Tooltip("If enabled, gives a fixed amount of money at the end of the wave, ignoring multipliers.")]
+    public bool useFixedWaveCompleteMoney = false;
+    public int fixedWaveCompleteMoney = 0;
+    [Tooltip("If enabled, each enemy gives a fixed kill reward this wave, ignoring multipliers.")]
+    public bool useFixedEnemyKillMoney = false;
+    public int fixedEnemyKillMoney = 0;
 }
 
 public enum TowerType
@@ -104,6 +126,7 @@ public class EnemyRule
     public float damageMultiplier = 1f;
     public float quantityMultiplier = 1f; // Za broj protivnika u valu
     public float moneyValueMultiplier = 1f; // Koliko novca daju kad umru
+    public float leakDamageMultiplier = 1f; // Množilac za leak dmg (rezultat je int i ≥ 1)
 
     [Header("Leak Damage Override")]
     public bool useFixedLeakDamage = false; // Ako je true, koristi fixedLeakDamage umjesto multiplikatora
@@ -112,6 +135,10 @@ public class EnemyRule
     [Header("Enemy Count Override")]
     public bool useFixedEnemyCount = false; // Ako je true, koristi fixedEnemyCount za ukupan broj neprijatelja u valu
     public int fixedEnemyCount = 0;         // Fiksan broj neprijatelja u valu
+
+    [Header("Enemy HP Override")]
+    public bool useFixedEnemyHealth = false; // Ako je true, koristi fixedEnemyHealth umjesto multiplikatora
+    public int fixedEnemyHealth = 0;         // Fiksni HP za sve neprijatelje u valu
 }
 
 [System.Serializable]
@@ -138,6 +165,7 @@ public class TowerRule
     public float stunDurationMultiplier = 1f; // Stun duration
     public float aoeRadiusMultiplier = 1f; // AOE radius
     public float projectileSpeedMultiplier = 1f; // Projectile speed
+    public float effectDurationMultiplier = 1f; // Trajanje efekata (globalno)
 }
 
 [System.Serializable]
@@ -149,10 +177,16 @@ public class EconomyRule
     public string ruleDescription = "Modifikuje ekonomiju";
     
     [Header("Economy Modifiers")]
-    public float waveCompleteMoneyMultiplier = 1f; // Bonus na kraju runde
-    public float enemyKillMoneyMultiplier = 1f; // Novac od ubijenih protivnika
-    public float towerPlacementCostMultiplier = 1f; // Cijena postavljanja tornjeva
+    public float waveCompleteMoneyMultiplier = 1f; // Bonus na kraju runde (×0.2..×5)
+    public float enemyKillMoneyMultiplier = 1f; // Novac od ubijenih protivnika (×0.2..×5)
+    public float towerPlacementCostMultiplier = 1f; // Cijena postavljanja tornjeva (popust/poskupljenje kao mnozilac)
     public float upgradeDiscountMultiplier = 1f; // Popust na nadogradnje (0.8f = 20% popust)
+
+    [Header("Fixed Economy Overrides (optional)")]
+    public bool useFixedWaveCompleteMoney = false;
+    public int fixedWaveCompleteMoney = 0;
+    public bool useFixedEnemyKillMoney = false;
+    public int fixedEnemyKillMoney = 0;
 }
 
 [CreateAssetMenu(fileName = "New Rule Set", menuName = "Tower Defense/Rule Set")]
@@ -163,7 +197,7 @@ public class Rule : ScriptableObject
     public Sprite ruleSetImage; // Ikonica je uvek ista za sve levele
     
     [Header("Manual Progression Levels")]
-    public ProgressionLevel[] progressionLevels = new ProgressionLevel[5]; // Manuelni nivoi progresije
+    public ProgressionLevel[] progressionLevels = new ProgressionLevel[10]; // Manuelni nivoi progresije (do 10)
     
     // Removed display options - now handled automatically per level
     
@@ -246,6 +280,7 @@ public class Rule : ScriptableObject
         progressed.damageMultiplier = level.enemyDamageMultiplier;
         progressed.quantityMultiplier = level.enemyQuantityMultiplier;
         progressed.moneyValueMultiplier = level.enemyMoneyValueMultiplier;
+        progressed.leakDamageMultiplier = level.enemyLeakDamageMultiplier;
         
         // Leak damage override
         progressed.useFixedLeakDamage = level.useFixedLeakDamage;
@@ -254,6 +289,10 @@ public class Rule : ScriptableObject
         // Enemy count override
         progressed.useFixedEnemyCount = level.useFixedEnemyCount;
         progressed.fixedEnemyCount = level.fixedEnemyCount;
+
+        // HP override
+        progressed.useFixedEnemyHealth = level.useFixedEnemyHealth;
+        progressed.fixedEnemyHealth = level.fixedEnemyHealth;
         
         return progressed;
     }
@@ -280,7 +319,7 @@ public class Rule : ScriptableObject
         progressed.ruleName = $"Tower Rule Level {progressionLevel}";
         progressed.ruleDescription = $"Tower modifikatori za nivo {progressionLevel}";
         progressed.targetTowerType = TowerType.All;
-        progressed.forceTargetingMode = TargetingMode.NoChange;
+        progressed.forceTargetingMode = level.forcedTargetingMode;
         
         // Direktno koristi multiplikatore iz levela
         progressed.fireRateMultiplier = level.towerFireRateMultiplier;
@@ -294,6 +333,7 @@ public class Rule : ScriptableObject
         progressed.stunDurationMultiplier = level.stunDurationMultiplier;
         progressed.aoeRadiusMultiplier = level.aoeRadiusMultiplier;
         progressed.projectileSpeedMultiplier = level.projectileSpeedMultiplier;
+        progressed.effectDurationMultiplier = level.effectDurationMultiplier;
         
         return progressed;
     }
@@ -325,6 +365,11 @@ public class Rule : ScriptableObject
         progressed.enemyKillMoneyMultiplier = level.enemyKillMoneyMultiplier;
         progressed.upgradeDiscountMultiplier = level.upgradeDiscountMultiplier;
         progressed.towerPlacementCostMultiplier = level.towerPlacementCostMultiplier;
+        // Fixed overrides
+        progressed.useFixedWaveCompleteMoney = level.useFixedWaveCompleteMoney;
+        progressed.fixedWaveCompleteMoney = level.fixedWaveCompleteMoney;
+        progressed.useFixedEnemyKillMoney = level.useFixedEnemyKillMoney;
+        progressed.fixedEnemyKillMoney = level.fixedEnemyKillMoney;
         
         return progressed;
     }
@@ -334,7 +379,7 @@ public class Rule : ScriptableObject
     // Pomocna metoda za kreiranje default progression levelsa
     public void CreateDefaultProgressionLevels()
     {
-        progressionLevels = new ProgressionLevel[5];
+        progressionLevels = new ProgressionLevel[10];
         
         for (int i = 0; i < progressionLevels.Length; i++)
         {

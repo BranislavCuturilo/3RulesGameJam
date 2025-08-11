@@ -58,18 +58,16 @@ public class EnemyManager : MonoBehaviour
 
         WaveSet = new List<GameObject>();
 
-        for(int i = 0; i<EnemyCount; i++)
+        // Apply quantity multiplier at wave composition level
+        float qtyMul = RuleManager.main != null ? RuleManager.main.GetEnemyQuantityMod() : 1f;
+        int targetCount = Mathf.Max(0, Mathf.RoundToInt(EnemyCount * qtyMul));
+        // Rebuild WaveSet for base Enemy type to reflect global quantity scaling
+        WaveSet = new List<GameObject>();
+        for(int i = 0; i<targetCount; i++)
         {
             WaveSet.Add(Enemy);
         }
-        for(int i = 0; i<FastEnemyCount; i++)
-        {
-            WaveSet.Add(FastEnemy);
-        }
-        for(int i = 0; i<TankEnemyCount; i++)
-        {
-            WaveSet.Add(TankEnemy);
-        }
+        // Note: Fast/Tank currently not used in composition scaling; retain base simple wave as requested
         WaveSet = Shuffle(WaveSet);
         
         // Apply fixed enemy count override from current rule, if any
@@ -122,10 +120,22 @@ public class EnemyManager : MonoBehaviour
             Enemy.movespeed *= speedMul;
             EnemyStatusEffects status = EnemyObj.GetComponent<EnemyStatusEffects>();
             if (status != null) { status.SetBaseSpeed(Enemy.movespeed); }
+            // HP: either fixed override for the wave, or multiplier chain
+            // Fixed HP override per wave (if defined)
+            int fixedHP = RuleManager.main != null ? RuleManager.main.GetFixedEnemyHealthOverride() : -1;
+            // Read multipliers from RuleManager
+            var rm = RuleManager.main;
+            float ruleHpMul = rm != null ? rm.GetEnemyHPMod() : 1f;
             // Progressive HP growth per wave (linear): +10% per 2 waves (tweakable)
             float waveHpMul = 1f + 0.05f * (waveIndex - 1);
-            float ruleHpMul = RuleManager.main.GetEnemyHPMod();
-            Enemy.Health = Mathf.RoundToInt(Enemy.Health * ruleHpMul * waveHpMul);
+            if (fixedHP >= 1)
+            {
+                Enemy.Health = fixedHP;
+            }
+            else
+            {
+                Enemy.Health = Mathf.RoundToInt(Enemy.Health * ruleHpMul * waveHpMul);
+            }
 
             // Per-kill money stays constant per enemy; economy rule applies on kill time
             Enemy.SetEffectiveMoneyValue(-1);
@@ -144,8 +154,16 @@ public class EnemyManager : MonoBehaviour
 
         if(!WaveOver && WaveDone && enemies.Length == 0 && !Player.main.IsGameOver)
         {
-            int baseBonus = 30 * Wave;
-            Player.main.Money += Mathf.CeilToInt(baseBonus * RuleManager.main.GetEconomyBonusMod());
+            int fixedWave = RuleManager.main != null ? RuleManager.main.GetFixedWaveCompleteMoney() : -1;
+            if (fixedWave >= 0)
+            {
+                Player.main.Money += fixedWave;
+            }
+            else
+            {
+                int baseBonus = 30 * Wave;
+                Player.main.Money += Mathf.CeilToInt(baseBonus * RuleManager.main.GetEconomyBonusMod());
+            }
             WaveOver = true;
             RuleManager.main.ResetModifiers();
             RuleManager.main.ShowRuleOptions();

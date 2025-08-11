@@ -26,6 +26,7 @@ public static class TowerShotBuilder
         float slowMul = towerRule != null ? towerRule.slowEffectMultiplier : 1f;
         float dotMul = towerRule != null ? towerRule.dotDamageMultiplier : 1f;
         float stunDurMul = towerRule != null ? towerRule.stunDurationMultiplier : 1f;
+        float durationMul = towerRule != null ? towerRule.effectDurationMultiplier : 1f;
 
         // Damage snapshot (tower.Damage već uključuje upgrade promjene)
         shot.damage = Mathf.CeilToInt(tower.Damage * damageMul);
@@ -51,8 +52,8 @@ public static class TowerShotBuilder
                     minDamageFactor = e.minDamageFactor,
                     falloffExponent = e.falloffExponent,
                     // Base effect values već uključuju upgrade progresije (TowerUpgrade ih je mutirao)
-                    effectRadius = e.effectRadius * aoeMul,
-                    effectDuration = e.effectDuration * ((e.effectType == EffectType.Stun || e.effectType == EffectType.AOE_Stun) ? stunDurMul : 1f),
+                    effectRadius = Mathf.Max(1f, e.effectRadius * aoeMul),
+                    effectDuration = e.effectDuration * durationMul * ((e.effectType == EffectType.Stun || e.effectType == EffectType.AOE_Stun) ? stunDurMul : 1f),
                     effectStrength = e.effectStrength * ((e.effectType == EffectType.Slow || e.effectType == EffectType.AOE_Slow) ? slowMul : 1f),
                     dotDamage = Mathf.CeilToInt(e.dotDamage * ((e.effectType == EffectType.DOT || e.effectType == EffectType.DOT_AOE) ? dotMul : 1f)),
                 };

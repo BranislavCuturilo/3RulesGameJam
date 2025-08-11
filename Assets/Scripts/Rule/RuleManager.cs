@@ -191,9 +191,11 @@ public class RuleManager : MonoBehaviour
             if (shouldApply)
             {
                 // Primijeni modifikatore
-                tower.FireRate = tower.originalFireRate * towerRule.fireRateMultiplier;
+                // FireRate tretiramo kao brzinu (ratio): 0.8 = 20% sporije => period = original / 0.8 (veći period = sporije)
+                float fireRateRatio = Mathf.Max(0.0001f, towerRule.fireRateMultiplier);
+                tower.FireRate = tower.originalFireRate / fireRateRatio;
                 tower.Damage = Mathf.RoundToInt(tower.originalDamage * towerRule.damageMultiplier);
-                tower.Range = tower.originalRange * towerRule.rangeMultiplier;
+                tower.Range = Mathf.Max(3f, tower.originalRange * towerRule.rangeMultiplier); // min 3
                 
                 // Ažuriraj range visually
                 TowerRange towerRange = towerObj.GetComponent<TowerRange>();
@@ -294,22 +296,36 @@ public class RuleManager : MonoBehaviour
     {
         return currentlyAppliedEnemyRule?.healthMultiplier ?? 1f;
     }
+
+    public float GetEnemyQuantityMod()
+    {
+        return currentlyAppliedEnemyRule?.quantityMultiplier ?? 1f;
+    }
     
     // Koliko damage-a neprijatelj nanosi kada "procura" (stigne do kraja)
     // Ako je definisan fiksni damage u pravilima za ovaj krug, vrati ga (>=0),
     // inače vrati -1 kao signal da se koristi vrijednost sa samog neprijatelja.
     public int GetEnemyLeakDamageOverride()
     {
-        if (currentlyAppliedEnemyRule != null && currentlyAppliedEnemyRule.useFixedLeakDamage)
+        if (currentlyAppliedEnemyRule == null) return -1;
+        // Fixed override has priority
+        if (currentlyAppliedEnemyRule.useFixedLeakDamage)
         {
-            return Mathf.Max(0, currentlyAppliedEnemyRule.fixedLeakDamage);
+            return Mathf.Max(1, currentlyAppliedEnemyRule.fixedLeakDamage);
         }
-        return -1; // no override
+        // Otherwise return scaled value marker -1, caller can multiply local LeakDamage
+        return -1;
     }
     
     public float GetEnemyMoneyMod()
     {
         return currentlyAppliedEnemyRule?.moneyValueMultiplier ?? 1f;
+    }
+
+    // Leak dmg multiplier (applies when no fixed override is used)
+    public float GetEnemyLeakDamageMultiplier()
+    {
+        return currentlyAppliedEnemyRule?.leakDamageMultiplier ?? 1f;
     }
 
     // Fixed enemy count override for a wave
@@ -331,6 +347,24 @@ public class RuleManager : MonoBehaviour
     {
         return currentlyAppliedEconomyRule?.enemyKillMoneyMultiplier ?? 1f;
     }
+
+    public int GetFixedWaveCompleteMoney()
+    {
+        if (currentlyAppliedEconomyRule != null && currentlyAppliedEconomyRule.useFixedWaveCompleteMoney)
+        {
+            return Mathf.Max(0, currentlyAppliedEconomyRule.fixedWaveCompleteMoney);
+        }
+        return -1;
+    }
+
+    public int GetFixedEnemyKillMoney()
+    {
+        if (currentlyAppliedEconomyRule != null && currentlyAppliedEconomyRule.useFixedEnemyKillMoney)
+        {
+            return Mathf.Max(0, currentlyAppliedEconomyRule.fixedEnemyKillMoney);
+        }
+        return -1;
+    }
     
     public float GetTowerPlacementCostMod()
     {
@@ -346,6 +380,16 @@ public class RuleManager : MonoBehaviour
     public TowerRule GetCurrentlyAppliedTowerRule()
     {
         return currentlyAppliedTowerRule;
+    }
+
+    // Enemy fixed HP override for wave
+    public int GetFixedEnemyHealthOverride()
+    {
+        if (currentlyAppliedEnemyRule != null && currentlyAppliedEnemyRule.useFixedEnemyHealth)
+        {
+            return Mathf.Max(1, currentlyAppliedEnemyRule.fixedEnemyHealth);
+        }
+        return -1;
     }
     
     // Progression tracking metode
