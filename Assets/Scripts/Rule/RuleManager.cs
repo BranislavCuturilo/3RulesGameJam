@@ -12,7 +12,9 @@ public class RuleManager : MonoBehaviour
     [Header("UI Setup")]
     [SerializeField] public GameObject rulePanel; // Novi panel u sredini ekrana
     [SerializeField] public Button[] optionButtons; // 3 dugmeta za opcije
-    [SerializeField] public TextMeshProUGUI[] optionTexts; // Tekstovi za svaku opciju
+    [SerializeField] public TextMeshProUGUI[] optionTexts; // (legacy) kombinovani naziv+opis
+    [SerializeField] public TextMeshProUGUI[] optionNameTexts; // naziv
+    [SerializeField] public TextMeshProUGUI[] optionDescriptionTexts; // opis
     [SerializeField] public UnityEngine.UI.Image[] ruleImages; // 3 UI slike koje će biti zamijenjene slikama iz rule setova
 
     // Rule Sets (dodaj ih u Inspectoru)
@@ -59,22 +61,29 @@ public class RuleManager : MonoBehaviour
                 Rule currentRule = currentOptions[i];
                 int progressionLevel = GetRuleProgressionLevel(currentRule);
                 
-                // Postavi kompletan sadržaj button-a iz ScriptableObject-a
-                if (optionTexts != null && i < optionTexts.Length && optionTexts[i] != null)
+                // Pripremi naziv i opis
+                string ruleName = currentRule.GetRuleSetName(progressionLevel);
+                string displayText = currentRule.GetDisplayText(progressionLevel);
+                if (string.IsNullOrEmpty(displayText) || displayText == "Nivo nije definisan")
                 {
-                    // Generiši kompletan text: naziv + opis
-                    string ruleName = currentRule.GetRuleSetName(progressionLevel);
-                    string displayText = currentRule.GetDisplayText(progressionLevel);
-                    
-                    // Ako je displayText prazan ili invalid, koristi fallback
-                    if (string.IsNullOrEmpty(displayText) || displayText == "Nivo nije definisan")
-                    {
-                        displayText = $"Level {progressionLevel + 1}\nKonfigurišite progression level u Inspector-u";
-                    }
-                    
-                    // Kombinuj naziv i opis
-                    string fullText = $"{ruleName}\n\n{displayText}";
-                    optionTexts[i].text = fullText;
+                    displayText = $"Level {progressionLevel + 1}\nKonfigurišite progression level u Inspector-u";
+                }
+
+                bool usedSplit = false;
+                if (optionNameTexts != null && i < optionNameTexts.Length && optionNameTexts[i] != null)
+                {
+                    optionNameTexts[i].text = ruleName;
+                    usedSplit = true;
+                }
+                if (optionDescriptionTexts != null && i < optionDescriptionTexts.Length && optionDescriptionTexts[i] != null)
+                {
+                    optionDescriptionTexts[i].text = displayText;
+                    usedSplit = true;
+                }
+                // Fallback na legacy kombinovani text
+                if (!usedSplit && optionTexts != null && i < optionTexts.Length && optionTexts[i] != null)
+                {
+                    optionTexts[i].text = $"{ruleName}\n\n{displayText}";
                 }
                 
                 // Postavi sliku iz ScriptableObject-a na zasebnu Image komponentu
@@ -191,7 +200,9 @@ public class RuleManager : MonoBehaviour
             if (shouldApply)
             {
                 // Primijeni modifikatore
-                // FireRate tretiramo kao brzinu (ratio): 0.8 = 20% sporije => period = original / 0.8 (veći period = sporije)
+                // FireRate je brzina (metci/sek is implicit); naš Field "FireRate" u Tower se ponaša kao cooldown (sekundi po metku)?
+                // U tvojoj igri je FireRate vrednost koja određuje koliko brzo puni cooldown (CoolDown += 1f * deltaTime; puca kada CoolDown >= FireRate),
+                // što znači: manji broj = brže. Dakle multiplikator > 1 znači brže ⇒ period = original / multiplier.
                 float fireRateRatio = Mathf.Max(0.0001f, towerRule.fireRateMultiplier);
                 tower.FireRate = tower.originalFireRate / fireRateRatio;
                 tower.Damage = Mathf.RoundToInt(tower.originalDamage * towerRule.damageMultiplier);

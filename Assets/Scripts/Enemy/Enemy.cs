@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public int Health = 50;
     [SerializeField] public float movespeed = 2f;
+    [NonSerialized] public float baseMoveSpeed;
     [SerializeField] private int EnemyMoneyValue = 10;
     [SerializeField] public int LeakDamage = 1; // Koliko damage-a nanosi igraču kada dođe do kraja
     [NonSerialized] public int EffectiveMoneyValue = -1; // Postavlja se na spawnu progresijom
@@ -54,6 +55,8 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        // Cache prefab/base speed for deterministic rule application
+        baseMoveSpeed = movespeed;
         // Primeni mogući fiksni HP override pri instanci (ako postoji), inače ostavi kao što je i pusti EnemyManager da doda wave scaling
         // Napomena: Rule sistem može uvesti fiksan HP na nivou wave-a
         var rm = RuleManager.main;

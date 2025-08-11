@@ -115,9 +115,9 @@ public class EnemyManager : MonoBehaviour
         {
             GameObject EnemyObj = Instantiate(WaveSet[i], spawnPoint.position, Quaternion.identity);
             Enemy Enemy = EnemyObj.GetComponent<Enemy>();
-            // Primeni speed multiplikator iz pravila (ispravka buga: ranije ignorisano)
+            // Primeni speed multiplikator striktno na baznu brzinu iz prefaba (ne na već modifikovanu)
             float speedMul = RuleManager.main != null ? RuleManager.main.GetEnemySpeedMod() : 1f;
-            Enemy.movespeed *= speedMul;
+            Enemy.movespeed = Enemy.baseMoveSpeed * speedMul;
             EnemyStatusEffects status = EnemyObj.GetComponent<EnemyStatusEffects>();
             if (status != null) { status.SetBaseSpeed(Enemy.movespeed); }
             // HP: either fixed override for the wave, or multiplier chain

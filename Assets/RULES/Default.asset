@@ -21,87 +21,152 @@ MonoBehaviour:
     enemyDamageMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 1
     towerDamageMultiplier: 1
     towerRangeMultiplier: 1
     towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
     dotDamageMultiplier: 1
     slowEffectMultiplier: 1
     stunDurationMultiplier: 1
     aoeRadiusMultiplier: 1
     projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
     waveCompleteMoneyMultiplier: 1
     enemyKillMoneyMultiplier: 1
     upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
+  - levelDescription: 
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 1
+    enemyDamageMultiplier: 1
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
   - levelDescription: Opisuje kako se mijenjaju pravila na ovom nivou
     enemySpeedMultiplier: 1
     enemyHealthMultiplier: 1
     enemyDamageMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 1
     towerDamageMultiplier: 1
     towerRangeMultiplier: 1
     towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
     dotDamageMultiplier: 1
     slowEffectMultiplier: 1
     stunDurationMultiplier: 1
     aoeRadiusMultiplier: 1
     projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
     waveCompleteMoneyMultiplier: 1
     enemyKillMoneyMultiplier: 1
     upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
   - levelDescription: Opisuje kako se mijenjaju pravila na ovom nivou
     enemySpeedMultiplier: 1
     enemyHealthMultiplier: 1
     enemyDamageMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 1
     towerDamageMultiplier: 1
     towerRangeMultiplier: 1
     towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
     dotDamageMultiplier: 1
     slowEffectMultiplier: 1
     stunDurationMultiplier: 1
     aoeRadiusMultiplier: 1
     projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
     waveCompleteMoneyMultiplier: 1
     enemyKillMoneyMultiplier: 1
     upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
   - levelDescription: Opisuje kako se mijenjaju pravila na ovom nivou
     enemySpeedMultiplier: 1
     enemyHealthMultiplier: 1
     enemyDamageMultiplier: 1
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 1
     towerDamageMultiplier: 1
     towerRangeMultiplier: 1
     towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
     dotDamageMultiplier: 1
     slowEffectMultiplier: 1
     stunDurationMultiplier: 1
     aoeRadiusMultiplier: 1
     projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
     waveCompleteMoneyMultiplier: 1
     enemyKillMoneyMultiplier: 1
     upgradeDiscountMultiplier: 1
-  - levelDescription: Opisuje kako se mijenjaju pravila na ovom nivou
-    enemySpeedMultiplier: 1
-    enemyHealthMultiplier: 1
-    enemyDamageMultiplier: 1
-    enemyQuantityMultiplier: 1
-    enemyMoneyValueMultiplier: 1
-    towerFireRateMultiplier: 1
-    towerDamageMultiplier: 1
-    towerRangeMultiplier: 1
-    towerPlacementCostMultiplier: 1
-    dotDamageMultiplier: 1
-    slowEffectMultiplier: 1
-    stunDurationMultiplier: 1
-    aoeRadiusMultiplier: 1
-    projectileSpeedMultiplier: 1
-    waveCompleteMoneyMultiplier: 1
-    enemyKillMoneyMultiplier: 1
-    upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 0
+    fixedWaveCompleteMoney: 0
+    useFixedEnemyKillMoney: 0
+    fixedEnemyKillMoney: 0
