@@ -15,93 +15,158 @@ MonoBehaviour:
   baseRuleSetName: Tanky
   ruleSetImage: {fileID: 8424188576378411733, guid: 180757cd660985a4ab11a3deee3a807b, type: 3}
   progressionLevels:
-  - levelDescription: "Te\u017Eka progresija sa 20% pove\u0107anjem"
-    enemySpeedMultiplier: 1.2
+  - levelDescription: "Enemy : 20% HP Bonus\nTower : 50% Bonus DMG  \nEconomy : 25
+      coins per kill + 100 coins Bonus for Wave complete"
+    enemySpeedMultiplier: 1
     enemyHealthMultiplier: 1.2
-    enemyDamageMultiplier: 1.2
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
-    towerFireRateMultiplier: 0.79999995
-    towerDamageMultiplier: 0.79999995
-    towerRangeMultiplier: 0.79999995
-    towerPlacementCostMultiplier: 1.2
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1.5
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
     dotDamageMultiplier: 1
     slowEffectMultiplier: 1
     stunDurationMultiplier: 1
     aoeRadiusMultiplier: 1
     projectileSpeedMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.79999995
-    enemyKillMoneyMultiplier: 0.79999995
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
     upgradeDiscountMultiplier: 1
-  - levelDescription: "Te\u017Eka progresija sa 50% pove\u0107anjem"
-    enemySpeedMultiplier: 1.5
+    useFixedWaveCompleteMoney: 1
+    fixedWaveCompleteMoney: 100
+    useFixedEnemyKillMoney: 1
+    fixedEnemyKillMoney: 25
+  - levelDescription: "Enemy : 50% HP Bonus\nTower : 50% Bonus DMG  \nEconomy : 25
+      coins per kill + 120 coins Bonus for Wave complete"
+    enemySpeedMultiplier: 1
     enemyHealthMultiplier: 1.5
-    enemyDamageMultiplier: 1.5
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
-    towerFireRateMultiplier: 0.5
-    towerDamageMultiplier: 0.5
-    towerRangeMultiplier: 0.5
-    towerPlacementCostMultiplier: 1.5
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1.5
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
     dotDamageMultiplier: 1
     slowEffectMultiplier: 1
     stunDurationMultiplier: 1
     aoeRadiusMultiplier: 1
     projectileSpeedMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.5
-    enemyKillMoneyMultiplier: 0.5
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
     upgradeDiscountMultiplier: 1
-  - levelDescription: "Te\u017Eka progresija sa 80% pove\u0107anjem"
-    enemySpeedMultiplier: 1.8
-    enemyHealthMultiplier: 1.8
-    enemyDamageMultiplier: 1.8
+    useFixedWaveCompleteMoney: 1
+    fixedWaveCompleteMoney: 120
+    useFixedEnemyKillMoney: 1
+    fixedEnemyKillMoney: 25
+  - levelDescription: "Enemy : 100% HP Bonus\nTower : 50% Bonus DMG  \nEconomy :
+      50 coins per kill + 150 coins Bonus for Wave complete"
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 2
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
-    towerFireRateMultiplier: 0.20000005
-    towerDamageMultiplier: 0.20000005
-    towerRangeMultiplier: 0.20000005
-    towerPlacementCostMultiplier: 1.8
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1.5
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
     dotDamageMultiplier: 1
     slowEffectMultiplier: 1
     stunDurationMultiplier: 1
     aoeRadiusMultiplier: 1
     projectileSpeedMultiplier: 1
-    waveCompleteMoneyMultiplier: 0.20000005
-    enemyKillMoneyMultiplier: 0.20000005
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
     upgradeDiscountMultiplier: 1
-  - levelDescription: "Te\u017Eka progresija sa 120% pove\u0107anjem"
-    enemySpeedMultiplier: 2.2
-    enemyHealthMultiplier: 2.2
-    enemyDamageMultiplier: 2.2
-    enemyQuantityMultiplier: 1
-    enemyMoneyValueMultiplier: 1
-    towerFireRateMultiplier: -0.20000005
-    towerDamageMultiplier: -0.20000005
-    towerRangeMultiplier: -0.20000005
-    towerPlacementCostMultiplier: 2.2
-    dotDamageMultiplier: 1
-    slowEffectMultiplier: 1
-    stunDurationMultiplier: 1
-    aoeRadiusMultiplier: 1
-    projectileSpeedMultiplier: 1
-    waveCompleteMoneyMultiplier: -0.20000005
-    enemyKillMoneyMultiplier: -0.20000005
-    upgradeDiscountMultiplier: 1
-  - levelDescription: "Te\u017Eka progresija sa 150% pove\u0107anjem"
-    enemySpeedMultiplier: 2.5
+    useFixedWaveCompleteMoney: 1
+    fixedWaveCompleteMoney: 150
+    useFixedEnemyKillMoney: 1
+    fixedEnemyKillMoney: 50
+  - levelDescription: "Enemy : 150% HP Bonus\nTower : 50% Bonus DMG  \nEconomy :
+      100 coins per kill + 350 coins Bonus for Wave complete"
+    enemySpeedMultiplier: 1
     enemyHealthMultiplier: 2.5
-    enemyDamageMultiplier: 2.5
     enemyQuantityMultiplier: 1
     enemyMoneyValueMultiplier: 1
-    towerFireRateMultiplier: -0.5
-    towerDamageMultiplier: -0.5
-    towerRangeMultiplier: -0.5
-    towerPlacementCostMultiplier: 2.5
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1.5
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
     dotDamageMultiplier: 1
     slowEffectMultiplier: 1
     stunDurationMultiplier: 1
     aoeRadiusMultiplier: 1
     projectileSpeedMultiplier: 1
-    waveCompleteMoneyMultiplier: -0.5
-    enemyKillMoneyMultiplier: -0.5
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
     upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 1
+    fixedWaveCompleteMoney: 100
+    useFixedEnemyKillMoney: 1
+    fixedEnemyKillMoney: 350
+  - levelDescription: "Enemy : 400% HP Bonus\nTower : 50% Bonus DMG  \nEconomy :
+      150 coins per kill + 1200 coins Bonus for Wave complete"
+    enemySpeedMultiplier: 1
+    enemyHealthMultiplier: 5
+    enemyQuantityMultiplier: 1
+    enemyMoneyValueMultiplier: 1
+    enemyLeakDamageMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedEnemyHealth: 0
+    fixedEnemyHealth: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
+    towerFireRateMultiplier: 1
+    towerDamageMultiplier: 1.5
+    towerRangeMultiplier: 1
+    towerPlacementCostMultiplier: 1
+    forcedTargetingMode: 0
+    dotDamageMultiplier: 1
+    slowEffectMultiplier: 1
+    stunDurationMultiplier: 1
+    aoeRadiusMultiplier: 1
+    projectileSpeedMultiplier: 1
+    effectDurationMultiplier: 1
+    waveCompleteMoneyMultiplier: 1
+    enemyKillMoneyMultiplier: 1
+    upgradeDiscountMultiplier: 1
+    useFixedWaveCompleteMoney: 1
+    fixedWaveCompleteMoney: 1200
+    useFixedEnemyKillMoney: 1
+    fixedEnemyKillMoney: 150

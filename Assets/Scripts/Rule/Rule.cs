@@ -13,8 +13,6 @@ public class ProgressionLevel
     [Range(0.2f, 5f)]
     public float enemyHealthMultiplier = 1f;
     [Range(0.2f, 5f)]
-    public float enemyDamageMultiplier = 1f;
-    [Range(0.2f, 5f)]
     public float enemyQuantityMultiplier = 1f;
     [Range(0.2f, 5f)]
     public float enemyMoneyValueMultiplier = 1f;
@@ -123,7 +121,6 @@ public class EnemyRule
     [Header("Enemy Modifiers")]
     public float speedMultiplier = 1f;
     public float healthMultiplier = 1f;
-    public float damageMultiplier = 1f;
     public float quantityMultiplier = 1f; // Za broj protivnika u valu
     public float moneyValueMultiplier = 1f; // Koliko novca daju kad umru
     public float leakDamageMultiplier = 1f; // Množilac za leak dmg (rezultat je int i ≥ 1)
@@ -277,7 +274,7 @@ public class Rule : ScriptableObject
         // Direktno koristi multiplikatore iz levela
         progressed.speedMultiplier = level.enemySpeedMultiplier;
         progressed.healthMultiplier = level.enemyHealthMultiplier;
-        progressed.damageMultiplier = level.enemyDamageMultiplier;
+        // removed damage multiplier for enemies (not used)
         progressed.quantityMultiplier = level.enemyQuantityMultiplier;
         progressed.moneyValueMultiplier = level.enemyMoneyValueMultiplier;
         progressed.leakDamageMultiplier = level.enemyLeakDamageMultiplier;
