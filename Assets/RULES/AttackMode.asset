@@ -21,6 +21,10 @@ MonoBehaviour:
     enemyDamageMultiplier: 1.5
     enemyQuantityMultiplier: 1.25
     enemyMoneyValueMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 0.5
     towerDamageMultiplier: 0.5
     towerRangeMultiplier: 0.5
@@ -39,6 +43,10 @@ MonoBehaviour:
     enemyDamageMultiplier: 2
     enemyQuantityMultiplier: 1.5
     enemyMoneyValueMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 0.1
     towerDamageMultiplier: 0.1
     towerRangeMultiplier: 0.1
@@ -57,6 +65,10 @@ MonoBehaviour:
     enemyDamageMultiplier: 3
     enemyQuantityMultiplier: 2
     enemyMoneyValueMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 0.1
     towerDamageMultiplier: 0.1
     towerRangeMultiplier: 0.1
@@ -75,6 +87,10 @@ MonoBehaviour:
     enemyDamageMultiplier: 4
     enemyQuantityMultiplier: 2.5
     enemyMoneyValueMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 0.1
     towerDamageMultiplier: 0.1
     towerRangeMultiplier: 0.1
@@ -93,6 +109,10 @@ MonoBehaviour:
     enemyDamageMultiplier: 5
     enemyQuantityMultiplier: 3
     enemyMoneyValueMultiplier: 1
+    useFixedEnemyCount: 0
+    fixedEnemyCount: 0
+    useFixedLeakDamage: 0
+    fixedLeakDamage: 1
     towerFireRateMultiplier: 0.1
     towerDamageMultiplier: 0.1
     towerRangeMultiplier: 0.1
