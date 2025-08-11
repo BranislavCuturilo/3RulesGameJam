@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class TowerManager : MonoBehaviour
 {
-    [Header("Tower Prefabs (drag & drop tower prefabs here)")]
+    [Header("Tower Prefabs")]
     [SerializeField] private List<GameObject> TowerPrefabs = new List<GameObject>();
 
     [SerializeField] private LayerMask TowerLayer;
@@ -36,7 +36,6 @@ public class TowerManager : MonoBehaviour
         }
         if(Input.GetMouseButtonDown(0))
         {
-            // Ako je u toku postavljanje tornja, lijevi klik postavlja toranj i ne otvara panel
             if (PlacingTower && PlacingTower.GetComponent<TowerPlacement>()?.IsPlacing == true)
             {
                 return;
@@ -98,7 +97,6 @@ public class TowerManager : MonoBehaviour
         PlacingTower = Instantiate(Tower);
     }
 
-    // Convenience: select tower by list index from UI
     public void SetTowerByIndex(int index)
     {
         if (TowerPrefabs == null || index < 0 || index >= TowerPrefabs.Count) return;
@@ -114,7 +112,6 @@ public class TowerManager : MonoBehaviour
             if (upgrade == null) return;
             upgrade.Upgrade();
 
-            // Refresh UI immediately after upgrading
             TowerLevel.text = "Tower LVL: " + (upgrade.CurrentLevel + 1).ToString();
             UpgradeCost.text = upgrade.CurrentCost;
         }

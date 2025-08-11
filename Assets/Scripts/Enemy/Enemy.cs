@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float movespeed = 2f;
     [NonSerialized] public float baseMoveSpeed;
     [SerializeField] private int EnemyMoneyValue = 10;
-    [SerializeField] public int LeakDamage = 1; // Koliko damage-a nanosi igraču kada dođe do kraja
-    [NonSerialized] public int EffectiveMoneyValue = -1; // Postavlja se na spawnu progresijom
+    [SerializeField] public int LeakDamage = 1; 
+    [NonSerialized] public int EffectiveMoneyValue = -1; 
     
     private Rigidbody2D rb;
 
@@ -33,7 +33,6 @@ public class Enemy : MonoBehaviour
             index++;
             if (index >= EnemyManager.main.CheckPoints.Length)
             {
-                // Odredi koji leak damage koristiti: fixed override ili skalirani lokalni LeakDamage (×0.2..×5, zaokruži i min 1)
                 int ruleOverride = RuleManager.main != null ? RuleManager.main.GetEnemyLeakDamageOverride() : -1;
                 int leakDmg;
                 if (ruleOverride >= 0)
@@ -55,14 +54,11 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        // Cache prefab/base speed for deterministic rule application
         baseMoveSpeed = movespeed;
-        // Primeni mogući fiksni HP override pri instanci (ako postoji), inače ostavi kao što je i pusti EnemyManager da doda wave scaling
-        // Napomena: Rule sistem može uvesti fiksan HP na nivou wave-a
         var rm = RuleManager.main;
         if (rm != null)
         {
-            // Nemamo direktan getter, pa fiksni HP se već obrađuje kroz EnemyManager-ov množioc; zadržavamo bazni Health ovde.
+            
         }
     }
 
@@ -78,7 +74,6 @@ public class Enemy : MonoBehaviour
         Health -= Damage;
         if(Health <= 0)
         {
-            // Fixed per-kill money override has priority
             int fixedKill = RuleManager.main != null ? RuleManager.main.GetFixedEnemyKillMoney() : -1;
             if (fixedKill >= 0)
             {
@@ -93,7 +88,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Accessors za EnemyManager
+    
     public int GetBaseMoneyValue() { return EnemyMoneyValue; }
     public void SetEffectiveMoneyValue(int value) { EffectiveMoneyValue = value; }
 }

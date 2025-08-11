@@ -48,24 +48,19 @@ public class TowerUpgrade : MonoBehaviour
             int adjustedCost = Mathf.CeilToInt(Levels[nextIndex].Cost * RuleManager.main.GetUpgradeDiscountMod());
             if (adjustedCost <= Player.main.Money)
             {
-                // 1) Update tower base stats to next level
                 Tower.Range = Levels[nextIndex].Range;
                 Tower.FireRate = Levels[nextIndex].FireRate;
                 Tower.Damage = Levels[nextIndex].Damage;
 
-                // Ensure future resets keep upgraded stats as base
                 Tower.originalRange = Tower.Range;
                 Tower.originalFireRate = Tower.FireRate;
                 Tower.originalDamage = Tower.Damage;
 
-                // 2) Update TowerEffects base stats using multipliers for next level
                 var towerEffects = GetComponent<TowerEffects>();
                 if (towerEffects != null)
                 {
-                    // Projectile speed base
                     towerEffects.projectileSpeed *= Levels[nextIndex].projectileSpeedMultiplier;
 
-                    // Per-effect base mods
                     if (towerEffects.effects != null)
                     {
                         foreach (var e in towerEffects.effects)

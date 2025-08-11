@@ -127,13 +127,13 @@ public class EnemyRule
     [Header("Enemy Modifiers")]
     public float speedMultiplier = 1f;
     public float healthMultiplier = 1f;
-    public float quantityMultiplier = 1f; // Za broj protivnika u valu
-    public float moneyValueMultiplier = 1f; // Koliko novca daju kad umru
-    public float leakDamageMultiplier = 1f; // Množilac za leak dmg (rezultat je int i ≥ 1)
+    public float quantityMultiplier = 1f; 
+    public float moneyValueMultiplier = 1f; 
+    public float leakDamageMultiplier = 1f; 
 
     [Header("Leak Damage Override")]
-    public bool useFixedLeakDamage = false; // Ako je true, koristi fixedLeakDamage umjesto multiplikatora
-    public int fixedLeakDamage = 0;         // Fiksni damage koji neprijatelj nanosi igraču kada prođe
+    public bool useFixedLeakDamage = false; 
+    public int fixedLeakDamage = 0;         
 
     [Header("Spawn Delay Override")]
     public bool useFixedSpawnDelay = false;
@@ -141,12 +141,12 @@ public class EnemyRule
     public float fixedSpawnDelayMax = 1.0f;
 
     [Header("Enemy Count Override")]
-    public bool useFixedEnemyCount = false; // Ako je true, koristi fixedEnemyCount za ukupan broj neprijatelja u valu
-    public int fixedEnemyCount = 0;         // Fiksan broj neprijatelja u valu
+    public bool useFixedEnemyCount = false; 
+    public int fixedEnemyCount = 0;         
 
     [Header("Enemy HP Override")]
-    public bool useFixedEnemyHealth = false; // Ako je true, koristi fixedEnemyHealth umjesto multiplikatora
-    public int fixedEnemyHealth = 0;         // Fiksni HP za sve neprijatelje u valu
+    public bool useFixedEnemyHealth = false; 
+    public int fixedEnemyHealth = 0;         
 }
 
 [System.Serializable]
@@ -168,12 +168,12 @@ public class TowerRule
     public TargetingMode forceTargetingMode = TargetingMode.NoChange;
     
     [Header("Advanced Effects")]
-    public float dotDamageMultiplier = 1f; // Damage over time
-    public float slowEffectMultiplier = 1f; // Slow effect strength
-    public float stunDurationMultiplier = 1f; // Stun duration
-    public float aoeRadiusMultiplier = 1f; // AOE radius
-    public float projectileSpeedMultiplier = 1f; // Projectile speed
-    public float effectDurationMultiplier = 1f; // Trajanje efekata (globalno)
+    public float dotDamageMultiplier = 1f; 
+    public float slowEffectMultiplier = 1f; 
+    public float stunDurationMultiplier = 1f; 
+    public float aoeRadiusMultiplier = 1f; 
+    public float projectileSpeedMultiplier = 1f; 
+    public float effectDurationMultiplier = 1f; 
 }
 
 [System.Serializable]
@@ -185,10 +185,10 @@ public class EconomyRule
     public string ruleDescription = "Modifikuje ekonomiju";
     
     [Header("Economy Modifiers")]
-    public float waveCompleteMoneyMultiplier = 1f; // Bonus na kraju runde (×0.2..×5)
-    public float enemyKillMoneyMultiplier = 1f; // Novac od ubijenih protivnika (×0.2..×5)
-    public float towerPlacementCostMultiplier = 1f; // Cijena postavljanja tornjeva (popust/poskupljenje kao mnozilac)
-    public float upgradeDiscountMultiplier = 1f; // Popust na nadogradnje (0.8f = 20% popust)
+    public float waveCompleteMoneyMultiplier = 1f; 
+    public float enemyKillMoneyMultiplier = 1f; 
+    public float towerPlacementCostMultiplier = 1f; 
+    public float upgradeDiscountMultiplier = 1f; 
 
     [Header("Fixed Economy Overrides (optional)")]
     public bool useFixedWaveCompleteMoney = false;
@@ -201,29 +201,24 @@ public class EconomyRule
 public class Rule : ScriptableObject
 {
     [Header("Rule Set Information")]
-    public string baseRuleSetName = "New Rule Set"; // Default ime bez levela
-    public Sprite ruleSetImage; // Ikonica je uvek ista za sve levele
+    public string baseRuleSetName = "New Rule Set"; 
+    public Sprite ruleSetImage; 
     
     [Header("Manual Progression Levels")]
-    public ProgressionLevel[] progressionLevels = new ProgressionLevel[10]; // Manuelni nivoi progresije (do 10)
-    
-    // Removed display options - now handled automatically per level
+    public ProgressionLevel[] progressionLevels = new ProgressionLevel[10]; 
     
     public string GetDisplayText(int progressionLevel = 0)
     {
-        // Ako je level 0, vrati osnovnu poruku
         if (progressionLevel <= 0)
         {
             return "Osnovni nivo - bez progresije";
         }
         
-        // Provjeri da li postoji level
         if (progressionLevels == null || progressionLevel > progressionLevels.Length || progressionLevels[progressionLevel - 1] == null)
         {
             return "Nivo nije definisan";
         }
         
-        // Vrati opis konkretnog levela
         return progressionLevels[progressionLevel - 1].levelDescription;
     }
     
@@ -259,16 +254,13 @@ public class Rule : ScriptableObject
         }
     }
     
-    // Izračunaj progresirane modifikatore za enemy pravila
     public EnemyRule GetProgressedEnemyRule(int progressionLevel)
     {
-        // Za level 0, vrati default vrijednosti
         if (progressionLevel <= 0)
         {
-            return new EnemyRule(); // Default EnemyRule sa 1f vrijednostima
+            return new EnemyRule(); 
         }
         
-        // Provjeri da li postoji definisan nivo
         if (progressionLevels == null || progressionLevel > progressionLevels.Length || progressionLevels[progressionLevel - 1] == null)
         {
             Debug.LogWarning($"Progression level {progressionLevel} nije definisan za {baseRuleSetName}. Koristim default vrijednosti.");
@@ -282,26 +274,21 @@ public class Rule : ScriptableObject
         progressed.ruleDescription = $"Enemy modifikatori za nivo {progressionLevel}";
         progressed.targetEnemyType = EnemyType.All;
         
-        // Direktno koristi multiplikatore iz levela
         progressed.speedMultiplier = level.enemySpeedMultiplier;
         progressed.healthMultiplier = level.enemyHealthMultiplier;
         progressed.quantityMultiplier = level.enemyQuantityMultiplier;
         progressed.moneyValueMultiplier = level.enemyMoneyValueMultiplier;
         progressed.leakDamageMultiplier = level.enemyLeakDamageMultiplier;
         
-        // Leak damage override
         progressed.useFixedLeakDamage = level.useFixedLeakDamage;
         progressed.fixedLeakDamage = level.fixedLeakDamage;
 
-        // Enemy count override
         progressed.useFixedEnemyCount = level.useFixedEnemyCount;
         progressed.fixedEnemyCount = level.fixedEnemyCount;
 
-        // HP override
         progressed.useFixedEnemyHealth = level.useFixedEnemyHealth;
         progressed.fixedEnemyHealth = level.fixedEnemyHealth;
 
-        // Spawn delay override
         progressed.useFixedSpawnDelay = level.useFixedSpawnDelay;
         progressed.fixedSpawnDelayMin = level.fixedSpawnDelayMin;
         progressed.fixedSpawnDelayMax = level.fixedSpawnDelayMax;
@@ -309,16 +296,13 @@ public class Rule : ScriptableObject
         return progressed;
     }
     
-    // Izračunaj progresirane modifikatore za tower pravila
     public TowerRule GetProgressedTowerRule(int progressionLevel)
     {
-        // Za level 0, vrati default vrijednosti
         if (progressionLevel <= 0)
         {
-            return new TowerRule(); // Default TowerRule sa 1f vrijednostima
+            return new TowerRule(); 
         }
         
-        // Provjeri da li postoji definisan nivo
         if (progressionLevels == null || progressionLevel > progressionLevels.Length || progressionLevels[progressionLevel - 1] == null)
         {
             Debug.LogWarning($"Progression level {progressionLevel} nije definisan za {baseRuleSetName}. Koristim default vrijednosti.");
@@ -333,13 +317,11 @@ public class Rule : ScriptableObject
         progressed.targetTowerType = TowerType.All;
         progressed.forceTargetingMode = level.forcedTargetingMode;
         
-        // Direktno koristi multiplikatore iz levela
         progressed.fireRateMultiplier = level.towerFireRateMultiplier;
         progressed.damageMultiplier = level.towerDamageMultiplier;
         progressed.rangeMultiplier = level.towerRangeMultiplier;
         progressed.placementCostMultiplier = level.towerPlacementCostMultiplier;
         
-        // Advanced effects
         progressed.dotDamageMultiplier = level.dotDamageMultiplier;
         progressed.slowEffectMultiplier = level.slowEffectMultiplier;
         progressed.stunDurationMultiplier = level.stunDurationMultiplier;
@@ -350,16 +332,13 @@ public class Rule : ScriptableObject
         return progressed;
     }
     
-    // Izračunaj progresirane modifikatore za economy pravila
     public EconomyRule GetProgressedEconomyRule(int progressionLevel)
     {
-        // Za level 0, vrati default vrijednosti
         if (progressionLevel <= 0)
         {
-            return new EconomyRule(); // Default EconomyRule sa 1f vrijednostima
+            return new EconomyRule(); 
         }
         
-        // Provjeri da li postoji definisan nivo
         if (progressionLevels == null || progressionLevel > progressionLevels.Length || progressionLevels[progressionLevel - 1] == null)
         {
             Debug.LogWarning($"Progression level {progressionLevel} nije definisan za {baseRuleSetName}. Koristim default vrijednosti.");
@@ -372,12 +351,10 @@ public class Rule : ScriptableObject
         progressed.ruleName = $"Economy Rule Level {progressionLevel}";
         progressed.ruleDescription = $"Economy modifikatori za nivo {progressionLevel}";
         
-        // Direktno koristi multiplikatore iz levela
         progressed.waveCompleteMoneyMultiplier = level.waveCompleteMoneyMultiplier;
         progressed.enemyKillMoneyMultiplier = level.enemyKillMoneyMultiplier;
         progressed.upgradeDiscountMultiplier = level.upgradeDiscountMultiplier;
         progressed.towerPlacementCostMultiplier = level.towerPlacementCostMultiplier;
-        // Fixed overrides
         progressed.useFixedWaveCompleteMoney = level.useFixedWaveCompleteMoney;
         progressed.fixedWaveCompleteMoney = level.fixedWaveCompleteMoney;
         progressed.useFixedEnemyKillMoney = level.useFixedEnemyKillMoney;
@@ -386,9 +363,6 @@ public class Rule : ScriptableObject
         return progressed;
     }
     
-    // Uklonjen jer više ne koristimo base values, već direktno level values
-    
-    // Pomocna metoda za kreiranje default progression levelsa
     public void CreateDefaultProgressionLevels()
     {
         progressionLevels = new ProgressionLevel[10];
@@ -398,12 +372,9 @@ public class Rule : ScriptableObject
             progressionLevels[i] = new ProgressionLevel();
             progressionLevels[i].levelDescription = $"Opis modifikatora za nivo {i + 1}";
             
-            // Default vrijednosti (1f = bez promjene)
-            // Ti možeš manuelno podesiti ove vrijednosti u Inspector-u
         }
     }
     
-    // Getter za maksimalni nivo progresije
     public int GetMaxProgressionLevel()
     {
         return progressionLevels?.Length ?? 0;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FAST&Furious
   m_EditorClassIdentifier: 
   baseRuleSetName: Fast & Furious
-  ruleSetImage: {fileID: 0}
+  ruleSetImage: {fileID: -2701843768971155999, guid: a88aaa46c506b714d810fd370b215809, type: 3}
   progressionLevels:
   - levelDescription: "Enemy : 200 onehit slimes with 300% speed bonus \nTower :
       Range 50% smaller\nEconomy : 5 coins per kill"
@@ -28,6 +28,9 @@ MonoBehaviour:
     fixedEnemyHealth: 1
     useFixedLeakDamage: 1
     fixedLeakDamage: 1
+    useFixedSpawnDelay: 1
+    fixedSpawnDelayMin: 0.05
+    fixedSpawnDelayMax: 0.2
     towerFireRateMultiplier: 1
     towerDamageMultiplier: 1
     towerRangeMultiplier: 0.5

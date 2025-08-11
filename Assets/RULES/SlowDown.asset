@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlowDown
   m_EditorClassIdentifier: 
   baseRuleSetName: Slow Down
-  ruleSetImage: {fileID: 0}
+  ruleSetImage: {fileID: 6494005570978545738, guid: da4dd0985e4fb8643b127fca7e99d9b2, type: 3}
   progressionLevels:
   - levelDescription: 'Enemy : 25% Slower
 
@@ -32,6 +32,9 @@ MonoBehaviour:
     fixedEnemyHealth: 0
     useFixedLeakDamage: 0
     fixedLeakDamage: 1
+    useFixedSpawnDelay: 0
+    fixedSpawnDelayMin: 0.75
+    fixedSpawnDelayMax: 1
     towerFireRateMultiplier: 0.5
     towerDamageMultiplier: 1
     towerRangeMultiplier: 1

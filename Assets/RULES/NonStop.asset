@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NonStop
   m_EditorClassIdentifier: 
   baseRuleSetName: Non STOP
-  ruleSetImage: {fileID: 0}
+  ruleSetImage: {fileID: 8501105473742198934, guid: d42e935a80f53f54980e3bc8a17c3575, type: 3}
   progressionLevels:
   - levelDescription: 'Enemy : HP 50% lower Leak Dmg Bonus 100%
 
@@ -32,6 +32,9 @@ MonoBehaviour:
     fixedEnemyHealth: 0
     useFixedLeakDamage: 0
     fixedLeakDamage: 1
+    useFixedSpawnDelay: 0
+    fixedSpawnDelayMin: 0.75
+    fixedSpawnDelayMax: 1
     towerFireRateMultiplier: 1
     towerDamageMultiplier: 1
     towerRangeMultiplier: 1
@@ -67,6 +70,9 @@ MonoBehaviour:
     fixedEnemyHealth: 0
     useFixedLeakDamage: 0
     fixedLeakDamage: 1
+    useFixedSpawnDelay: 0
+    fixedSpawnDelayMin: 0.75
+    fixedSpawnDelayMax: 1
     towerFireRateMultiplier: 1
     towerDamageMultiplier: 1
     towerRangeMultiplier: 1
@@ -102,6 +108,9 @@ MonoBehaviour:
     fixedEnemyHealth: 0
     useFixedLeakDamage: 0
     fixedLeakDamage: 1
+    useFixedSpawnDelay: 0
+    fixedSpawnDelayMin: 0.75
+    fixedSpawnDelayMax: 1
     towerFireRateMultiplier: 1
     towerDamageMultiplier: 1
     towerRangeMultiplier: 1

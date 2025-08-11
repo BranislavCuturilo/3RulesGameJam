@@ -7,17 +7,15 @@ public static class TowerShotBuilder
     {
         ShotData shot = new ShotData();
 
-        // Projectiles
         if (towerEffects != null && towerEffects.useProjectile)
         {
             shot.projectilePrefab = towerEffects.projectilePrefab;
         }
         else
         {
-            shot.projectilePrefab = null; // direct hit fallback
+            shot.projectilePrefab = null; 
         }
 
-        // Read rule multipliers (safe defaults)
         var towerRule = RuleManager.main != null ? RuleManager.main.GetCurrentlyAppliedTowerRule() : null;
 
         float damageMul = towerRule != null ? towerRule.damageMultiplier : 1f;
@@ -28,15 +26,11 @@ public static class TowerShotBuilder
         float stunDurMul = towerRule != null ? towerRule.stunDurationMultiplier : 1f;
         float durationMul = towerRule != null ? towerRule.effectDurationMultiplier : 1f;
 
-        // Damage snapshot (tower.Damage već uključuje upgrade promjene)
         shot.damage = Mathf.CeilToInt(tower.Damage * damageMul);
 
-        // Projectile speed snapshot
-        // Projectile speed snapshot (TowerUpgrade može modificirati base projectileSpeed)
         float baseProjSpeed = towerEffects != null ? towerEffects.projectileSpeed : 0f;
         shot.projectileSpeed = baseProjSpeed * projectileSpeedMul;
 
-        // Effects snapshot (copied and scaled)
         shot.effects = new List<TowerEffect>();
         if (towerEffects != null && towerEffects.effects != null)
         {
@@ -51,7 +45,6 @@ public static class TowerShotBuilder
                     useDamageFalloff = e.useDamageFalloff,
                     minDamageFactor = e.minDamageFactor,
                     falloffExponent = e.falloffExponent,
-                    // Base effect values već uključuju upgrade progresije (TowerUpgrade ih je mutirao)
                     effectRadius = Mathf.Max(1f, e.effectRadius * aoeMul),
                     effectDuration = e.effectDuration * durationMul * ((e.effectType == EffectType.Stun || e.effectType == EffectType.AOE_Stun) ? stunDurMul : 1f),
                     effectStrength = e.effectStrength * ((e.effectType == EffectType.Slow || e.effectType == EffectType.AOE_Slow) ? slowMul : 1f),

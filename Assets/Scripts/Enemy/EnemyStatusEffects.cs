@@ -27,7 +27,7 @@ public class EnemyStatusEffects : MonoBehaviour
     public bool hasDOT = false;
     
     [Header("Effect Values")]
-    public float slowFactor = 1f;        // 1f = normalna brzina, 0.5f = 50% sporije
+    public float slowFactor = 1f;        
     public float originalSpeed;
     public int dotDamagePerSecond = 0;
     
@@ -49,7 +49,6 @@ public class EnemyStatusEffects : MonoBehaviour
     {
         if (enemy != null)
         {
-            // Capture baseline after EnemyManager may have modified speed on spawn
             originalSpeed = enemy.movespeed;
         }
     }
@@ -61,7 +60,6 @@ public class EnemyStatusEffects : MonoBehaviour
     
     private void UpdateEffects()
     {
-        // Ažuriraj sve efekte
         for (int i = activeEffects.Count - 1; i >= 0; i--)
         {
             activeEffects[i].remainingTime -= Time.deltaTime;
@@ -73,23 +71,19 @@ public class EnemyStatusEffects : MonoBehaviour
             }
         }
         
-        // Primijeni current effects
         ApplyCurrentEffects();
     }
     
     public void ApplySlow(float slowStrength, float duration)
     {
-        // Ukloni postojeći slow ako postoji
         RemoveEffectByName("Slow");
         
-        // Dodaj novi slow
         StatusEffect slowEffect = new StatusEffect("Slow", duration);
         activeEffects.Add(slowEffect);
         
-        slowFactor = slowStrength; // 0.5f = 50% brzine
+        slowFactor = slowStrength; 
         isSlowed = true;
         
-        // Vizuelni efekat
         if (this.slowEffect != null)
         {
             this.slowEffect.SetActive(true);
@@ -100,16 +94,13 @@ public class EnemyStatusEffects : MonoBehaviour
     
     public void ApplyStun(float duration)
     {
-        // Ukloni postojeći stun ako postoji
         RemoveEffectByName("Stun");
         
-        // Dodaj novi stun
         StatusEffect stunEffect = new StatusEffect("Stun", duration);
         activeEffects.Add(stunEffect);
         
         isStunned = true;
         
-        // Vizuelni efekat
         if (this.stunEffect != null)
         {
             this.stunEffect.SetActive(true);
@@ -120,24 +111,20 @@ public class EnemyStatusEffects : MonoBehaviour
     
     public void ApplyDOT(int damagePerSecond, float duration)
     {
-        // Ukloni postojeći DOT ako postoji
         RemoveEffectByName("DOT");
         if (dotCoroutine != null)
         {
             StopCoroutine(dotCoroutine);
         }
         
-        // Dodaj novi DOT
         StatusEffect dotEffect = new StatusEffect("DOT", duration);
         activeEffects.Add(dotEffect);
         
         dotDamagePerSecond = damagePerSecond;
         hasDOT = true;
         
-        // Pokreni DOT coroutine
         dotCoroutine = StartCoroutine(DOTCoroutine(damagePerSecond, duration));
         
-        // Vizuelni efekat
         if (this.dotEffect != null)
         {
             this.dotEffect.SetActive(true);
@@ -152,26 +139,22 @@ public class EnemyStatusEffects : MonoBehaviour
         
         while (elapsed < duration && enemy != null)
         {
-            yield return new WaitForSeconds(1f); // Svaku sekundu
+            yield return new WaitForSeconds(1f); 
             elapsed += 1f;
             
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
                 
-                // Vizuelni efekat za damage
                 CreateDamageEffect();
             }
         }
         
-        // Ukloni DOT nakon završetka
         RemoveEffectByName("DOT");
     }
     
     private void CreateDamageEffect()
     {
-        // Kreirati floating damage text ili particle efekat
-        // Za sada samo debug
         Debug.Log($"DOT Damage: {dotDamagePerSecond}");
     }
     
@@ -181,13 +164,11 @@ public class EnemyStatusEffects : MonoBehaviour
         
         float newSpeed = originalSpeed;
         
-        // Primijeni slow efekat
         if (isSlowed)
         {
             newSpeed = originalSpeed * slowFactor;
         }
         
-        // Primijeni stun efekat (zaustavi protivnika)
         if (isStunned)
         {
             newSpeed = 0f;
@@ -237,7 +218,7 @@ public class EnemyStatusEffects : MonoBehaviour
         }
     }
     
-    // Getter metode za eksterni pristup
+    
     public bool IsSlowed() => isSlowed;
     public bool IsStunned() => isStunned;
     public bool HasDOT() => hasDOT;
@@ -251,11 +232,10 @@ public class EnemyStatusEffects : MonoBehaviour
         }
     }
 
-    // Allow external systems to update the baseline speed safely
     public void SetBaseSpeed(float speed)
     {
         originalSpeed = speed;
-        // When baseline changes, immediately re-apply current effects to keep consistency
+        
         ApplyCurrentEffects();
     }
 }

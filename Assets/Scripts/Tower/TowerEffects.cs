@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public enum EffectType
 {
     None,
-    AOE_Front,           // AOE ispred tornja
-    AOE_Impact,          // AOE oko pogođenog protivnika
-    Slow,                // Usporava protivnika
-    AOE_Slow,            // AOE usporavanje
-    DOT,                 // Damage over time
-    DOT_AOE,             // AOE damage over time
-    Stun,                // Onesposobljava protivnika
-    AOE_Stun             // AOE onesposobljavanje
+    AOE_Front,           
+    AOE_Impact,          
+    Slow,                
+    AOE_Slow,            
+    DOT,                 
+    DOT_AOE,             
+    Stun,                
+    AOE_Stun             
 }
 
 [System.Serializable]
@@ -20,13 +20,13 @@ public class TowerEffect
 {
     [Header("Effect Settings")]
     public EffectType effectType = EffectType.None;
-    public float effectRadius = 2f;      // Radius za AOE efekte
-    public float effectDuration = 3f;    // Trajanje efekta (slow, stun, DOT)
-    public float effectStrength = 0.5f;  // Jačina efekta (slow factor, DOT damage per second)
-    public int dotDamage = 5;            // DOT damage po sekundi
+    public float effectRadius = 2f;      
+    public float effectDuration = 3f;    
+    public float effectStrength = 0.5f;  
+    public int dotDamage = 5;            
     
     [Header("Visual Effects")]
-    public GameObject effectPrefab;      // Prefab za vizuelni efekat
+    public GameObject effectPrefab;      
     public Color effectColor = Color.red;
 
     [Header("Damage Falloff (AOE_Impact)")]
@@ -41,7 +41,7 @@ public class TowerEffect
 public class TowerEffects : MonoBehaviour
 {
     [Header("Tower Effects")]
-    public TowerEffect[] effects;        // Niz efekata koje toranj može da koristi
+    public TowerEffect[] effects;        
     
     [Header("Projectile Settings")]
     public bool useProjectile = false;
@@ -56,13 +56,8 @@ public class TowerEffects : MonoBehaviour
         tower = GetComponent<Tower>();
     }
     
-    // Više ne primjenjuje efekte direktno iz tornja; efekte primjenjuje Projectile korištenjem ShotData kopija
-    
-    // Pomoćne metode ostaju za referencu i korištenje iz Projectile-a ukoliko želiš re-use
-    
     public void ApplyAOEFront(TowerEffect effect)
     {
-        // AOE ispred tornja u pravcu gledanja
         Vector3 frontPosition = transform.position + transform.right * effect.effectRadius;
         
         Collider2D[] enemies = Physics2D.OverlapCircleAll(frontPosition, effect.effectRadius);
@@ -78,7 +73,6 @@ public class TowerEffects : MonoBehaviour
             }
         }
         
-        // Vizuelni efekat
         if (effect.effectPrefab != null)
         {
             GameObject vfx = Instantiate(effect.effectPrefab, frontPosition, Quaternion.identity);
@@ -88,7 +82,6 @@ public class TowerEffects : MonoBehaviour
     
     public void ApplyAOEImpact(TowerEffect effect, Vector3 impactPosition)
     {
-        // AOE oko pogođenog protivnika
         Collider2D[] enemies = Physics2D.OverlapCircleAll(impactPosition, effect.effectRadius);
         foreach (var collider in enemies)
         {
@@ -97,14 +90,13 @@ public class TowerEffects : MonoBehaviour
                 Enemy enemy = collider.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    // Bazni AOE damage 50% od osnovnog, sa opcionalnim falloff-om po udaljenosti
                     float baseAoe = Mathf.Max(0, tower.Damage * 0.5f);
                     float damage = baseAoe;
                     if (effect.useDamageFalloff)
                     {
                         float dist = Vector2.Distance(collider.transform.position, impactPosition);
                         float r = Mathf.Max(0.0001f, effect.effectRadius);
-                        float t = Mathf.Clamp01(1f - (dist / r)); // 1 u centru, 0 na ivici
+                        float t = Mathf.Clamp01(1f - (dist / r)); 
                         float factor = Mathf.Pow(t, Mathf.Max(0.0001f, effect.falloffExponent));
                         factor = Mathf.Clamp(factor, effect.minDamageFactor, 1f);
                         damage *= factor;
@@ -114,7 +106,6 @@ public class TowerEffects : MonoBehaviour
             }
         }
         
-        // Vizuelni efekat
         if (effect.effectPrefab != null)
         {
             GameObject vfx = Instantiate(effect.effectPrefab, impactPosition, Quaternion.identity);
@@ -144,7 +135,6 @@ public class TowerEffects : MonoBehaviour
             }
         }
         
-        // Vizuelni efekat
         if (effect.effectPrefab != null)
         {
             GameObject vfx = Instantiate(effect.effectPrefab, impactPosition, Quaternion.identity);
@@ -174,7 +164,6 @@ public class TowerEffects : MonoBehaviour
             }
         }
         
-        // Vizuelni efekat
         if (effect.effectPrefab != null)
         {
             GameObject vfx = Instantiate(effect.effectPrefab, impactPosition, Quaternion.identity);
@@ -204,7 +193,6 @@ public class TowerEffects : MonoBehaviour
             }
         }
         
-        // Vizuelni efekat
         if (effect.effectPrefab != null)
         {
             GameObject vfx = Instantiate(effect.effectPrefab, impactPosition, Quaternion.identity);
@@ -212,7 +200,6 @@ public class TowerEffects : MonoBehaviour
         }
     }
     
-    // OnFire uklonjen – logika pucanja premještena u Tower i Projectile
 }
 
 public struct ShotData

@@ -26,7 +26,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject WavePanel;
     
     [Header("Wave Timing")]
-    [SerializeField] private float preWaveDelaySeconds = 5f; // Delay before each wave starts
+    [SerializeField] private float preWaveDelaySeconds = 5f; 
     
     private bool WaveOver = false;
     private List<GameObject> WaveSet = new List<GameObject>();
@@ -42,7 +42,6 @@ public class EnemyManager : MonoBehaviour
     }
     private void SetWave()
     {
-        // Base composition
         EnemyCount = Mathf.RoundToInt(CountEnemy * (EnemyRate + TankEnemyRate));
         FastEnemyCount = Mathf.RoundToInt(CountEnemy * FastEnemyRate);
         TankEnemyCount = 0;
@@ -56,9 +55,8 @@ public class EnemyManager : MonoBehaviour
         EnemyLeft = EnemyCount + FastEnemyCount + TankEnemyCount;
         EnemyCount = EnemyLeft;
 
-        // Build wave composition proportionally across Enemy/Fast/Tank and apply quantity multiplier globally
         float qtyMul = RuleManager.main != null ? RuleManager.main.GetEnemyQuantityMod() : 1f;
-        int baseTotal = Mathf.Max(0, EnemyCount); // includes fast/tank computed above via EnemyLeft
+        int baseTotal = Mathf.Max(0, EnemyCount); 
         int targetTotal = Mathf.Max(0, Mathf.RoundToInt(baseTotal * qtyMul));
 
         int baseEnemy = Mathf.Max(0, EnemyCount - FastEnemyCount - TankEnemyCount);
@@ -76,11 +74,9 @@ public class EnemyManager : MonoBehaviour
         for (int i = 0; i < scaledTank; i++) WaveSet.Add(TankEnemy);
         WaveSet = Shuffle(WaveSet);
         
-        // Apply fixed enemy count override from current rule, if any
         int fixedOverride = RuleManager.main != null ? RuleManager.main.GetFixedEnemyCountOverride() : -1;
         if (fixedOverride >= 0)
         {
-            // Re-trim or pad with base Enemy prefab to exactly match fixedOverride
             if (fixedOverride < WaveSet.Count)
             {
                 WaveSet = WaveSet.GetRange(0, fixedOverride);
@@ -115,24 +111,21 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        int waveIndex = Wave; // snapshot
+        int waveIndex = Wave; 
 
         for(int i = 0; i<WaveSet.Count; i++)
         {
             GameObject EnemyObj = Instantiate(WaveSet[i], spawnPoint.position, Quaternion.identity);
             Enemy Enemy = EnemyObj.GetComponent<Enemy>();
-            // Primeni speed multiplikator striktno na baznu brzinu iz prefaba (ne na već modifikovanu)
             float speedMul = RuleManager.main != null ? RuleManager.main.GetEnemySpeedMod() : 1f;
             Enemy.movespeed = Enemy.baseMoveSpeed * speedMul;
             EnemyStatusEffects status = EnemyObj.GetComponent<EnemyStatusEffects>();
             if (status != null) { status.SetBaseSpeed(Enemy.movespeed); }
-            // HP: either fixed override for the wave, or multiplier chain
-            // Fixed HP override per wave (if defined)
+            
             int fixedHP = RuleManager.main != null ? RuleManager.main.GetFixedEnemyHealthOverride() : -1;
-            // Read multipliers from RuleManager
+            
             var rm = RuleManager.main;
             float ruleHpMul = rm != null ? rm.GetEnemyHPMod() : 1f;
-            // Progressive HP growth per wave (linear): +10% per 2 waves (tweakable)
             float waveHpMul = 1f + 0.05f * (waveIndex - 1);
             if (fixedHP >= 1)
             {
@@ -143,10 +136,8 @@ public class EnemyManager : MonoBehaviour
                 Enemy.Health = Mathf.RoundToInt(Enemy.Health * ruleHpMul * waveHpMul);
             }
 
-            // Per-kill money stays constant per enemy; economy rule applies on kill time
             Enemy.SetEffectiveMoneyValue(-1);
 
-            // Use per-wave spawn delay override if defined by current rule
             float dMin, dMax;
             if (RuleManager.main != null && RuleManager.main.TryGetSpawnDelayOverride(out dMin, out dMax))
             {
@@ -183,7 +174,6 @@ public class EnemyManager : MonoBehaviour
             WaveOver = true;
             RuleManager.main.ResetModifiers();
             RuleManager.main.ShowRuleOptions();
-            // WavePanel.SetActive(true); // Removed, as we're using RulePanel
         }
    }
     public void NextWave()
@@ -196,7 +186,7 @@ public class EnemyManager : MonoBehaviour
             Wave++;
             WaveDone = false;
             WaveOver = false;
-            CountEnemy += Mathf.RoundToInt(CountEnemy * CountEnemyRate); // existing growth
+            CountEnemy += Mathf.RoundToInt(CountEnemy * CountEnemyRate); 
             StartCoroutine(BeginWaveAfterDelay());
         }
    }

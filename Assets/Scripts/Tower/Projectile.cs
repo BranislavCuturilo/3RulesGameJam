@@ -52,7 +52,7 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        if (isInstantBeam) return; // no movement for beams
+        if (isInstantBeam) return; 
 
         if (target != null)
         {
@@ -66,7 +66,6 @@ public class Projectile : MonoBehaviour
 
     private void RenderBeamAndHit()
     {
-        // Compute from current spawn position to target
         Vector3 startPos = transform.position;
         Vector3 endPos = lastKnownTargetPos;
         Vector3 delta = endPos - startPos;
@@ -74,22 +73,18 @@ public class Projectile : MonoBehaviour
 
         if (distance > 0.0001f)
         {
-            // Place beam at midpoint
             Vector3 mid = startPos + delta * 0.5f;
             transform.position = mid;
 
-            // Rotate to face target
             Vector3 dir = delta.normalized;
             ApplyRotation(dir);
 
-            // Scale along X to cover distance, Y for thickness
             Vector3 scale = transform.localScale;
             scale.x = distance;
             scale.y = beamThickness;
             transform.localScale = scale;
         }
 
-        // Apply hit immediately to the target (if still valid)
         if (target != null)
         {
             var enemy = target.GetComponent<Enemy>();
@@ -100,31 +95,28 @@ public class Projectile : MonoBehaviour
             }
         }
 
-        // Optional explosion VFX at target (match beam lifetime so it doesn't linger)
         if (explosionEffect != null)
         {
             var fx = Instantiate(explosionEffect, endPos, Quaternion.identity);
             Destroy(fx, Mathf.Max(0.05f, beamLifetime));
         }
 
-        // Disable trail immediately for beams (prevent afterimage)
         if (trail != null)
         {
             trail.emitting = false;
             trail.time = Mathf.Min(trail.time, beamLifetime);
         }
 
-        // Auto-destroy beam quickly
         Destroy(gameObject, Mathf.Max(0.01f, beamLifetime));
     }
 
     private void ApplyRotation(Vector3 dir)
     {
         if (dir.sqrMagnitude <= 0f) return;
-        float angleDeg = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg; // angle for RIGHT axis
+        float angleDeg = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg; 
         if (useUpAxisForRotation)
         {
-            angleDeg -= 90f; // rotate so UP points along velocity
+            angleDeg -= 90f; 
         }
         angleDeg += rotationOffsetDegrees;
         transform.rotation = Quaternion.AngleAxis(angleDeg, Vector3.forward);
@@ -132,19 +124,16 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (isInstantBeam) return; // beams don't use triggers
+        if (isInstantBeam) return; 
         if (!other.CompareTag("Enemy")) return;
 
         var enemy = other.GetComponent<Enemy>();
         if (enemy == null) return;
 
-        // Apply damage
         enemy.TakeDamage(shot.damage);
 
-        // Apply effects
         ApplyShotEffects(shot.effects, enemy.gameObject, other.transform.position);
 
-        // Explosion VFX
         if (explosionEffect != null)
         {
             var fx = Instantiate(explosionEffect, transform.position, Quaternion.identity);

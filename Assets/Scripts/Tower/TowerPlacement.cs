@@ -28,7 +28,7 @@ public class TowerPlacement : MonoBehaviour
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = mousePosition;
         }
-        // Konsoliduj stanje zabrane prema svim trenutno preklopljenim collider-ima
+        
         IsRestricted = blockingColliders.Count > 0;
         int adjustedCost = Mathf.RoundToInt(Tower.Cost * RuleManager.main.GetTowerPlacementCostMod());
         if(Input.GetMouseButtonDown(0) && !IsRestricted && adjustedCost <= Player.main.Money)

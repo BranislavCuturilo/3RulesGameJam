@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FUN
   m_EditorClassIdentifier: 
   baseRuleSetName: FUN
-  ruleSetImage: {fileID: 0}
+  ruleSetImage: {fileID: 8398991716449526982, guid: 12513528200b90643b64f967ee0a9833, type: 3}
   progressionLevels:
   - levelDescription: 'Enemy : 10 SLOW ENEMYS WITH 200 HP
 
@@ -32,6 +32,9 @@ MonoBehaviour:
     fixedEnemyHealth: 200
     useFixedLeakDamage: 0
     fixedLeakDamage: 1
+    useFixedSpawnDelay: 0
+    fixedSpawnDelayMin: 0.75
+    fixedSpawnDelayMax: 1
     towerFireRateMultiplier: 5
     towerDamageMultiplier: 1
     towerRangeMultiplier: 1

@@ -29,7 +29,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private float fireEffectBaseDuration = 0.5f;
     [Tooltip("Scale applied to base duration. 0.4 = 60% shorter than base")]
     [SerializeField] private float fireEffectDurationFactor = 0.4f;
-    [SerializeField] public Transform firePoint; // mjesto spawna projektila
+    [SerializeField] public Transform firePoint; 
 
     [NonSerialized]
     public GameObject Target;
@@ -51,7 +51,6 @@ public class Tower : MonoBehaviour
             {
                 transform.right = Target.transform.position - transform.position;
                 
-                // Izgradi ShotData i ispali projektil (ili direktni pogodak ako nema projektila)
                 ShotData shot = TowerShotBuilder.BuildShotData(this, towerEffects);
                 SpawnProjectileOrHit(shot, Target);
                 
@@ -85,7 +84,7 @@ public class Tower : MonoBehaviour
         if (effectToUse != null)
         {
             effectToUse.SetActive(true);
-            float duration = Mathf.Max(0f, fireEffectBaseDuration * fireEffectDurationFactor); // 60% shorter if factor=0.4
+            float duration = Mathf.Max(0f, fireEffectBaseDuration * fireEffectDurationFactor); 
             yield return new WaitForSeconds(duration);
             effectToUse.SetActive(false);
         }
@@ -106,13 +105,11 @@ public class Tower : MonoBehaviour
         }
         else
         {
-            // Fallback: direktan pogodak bez projektila
             Enemy enemy = target != null ? target.GetComponent<Enemy>() : null;
             if (enemy != null)
             {
                 enemy.TakeDamage(shot.damage);
 
-                // Apply effects directly when no projectile is used
                 if (shot.effects != null && towerEffects != null)
                 {
                     foreach (var e in shot.effects)
