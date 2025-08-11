@@ -368,7 +368,7 @@ MonoBehaviour:
   originalRange: 0
   originalFireRate: 0
   originalDamage: 0
-  TowerName: Tower
+  TowerName: Tesla Tower
   First: 0
   Last: 1
   Strongest: 0
