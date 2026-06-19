@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#0d0a07"/>
+  <rect x="8" y="8" width="184" height="184" rx="14" fill="none" stroke="#4a3a26" stroke-width="3"/>
+  <text x="100" y="108" font-family="Georgia, serif" font-size="20" fill="#c9a227"
+        text-anchor="middle">No image</text>
+</svg>

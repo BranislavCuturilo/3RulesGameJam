@@ -1,0 +1,723 @@
+{
+  "meta": {
+    "game": "3TD — Endless Tower Defense",
+    "generated": "2026-06-19"
+  },
+  "towers": [
+    {
+      "id": "cannon",
+      "name": "Cannon Tower",
+      "image": "img/towers/cannon.png",
+      "targeting": "Strongest",
+      "effect": {
+        "name": "AOE Impact",
+        "radius": 3,
+        "duration": 0,
+        "strength": 0,
+        "dot": 0
+      },
+      "tiers": [
+        {
+          "level": 1,
+          "damage": 50,
+          "fireRate": 1.5,
+          "range": 5,
+          "cost": 100
+        },
+        {
+          "level": 2,
+          "damage": 75,
+          "fireRate": 1.5,
+          "range": 5.5,
+          "cost": 300
+        },
+        {
+          "level": 3,
+          "damage": 200,
+          "fireRate": 1,
+          "range": 6,
+          "cost": 1000
+        }
+      ],
+      "base": {
+        "damage": 50,
+        "fireRate": 1.5,
+        "range": 5,
+        "cost": 100
+      }
+    },
+    {
+      "id": "machinegun",
+      "name": "Machine Gun Tower",
+      "image": "img/towers/machinegun.png",
+      "targeting": "First",
+      "effect": {
+        "name": "None",
+        "radius": 0,
+        "duration": 0,
+        "strength": 0,
+        "dot": 0
+      },
+      "tiers": [
+        {
+          "level": 1,
+          "damage": 20,
+          "fireRate": 0.5,
+          "range": 4.5,
+          "cost": 125
+        },
+        {
+          "level": 2,
+          "damage": 35,
+          "fireRate": 0.4,
+          "range": 4.5,
+          "cost": 200
+        },
+        {
+          "level": 3,
+          "damage": 80,
+          "fireRate": 0.25,
+          "range": 4.5,
+          "cost": 600
+        }
+      ],
+      "base": {
+        "damage": 20,
+        "fireRate": 0.5,
+        "range": 4.5,
+        "cost": 125
+      }
+    },
+    {
+      "id": "shotgun",
+      "name": "Shotgun Tower",
+      "image": "img/placeholder.svg",
+      "targeting": "First",
+      "effect": {
+        "name": "None",
+        "radius": 0,
+        "duration": 0,
+        "strength": 0,
+        "dot": 0
+      },
+      "tiers": [
+        {
+          "level": 1,
+          "damage": 25,
+          "fireRate": 8,
+          "range": 1,
+          "cost": 100
+        },
+        {
+          "level": 2,
+          "damage": 50,
+          "fireRate": 0.9,
+          "range": 7,
+          "cost": 125
+        },
+        {
+          "level": 3,
+          "damage": 100,
+          "fireRate": 0.85,
+          "range": 7,
+          "cost": 200
+        }
+      ],
+      "base": {
+        "damage": 25,
+        "fireRate": 8,
+        "range": 1,
+        "cost": 100
+      }
+    },
+    {
+      "id": "sniper",
+      "name": "Sniper Tower",
+      "image": "img/placeholder.svg",
+      "targeting": "Last",
+      "effect": {
+        "name": "None",
+        "radius": 0,
+        "duration": 0,
+        "strength": 0,
+        "dot": 0
+      },
+      "tiers": [
+        {
+          "level": 1,
+          "damage": 200,
+          "fireRate": 7,
+          "range": 10,
+          "cost": 75
+        },
+        {
+          "level": 2,
+          "damage": 250,
+          "fireRate": 5,
+          "range": 12.5,
+          "cost": 200
+        },
+        {
+          "level": 3,
+          "damage": 400,
+          "fireRate": 4,
+          "range": 15,
+          "cost": 1100
+        }
+      ],
+      "base": {
+        "damage": 200,
+        "fireRate": 7,
+        "range": 10,
+        "cost": 75
+      }
+    },
+    {
+      "id": "frost",
+      "name": "Frost Tower",
+      "image": "img/placeholder.svg",
+      "targeting": "Strongest",
+      "effect": {
+        "name": "AOE Slow",
+        "radius": 3,
+        "duration": 1,
+        "strength": 0.8,
+        "dot": 0
+      },
+      "tiers": [
+        {
+          "level": 1,
+          "damage": 25,
+          "fireRate": 1.25,
+          "range": 4,
+          "cost": 250
+        },
+        {
+          "level": 2,
+          "damage": 40,
+          "fireRate": 1.25,
+          "range": 4.25,
+          "cost": 250
+        },
+        {
+          "level": 3,
+          "damage": 60,
+          "fireRate": 1.25,
+          "range": 4.5,
+          "cost": 350
+        }
+      ],
+      "base": {
+        "damage": 25,
+        "fireRate": 1.25,
+        "range": 4,
+        "cost": 250
+      }
+    },
+    {
+      "id": "poison",
+      "name": "Poison Tower",
+      "image": "img/placeholder.svg",
+      "targeting": "First",
+      "effect": {
+        "name": "DOT",
+        "radius": 0,
+        "duration": 5,
+        "strength": 0,
+        "dot": 5
+      },
+      "tiers": [
+        {
+          "level": 1,
+          "damage": 25,
+          "fireRate": 8,
+          "range": 1,
+          "cost": 100
+        },
+        {
+          "level": 2,
+          "damage": 10,
+          "fireRate": 0.7,
+          "range": 5,
+          "cost": 150
+        },
+        {
+          "level": 3,
+          "damage": 25,
+          "fireRate": 0.6,
+          "range": 5,
+          "cost": 325
+        }
+      ],
+      "base": {
+        "damage": 25,
+        "fireRate": 8,
+        "range": 1,
+        "cost": 100
+      }
+    },
+    {
+      "id": "tesla",
+      "name": "Tesla Tower",
+      "image": "img/placeholder.svg",
+      "targeting": "Last",
+      "effect": {
+        "name": "Stun",
+        "radius": 0,
+        "duration": 0.15,
+        "strength": 0,
+        "dot": 0
+      },
+      "tiers": [
+        {
+          "level": 1,
+          "damage": 15,
+          "fireRate": 0.6,
+          "range": 6.5,
+          "cost": 200
+        },
+        {
+          "level": 2,
+          "damage": 25,
+          "fireRate": 0.45,
+          "range": 6.5,
+          "cost": 175
+        },
+        {
+          "level": 3,
+          "damage": 40,
+          "fireRate": 0.25,
+          "range": 6.5,
+          "cost": 400
+        }
+      ],
+      "base": {
+        "damage": 15,
+        "fireRate": 0.6,
+        "range": 6.5,
+        "cost": 200
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "attackmode",
+      "name": "AttackMode",
+      "image": "img/rules/attackmode.png",
+      "segments": [
+        "Enemy",
+        "Tower"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "description": "Enemy : 20% More Enemys All Leak DMG is 5\nTower : DoT DMG Bonus 100%\nEconomy : Discount on new towers 30%",
+          "changes": {
+            "enemyQuantityMultiplier": 1.2,
+            "useFixedLeakDamage": 1,
+            "fixedLeakDamage": 5,
+            "towerPlacementCostMultiplier": 0.7,
+            "dotDamageMultiplier": 2
+          }
+        },
+        {
+          "level": 2,
+          "description": "Enemy : 30% More Enemys All Leak DMG is 5\nTower : DoT DMG Bonus 90%\nEconomy : Discount on new towers 25%",
+          "changes": {
+            "enemyQuantityMultiplier": 1.3,
+            "useFixedLeakDamage": 1,
+            "fixedLeakDamage": 5,
+            "towerPlacementCostMultiplier": 0.75,
+            "dotDamageMultiplier": 1.9
+          }
+        },
+        {
+          "level": 3,
+          "description": "Enemy : 40% More Enemys All Leak DMG is 5\nTower : DoT DMG Bonus 75%\nEconomy : Discount on new towers 20%",
+          "changes": {
+            "enemyQuantityMultiplier": 1.4,
+            "useFixedLeakDamage": 1,
+            "fixedLeakDamage": 5,
+            "towerPlacementCostMultiplier": 0.8,
+            "dotDamageMultiplier": 1.75
+          }
+        },
+        {
+          "level": 4,
+          "description": "Enemy : 60% More Enemys All Leak DMG is 5\nTower : DoT DMG Bonus 75%\nEconomy : Discount on new towers 20%",
+          "changes": {
+            "enemyQuantityMultiplier": 1.6,
+            "useFixedLeakDamage": 1,
+            "fixedLeakDamage": 5,
+            "towerPlacementCostMultiplier": 0.8,
+            "dotDamageMultiplier": 1.75
+          }
+        },
+        {
+          "level": 5,
+          "description": "Enemy : 100% More Enemys All Leak DMG is 10\nTower : DoT DMG Bonus 75%\nEconomy : Discount on new towers 20%",
+          "changes": {
+            "enemyQuantityMultiplier": 5,
+            "useFixedLeakDamage": 1,
+            "fixedLeakDamage": 10,
+            "towerPlacementCostMultiplier": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "id": "boss",
+      "name": "BOSS",
+      "image": "img/rules/boss.png",
+      "segments": [
+        "Economy",
+        "Enemy",
+        "Tower"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "description": "Enemy : BOSS HP:2500 LeakDMG: 25\nTower : Movement Effect 50% weaker\nEconomy : +1000 after Wave +500 for kill",
+          "changes": {
+            "useFixedEnemyCount": 1,
+            "fixedEnemyCount": 1,
+            "useFixedEnemyHealth": 1,
+            "fixedEnemyHealth": 2500,
+            "useFixedLeakDamage": 1,
+            "fixedLeakDamage": 25,
+            "slowEffectMultiplier": 0.5,
+            "stunDurationMultiplier": 0.5,
+            "useFixedWaveCompleteMoney": 1,
+            "fixedWaveCompleteMoney": 1000,
+            "useFixedEnemyKillMoney": 1,
+            "fixedEnemyKillMoney": 500
+          }
+        },
+        {
+          "level": 2,
+          "description": "Enemy : BOSS HP:7500 LeakDMG: 50\nTower : Movement Effect 50% weaker\nEconomy : +2000 after Wave +1500 for kill",
+          "changes": {
+            "useFixedEnemyCount": 1,
+            "fixedEnemyCount": 1,
+            "useFixedEnemyHealth": 1,
+            "fixedEnemyHealth": 7500,
+            "useFixedLeakDamage": 1,
+            "fixedLeakDamage": 50,
+            "slowEffectMultiplier": 0.5,
+            "stunDurationMultiplier": 0.5,
+            "useFixedWaveCompleteMoney": 1,
+            "fixedWaveCompleteMoney": 2000,
+            "useFixedEnemyKillMoney": 1,
+            "fixedEnemyKillMoney": 1500
+          }
+        }
+      ]
+    },
+    {
+      "id": "default",
+      "name": "Default",
+      "image": "img/rules/default.png",
+      "segments": [],
+      "levels": [
+        {
+          "level": 1,
+          "description": "ALL SAME",
+          "changes": {}
+        }
+      ]
+    },
+    {
+      "id": "fastfurious",
+      "name": "Fast & Furious",
+      "image": "img/rules/fastfurious.png",
+      "segments": [
+        "Economy",
+        "Enemy",
+        "Tower"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "description": "Enemy : 200 onehit slimes with 300% speed bonus \nTower : Range 50% smaller\nEconomy : 5 coins per kill",
+          "changes": {
+            "enemySpeedMultiplier": 3,
+            "useFixedEnemyCount": 1,
+            "fixedEnemyCount": 200,
+            "useFixedEnemyHealth": 1,
+            "fixedEnemyHealth": 1,
+            "useFixedLeakDamage": 1,
+            "useFixedSpawnDelay": 1,
+            "towerRangeMultiplier": 0.5,
+            "useFixedEnemyKillMoney": 1,
+            "fixedEnemyKillMoney": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "fun",
+      "name": "FUN",
+      "image": "img/rules/fun.png",
+      "segments": [
+        "Economy",
+        "Enemy",
+        "Tower"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "description": "Enemy : 10 SLOW ENEMYS WITH 200 HP\nTower : Fire Rate 400% Faster\nEconomy : 400% BONUS",
+          "changes": {
+            "enemySpeedMultiplier": 0.5,
+            "useFixedEnemyCount": 1,
+            "fixedEnemyCount": 10,
+            "useFixedEnemyHealth": 1,
+            "fixedEnemyHealth": 200,
+            "towerFireRateMultiplier": 5,
+            "projectileSpeedMultiplier": 5,
+            "waveCompleteMoneyMultiplier": 5,
+            "enemyKillMoneyMultiplier": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "nonstop",
+      "name": "Non STOP",
+      "image": "img/rules/nonstop.png",
+      "segments": [
+        "Economy",
+        "Enemy",
+        "Tower"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "description": "Enemy : HP 50% lower Leak Dmg Bonus 100%\nTower : Movement Effect 80% weaker\nEconomy : 40% Upgrade Discount",
+          "changes": {
+            "enemyHealthMultiplier": 0.65,
+            "enemyLeakDamageMultiplier": 2,
+            "slowEffectMultiplier": 0.2,
+            "stunDurationMultiplier": 0.2,
+            "upgradeDiscountMultiplier": 0.6
+          }
+        },
+        {
+          "level": 2,
+          "description": "Enemy : HP 35% lower Leak Dmg Bonus 100%\nTower : Movement Effect 80% weaker\nEconomy : 25% Upgrade Discount",
+          "changes": {
+            "enemyHealthMultiplier": 0.65,
+            "enemyLeakDamageMultiplier": 2,
+            "slowEffectMultiplier": 0.2,
+            "stunDurationMultiplier": 0.2,
+            "upgradeDiscountMultiplier": 0.75
+          }
+        },
+        {
+          "level": 3,
+          "description": "Enemy : HP 30% lower Leak Dmg Bonus 100%\nTower : Movement Effect 80% weaker\nEconomy : 20% Upgrade Discount",
+          "changes": {
+            "enemyHealthMultiplier": 0.7,
+            "enemyLeakDamageMultiplier": 2,
+            "slowEffectMultiplier": 0.2,
+            "stunDurationMultiplier": 0.2,
+            "upgradeDiscountMultiplier": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "id": "quickly",
+      "name": "Quickly",
+      "image": "img/rules/quickly.png",
+      "segments": [
+        "Economy",
+        "Enemy",
+        "Tower"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "description": "Enemy : Faster 25%\nTower : FireRate Faster 100%\nEconomy : 10% Smaller kill bonus",
+          "changes": {
+            "enemySpeedMultiplier": 1.25,
+            "fixedLeakDamage": 50,
+            "towerFireRateMultiplier": 2,
+            "enemyKillMoneyMultiplier": 0.9,
+            "fixedWaveCompleteMoney": 500,
+            "fixedEnemyKillMoney": 200
+          }
+        },
+        {
+          "level": 2,
+          "description": "Enemy : Faster 50%\nTower : FireRate Faster 80% \nEconomy : 15% Smaller kill bonus",
+          "changes": {
+            "enemySpeedMultiplier": 1.5,
+            "towerFireRateMultiplier": 1.8,
+            "enemyKillMoneyMultiplier": 0.85
+          }
+        },
+        {
+          "level": 3,
+          "description": "Enemy : Faster 75%\nTower : FireRate Faster 60% \nEconomy : 20% Smaller kill bonus",
+          "changes": {
+            "enemySpeedMultiplier": 1.75,
+            "towerFireRateMultiplier": 1.6,
+            "enemyKillMoneyMultiplier": 0.8
+          }
+        },
+        {
+          "level": 4,
+          "description": "Enemy : Faster 100%\nTower : FireRate Faster 40% \nEconomy : 25% Smaller kill bonus",
+          "changes": {
+            "enemySpeedMultiplier": 2,
+            "towerFireRateMultiplier": 1.4,
+            "enemyKillMoneyMultiplier": 0.75
+          }
+        },
+        {
+          "level": 5,
+          "description": "Enemy : Faster 150%\nTower : FireRate Faster 20% \nEconomy : 50% Smaller kill bonus",
+          "changes": {
+            "enemySpeedMultiplier": 2.5,
+            "towerFireRateMultiplier": 1.2,
+            "enemyKillMoneyMultiplier": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "slowdown",
+      "name": "Slow Down",
+      "image": "img/rules/slowdown.png",
+      "segments": [
+        "Economy",
+        "Enemy",
+        "Tower"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "description": "Enemy : 25% Slower\nTower : 50% Slower\nEconomy : On kill money 50% more",
+          "changes": {
+            "enemySpeedMultiplier": 0.75,
+            "towerFireRateMultiplier": 0.5,
+            "enemyKillMoneyMultiplier": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "tanky",
+      "name": "Tanky",
+      "image": "img/rules/tanky.png",
+      "segments": [
+        "Economy",
+        "Enemy",
+        "Tower"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "description": "Enemy : 20% HP Bonus\nTower : 50% Bonus DMG  \nEconomy : 25 coins per kill + 100 coins Bonus for Wave complete",
+          "changes": {
+            "enemyHealthMultiplier": 1.2,
+            "towerDamageMultiplier": 1.5,
+            "useFixedWaveCompleteMoney": 1,
+            "fixedWaveCompleteMoney": 100,
+            "useFixedEnemyKillMoney": 1,
+            "fixedEnemyKillMoney": 25
+          }
+        },
+        {
+          "level": 2,
+          "description": "Enemy : 50% HP Bonus\nTower : 50% Bonus DMG  \nEconomy : 25 coins per kill + 120 coins Bonus for Wave complete",
+          "changes": {
+            "enemyHealthMultiplier": 1.5,
+            "towerDamageMultiplier": 1.5,
+            "useFixedWaveCompleteMoney": 1,
+            "fixedWaveCompleteMoney": 120,
+            "useFixedEnemyKillMoney": 1,
+            "fixedEnemyKillMoney": 25
+          }
+        },
+        {
+          "level": 3,
+          "description": "Enemy : 100% HP Bonus\nTower : 50% Bonus DMG  \nEconomy : 50 coins per kill + 150 coins Bonus for Wave complete",
+          "changes": {
+            "enemyHealthMultiplier": 2,
+            "towerDamageMultiplier": 1.5,
+            "useFixedWaveCompleteMoney": 1,
+            "fixedWaveCompleteMoney": 150,
+            "useFixedEnemyKillMoney": 1,
+            "fixedEnemyKillMoney": 50
+          }
+        },
+        {
+          "level": 4,
+          "description": "Enemy : 150% HP Bonus\nTower : 50% Bonus DMG  \nEconomy : 100 coins per kill + 350 coins Bonus for Wave complete",
+          "changes": {
+            "enemyHealthMultiplier": 2.5,
+            "towerDamageMultiplier": 1.5,
+            "useFixedWaveCompleteMoney": 1,
+            "fixedWaveCompleteMoney": 100,
+            "useFixedEnemyKillMoney": 1,
+            "fixedEnemyKillMoney": 350
+          }
+        },
+        {
+          "level": 5,
+          "description": "Enemy : 400% HP Bonus\nTower : 50% Bonus DMG  \nEconomy : 150 coins per kill + 1200 coins Bonus for Wave complete",
+          "changes": {
+            "enemyHealthMultiplier": 5,
+            "towerDamageMultiplier": 1.5,
+            "useFixedWaveCompleteMoney": 1,
+            "fixedWaveCompleteMoney": 1200,
+            "useFixedEnemyKillMoney": 1,
+            "fixedEnemyKillMoney": 150
+          }
+        }
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "id": "normal",
+      "name": "Slime",
+      "type": "normal",
+      "image": "img/enemies/slime.png",
+      "health": 100,
+      "moveSpeed": 1.5,
+      "moneyValue": 10,
+      "leakDamage": 2
+    },
+    {
+      "id": "fast",
+      "name": "Fast Slime",
+      "type": "fast",
+      "image": "img/enemies/slime_fast.png",
+      "health": 50,
+      "moveSpeed": 2.75,
+      "moneyValue": 15,
+      "leakDamage": 1
+    },
+    {
+      "id": "tank",
+      "name": "Tank Slime",
+      "type": "tank",
+      "image": "img/enemies/slime_tank.png",
+      "health": 500,
+      "moveSpeed": 0.5,
+      "moneyValue": 50,
+      "leakDamage": 5
+    }
+  ],
+  "maps": [
+    {
+      "id": "map1",
+      "name": "Map 1",
+      "image": "img/maps/map1.jpg",
+      "description": "The default map. Slimes follow a fixed winding path from spawn to your base; place towers along it."
+    }
+  ]
+}

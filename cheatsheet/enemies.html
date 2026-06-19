@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3TD Cheatsheet — Enemies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="enemies">
+  <header class="nav">
+    <span class="brand">3TD Cheatsheet</span>
+    <nav>
+      <a href="index.html">Towers</a>
+      <a href="rules.html">Rules</a>
+      <a href="enemies.html" class="active">Enemies</a>
+      <a href="maps.html">Maps</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Enemies</h1>
+    <div class="controls">
+      <input type="search" id="search" placeholder="Search by name…" aria-label="Search" />
+      <div class="chips" id="filters"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>No results.</div>
+  </main>
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+  </div>
+  <script src="js/core.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
