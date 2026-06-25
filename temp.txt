@@ -1,0 +1,23 @@
+pozitiv
+
+Svarog the Slavic god of fire, solemn bearded warrior deity, ornate gilded gothic armor,
+holding a glowing forge hammer, dim molten glow and drifting embers, dark golden accents,
+standing alone on a small round stone base,
+dark gothic 2D pixel art, Blasphemous game art style, highly detailed pixel sprite, hand-crafted sprite,
+somber muted palette with gold and deep crimson accents, dramatic side lighting,
+full body, single character, isolated cutout, standalone game sprite,
+plain solid light-grey background, empty background, nothing behind the character
+
+
+
+
+negativ 
+
+
+cathedral, archway, arch, alcove, niche, stone wall, room interior, throne, altar, altarpiece, stained glass, pillars,
+symmetrical frame, ornate border, decorative frame, vignette, card frame, trading card, background scenery, landscape,
+flat vector, cartoon, cute, chibi, bright cheerful colors, pastel, anime,
+3d render, 3d model, statue, figurine, sculpture, clay, photorealistic, photo, smooth gradient, antialiased, modern,
+multiple characters, asset sheet, sprite sheet, collage, grid, scattered props,
+portrait, bust, close-up, face only, text, watermark, signature,
+blurry, low quality, cropped, out of frame, jpeg artifacts, deformed hands, extra fingers, extra limbs, mutated, ugly
