@@ -1,0 +1,44 @@
+Ime,Tip,Opis,Moralnost,Rarity,UnitType,Element,BaseDamage,AttackSpeed,Range,ManaCost,Faction,BossEligible,CanBeTower,CanBeEnemy,SpecialAbilities
+Drekavac,Demon,Noƒáno biƒáe jezivog krika,Zao,Common,Melee,Shadow,35,1.4,1,0,Podzemlje,FALSE,FALSE,TRUE,Fear Scream
+Bauk,ƒåudovi≈°te,Skriva se u mraku,Zao,Common,Melee,Shadow,45,1,1,0,Tama,FALSE,FALSE,TRUE,Ambush
+Karakond≈æula,Demon,Napada noƒáne putnike,Zla,Rare,Assassin,Shadow,65,1.6,1,0,Tama,FALSE,FALSE,TRUE,Leap Attack
+Ala,Demon,Izaziva oluje i pomraƒçenja,Zla,Epic,Magic,Storm,90,0.8,5,0,Oluje,TRUE,FALSE,TRUE,Storm Call
+A≈ædaja,Zmaj,Vi≈°eglavi zmaj,Uglavnom zla,Legendary,Boss,Fire,180,0.7,6,0,Haos,TRUE,FALSE,TRUE,Fire Breath; Multiple Heads
+Bes,Demon,Navodi na ludilo,Zao,Rare,Caster,Shadow,70,1,4,0,Podzemlje,FALSE,FALSE,TRUE,Madness Aura
+Utvara,Duh,Zlonamerni duh,Zla,Common,Ghost,Shadow,40,1.2,1,0,Duhovi,FALSE,FALSE,TRUE,Phase Through
+Noƒánica,Demon,Napada tokom sna,Zla,Rare,Assassin,Shadow,60,1.8,1,0,Tama,FALSE,FALSE,TRUE,Sleep Curse
+Vampir,Nemrtvi,Hrani se ≈æivotnom energijom,Zao,Epic,Melee,Blood,90,1.3,1,0,Nemrtvi,TRUE,FALSE,TRUE,Life Steal
+Psoglav,ƒåudovi≈°te,Div sa pseƒáom glavom,Zao,Epic,Tank,Physical,120,0.8,1,0,Divovi,TRUE,FALSE,TRUE,Charge
+ƒåuma,Demon bolesti,Personifikacija kuge,Neutralna do zla,Legendary,Caster,Poison,80,0.9,5,0,Bolesti,TRUE,FALSE,TRUE,Plague Cloud
+Vila,Duh prirode,Mo≈æe pomoƒái ili kazniti,Neutralno,Epic,Support,Nature,60,1.1,6,40,Priroda,FALSE,TRUE,FALSE,Wind Blessing
+Domovoj,Kuƒáni duh,ƒåuva dom,Dobar,Rare,Support,Earth,20,1,4,20,Dom,FALSE,TRUE,FALSE,Protection Aura
+Baba Jaga,Ve≈°tica,Moƒána ve≈°tica,Neutralna,Legendary,Summoner,Arcane,75,0.8,6,70,Ve≈°tice,TRUE,TRUE,TRUE,Summon Hut; Hex
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+Bi?e,Tip,Opis i osobine,Dobro / Zlo / Neutralno,,,,,,,,,,,,
+Vila,Duh prirode,"Veoma mo?na bi?a povezana sa öumama, vodom i planinama; mogu pomo?i ili kazniti ljude",Neutralno,,,,,,,,,,,,
+Vila Ravijojla,Vila,"Zaötitnica junaka, poseduje ogromnu magijsku mo?",Dobra,,,,,,,,,,,,
+Domovoj,Ku?ni duh,?uva dom i porodicu ako ga poötuju,Dobar,,,,,,,,,,,,
+Leshy,äumski duh,Gospodar öuma; moûe pomo?i ili zavesti putnike,Neutralan,,,,,,,,,,,,
+Rusalka,Vodeni duh,"Duh utopljenice, ?esto zavodi i davi ljude",Uglavnom zla,,,,,,,,,,,,
+Baba Jaga,Veötica,"Moûe biti u?itelj, pomaga? ili opasni protivnik",Neutralna,,,,,,,,,,,,
+Drekavac,Demon,No?no bi?e ?iji jezivi krici izazivaju strah,Zao,,,,,,,,,,,,
+Bauk,?udoviöte,Skriva se u mraku i napada neoprezne,Zao,,,,,,,,,,,,
+Karakondûula,Demon,"Napada no?ne putnike, posebno zimi",Zla,,,,,,,,,,,,
+Ala,Demon,"Proûdire useve, izaziva oluje i pomra?enja",Zla,,,,,,,,,,,,
+Aûdaja,Zmaj/?udoviöte,Viöeglavi zmaj ogromne mo?i,Uglavnom zla,,,,,,,,,,,,
+Zmaj,Mitsko bi?e,U srpskoj tradiciji ?esto zaötitnik naroda,Uglavnom dobro,,,,,,,,,,,,
+Bes,Demon,Duh koji navodi ljude na ludilo i nasilje,Zao,,,,,,,,,,,,
+Nav,Duh,Duöe pokojnika koje lutaju svetom,Neutralni,,,,,,,,,,,,
+Utvara,Duh,Zlonamerni duh koji plaöi ljude,Zla,,,,,,,,,,,,
+No?nica,Demon,Napada ljude tokom sna,Zla,,,,,,,,,,,,
+Vampir,Nemrtvi,Hrani se ûivotnom energijom ili krvlju,Zao,,,,,,,,,,,,
+Todorci,Duhovi konjanika,Pojavljuju se tokom Todorove nedelje,Neutralni,,,,,,,,,,,,
+Su?enice,Duhovi sudbine,Odre?uju sudbinu novoro?en?adi,Neutralne,,,,,,,,,,,,
+Psoglav,?udoviöte,"Div sa pse?om glavom, ljudoûder",Zao,,,,,,,,,,,,
+?uma,Demon,Personifikacija kuge i bolesti,Neutralna do zla,,,,,,,,,,,,
+Vodeni duh,Vodeni demon,Upravlja rekama i jezerima,Neutralan,,,,,,,,,,,,
+Poludnica,Demon,Kaûnjava ljude koji rade po najve?oj vru?ini,Neutralna,,,,,,,,,,,,
+Zmija ?uvarku?a,Zaötitni?ki duh,ätiti doma?instvo i porodicu,Dobra,,,,,,,,,,,,

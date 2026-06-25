@@ -1,0 +1,56 @@
+============================================================
+ PERUN — bog groma (tower)  |  PixelLab web interface
+============================================================
+Tematika: slovenska/srpska mitologija. Stil: Blasphemous (mračni
+gotički HD pixel art). Isti recept kao zaključani Svarog.
+
+------------------------------------------------------------
+PIXELLAB PODEŠAVANJA (uskladi u web UI-u)
+------------------------------------------------------------
+Mode:      v3 (najviši kvalitet, 8 smerova)  [ili Standard za jeftin test]
+Body type: Humanoid
+Size:      64 px
+View:      low top-down  (3/4 RPG / TD ugao)
+Detail:    high detail
+Outline:   selective outline
+n_directions: 8
+
+------------------------------------------------------------
+DESCRIPTION (zalepi ovo u "description" polje)
+------------------------------------------------------------
+Perun, the Slavic god of thunder and storms, supreme sky god — a mighty
+bearded warrior deity in ornate gilded gothic plate armor, holding a great
+war axe crackling with lightning, glowing blue-white electric sparks, dark
+storm-grey cloak, somber dark palette with gold accents and electric blue
+highlights, oak and eagle motifs, Blasphemous dark gothic style
+
+------------------------------------------------------------
+KRATKA VARIJANTA (ako polje ima limit karaktera)
+------------------------------------------------------------
+Perun Slavic thunder god, bearded warrior in gilded gothic armor, holding a
+lightning war axe, electric blue sparks, dark and gold palette, Blasphemous
+dark gothic pixel art
+
+============================================================
+ ALTERNATIVA — za SDXL/Amuse (ako testiraš tamo, ne PixelLab)
+============================================================
+POZITIVAN:
+Perun the Slavic god of thunder and storms, solemn bearded warrior deity,
+ornate gilded gothic armor, holding a great war axe crackling with lightning,
+glowing electric-blue sparks, dark storm-grey cloak, dark golden accents,
+standing alone on a small round stone base,
+dark gothic 2D pixel art, Blasphemous game art style, highly detailed pixel sprite, hand-crafted sprite,
+somber muted palette with gold and electric blue accents, dramatic side lighting,
+full body, single character, isolated cutout, standalone game sprite,
+plain solid light-grey background, empty background, nothing behind the character
+
+NEGATIVAN:
+cathedral, archway, arch, alcove, niche, stone wall, room interior, throne, altar, altarpiece, stained glass, pillars,
+symmetrical frame, ornate border, decorative frame, vignette, card frame, trading card, background scenery, landscape,
+flat vector, cartoon, cute, chibi, bright cheerful colors, pastel, anime,
+3d render, 3d model, statue, figurine, sculpture, clay, photorealistic, photo, smooth gradient, antialiased, modern,
+multiple characters, asset sheet, sprite sheet, collage, grid, scattered props,
+portrait, bust, close-up, face only, text, watermark, signature,
+blurry, low quality, cropped, out of frame, jpeg artifacts, deformed hands, extra fingers, extra limbs, mutated, ugly
+
+(SDXL parametri: seed po izboru, CFG 5, 8 steps, Euler a, 768x768, Hyper-SDXL-8steps-CFG LoRA @1.0)

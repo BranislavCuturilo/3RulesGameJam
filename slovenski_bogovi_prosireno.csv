@@ -1,0 +1,38 @@
+Ime,Tip,Domen/Moƒái,Osobine,Moralnost,Rarity,TowerType,Element,BaseDamage,AttackSpeed,Range,ManaCost,Faction,BossEligible,CanBeTower,CanBeEnemy,SpecialAbilities
+Perun,Bog,"Grom, munje, rat, pravda","Hrabar, ratniƒçki, za≈°titnik reda i zakona",Dobar,Legendary,DPS,Lightning,120,1.2,7,50,Nebeski Panteon,TRUE,TRUE,FALSE,Chain Lightning; Thunder Strike; Storm Aura
+Veles,Bog,"Magija, podzemlje, bogatstvo","Mudar, lukav, povezan sa smrƒáu",Neutralan,Legendary,Summoner,Shadow,90,0.8,6,60,Podzemlje,TRUE,TRUE,FALSE,Summon Spirits; Curse; Poison Cloud
+Svarog,Bog,"Nebo, vatra, kovaƒçki zanat","Stvoritelj, za≈°titnik zanatlija",Dobar,Epic,Support,Fire,70,1,5,45,Nebeski Panteon,FALSE,TRUE,FALSE,Forge Aura; Armor Buff
+Da≈æbog,Bog,"Sunce, prosperitet",Dare≈æljiv,Dobar,Epic,DPS,Light,100,1,7,50,Nebeski Panteon,FALSE,TRUE,FALSE,Solar Beam; Blessing
+Morana,Boginja,"Smrt, zima, bolest","Hladna, nemilosrdna",Neutralna,Legendary,Magic,Ice,80,0.7,6,65,Podzemlje,TRUE,TRUE,FALSE,Freeze; Disease; Death Aura
+Moko≈°,Boginja,"Plodnost, zemlja",Za≈°titnica ≈æena,Dobra,Rare,Support,Nature,40,1,5,35,Zemlja,FALSE,TRUE,FALSE,Healing Aura; Resource Boost
+Svetovid,Bog,"Rat, proroƒçanstvo",Svevideƒái,Dobar,Legendary,DPS,Light,110,1.1,8,60,Nebeski Panteon,TRUE,TRUE,FALSE,Four Directions Attack; Vision Aura
+Jarilo,Bog,"Proleƒáe, obnova",Mlad i energiƒçan,Dobar,Epic,DPS,Nature,95,1.5,5,40,Zemlja,FALSE,TRUE,FALSE,Rapid Strike; Regrowth
+Lada,Boginja,"Ljubav, harmonija",Blaga,Dobra,Rare,Support,Light,30,1,6,30,Nebeski Panteon,FALSE,TRUE,FALSE,Morale Aura; Healing
+Triglav,Bog,Tri sveta,Odr≈æava ravnote≈æu,Neutralan,Legendary,Hybrid,Arcane,100,1,7,70,Tri Sveta,TRUE,TRUE,FALSE,Switch Forms; Balance Aura
+Rod,Bog,"Stvaranje, sudbina",Tvorac sveta,Dobar,Legendary,Support,Arcane,50,1,8,80,Nebeski Panteon,FALSE,TRUE,FALSE,Creation Aura; Destiny Buff
+Stribog,Bog,"Vetar, oluje",Nepredvidiv,Neutralan,Epic,DPS,Wind,85,1.8,8,45,Nebeski Panteon,FALSE,TRUE,FALSE,Tornado; Pushback
+ƒåernobog,Bog,"Tama, haos",Destruktivan,Zao,Mythic,Boss,Shadow,150,0.9,8,100,Tama,TRUE,FALSE,TRUE,Dark Nova; Corruption
+Belobog,Bog,"Svetlost, sreƒáa",Za≈°titnik,Dobar,Legendary,Support,Light,60,1,8,75,Svetlost,TRUE,TRUE,FALSE,Blessing Aura; Purify
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+Bog/Boginja,Domen / Mo?i,Osobine,Dobro / Zlo / Neutralno,,,,,,,,,,,,,
+Perun,"Grom, munje, rat, pravda","Hrabar, ratni?ki, zaötitnik reda i zakona",Dobar,,,,,,,,,,,,,
+Veles,"Magija, podzemlje, bogatstvo, stoka, prevara","Mudar, lukav, promenljiv, povezan sa smr?u",Neutralan,,,,,,,,,,,,,
+Svarog,"Nebo, vatra, kova?ki zanat","Stvoritelj, zaötitnik zanatlija",Dobar,,,,,,,,,,,,,
+Daûbog,"Sunce, toplota, prosperitet","Dareûljiv, donosi blagostanje",Dobar,,,,,,,,,,,,,
+Morana,"Smrt, zima, bolest","Hladna, nemilosrdna, ali prirodna sila",Neutralna,,,,,,,,,,,,,
+Mokoö,"Zemlja, plodnost, sudbina",Zaötitnica ûena i porodice,Dobra,,,,,,,,,,,,,
+Svetovid,"Rat, proro?anstvo, vidovitost","Svevide?i, mudar",Dobar,,,,,,,,,,,,,
+Jarilo,"Prole?e, vegetacija, obnova","Mlad, energi?an, plodan",Dobar,,,,,,,,,,,,,
+Lada,"Ljubav, brak, harmonija","Blaga, zaötitnica porodice",Dobra,,,,,,,,,,,,,
+Triglav,"Nebo, zemlja, podzemlje",Odrûava ravnoteûu svetova,Neutralan,,,,,,,,,,,,,
+Rod,"Stvaranje, sudbina, porodica",Tvorac sveta,Dobar,,,,,,,,,,,,,
+Stribog,"Vetar, oluje","Nepredvidiv, brz",Neutralan,,,,,,,,,,,,,
+?ernobog,"Tama, nesre?a, haos","Mra?an, destruktivan",Zao,,,,,,,,,,,,,
+Belobog,"Svetlost, sre?a","Dobronameran, zaötitnik",Dobar,,,,,,,,,,,,,
+Hors,"Sunce, mese?eve faze",Tajanstven,Neutralan,,,,,,,,,,,,,
+Simargl,"Vatra, usevi, zaötita",Zaötitnik useva,Dobar,,,,,,,,,,,,,
+Devana,"Lov, divljina","Nezavisna, ratoborna",Neutralna,,,,,,,,,,,,,
+éiva,"éivot, plodnost","Dobro?udna, zaötitnica ûivota",Dobra,,,,,,,,,,,,,
