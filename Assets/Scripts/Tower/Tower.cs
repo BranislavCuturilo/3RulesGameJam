@@ -35,6 +35,7 @@ public class Tower : MonoBehaviour
     public GameObject Target;
     private float CoolDown = 0f;
     private TowerEffects towerEffects;
+    private TowerDirectionalAnimator dirAnimator;
 
     void Awake()
     {
@@ -42,18 +43,34 @@ public class Tower : MonoBehaviour
         originalFireRate = FireRate;
         originalDamage = Damage;
         towerEffects = GetComponent<TowerEffects>();
+        dirAnimator = GetComponentInChildren<TowerDirectionalAnimator>();
     }
     void Update()
     {
         if(Target)
         {
+            // Face the target every frame so the directional animator can turn smoothly.
+            Vector2 toTarget = (Vector2)(Target.transform.position - transform.position);
+            if (dirAnimator != null)
+            {
+                dirAnimator.FaceDirection(toTarget);
+            }
+            else
+            {
+                // No directional sprites: fall back to rotating the whole transform.
+                transform.right = toTarget;
+            }
+
             if(CoolDown >= FireRate)
             {
-                transform.right = Target.transform.position - transform.position;
-                
+                if (dirAnimator != null)
+                {
+                    dirAnimator.PlayAttack();
+                }
+
                 ShotData shot = TowerShotBuilder.BuildShotData(this, towerEffects);
                 SpawnProjectileOrHit(shot, Target);
-                
+
                 CoolDown = 0f;
                 if (defaultFireEffect != null || (fireEffectsByLevel != null && fireEffectsByLevel.Length > 0))
                 {
