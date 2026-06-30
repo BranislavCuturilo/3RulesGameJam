@@ -444,7 +444,7 @@ MonoBehaviour:
     minDamageFactor: 0
     falloffExponent: 1
   useProjectile: 1
-  projectilePrefab: {fileID: 2466908342501964803, guid: d863837f079d0514f85c4b744d796ade, type: 3}
+  projectilePrefab: {fileID: 0}
   projectileSpeed: 20
   projectileExplodesOnImpact: 0
 --- !u!114 &6555393812497776609
